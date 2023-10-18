@@ -1,0 +1,27 @@
+$primary-color: #333;
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.header {
+  // background: #282c34;
+}
+
+.header img {
+  max-width: 125px;
+}
+
+.guest {
+  // background: #282c34;
+}
+
+.header .headerButton {
+  background-color: transparent;
+}
