@@ -148,7 +148,7 @@ export default function Header() {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="fixed">
       <Toolbar
         sx={{
           minHeight: '42px !important',

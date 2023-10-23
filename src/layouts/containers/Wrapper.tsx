@@ -5,7 +5,12 @@ import { SidebarMenu } from '..';
 
 export default function Wrapper() {
   return (
-    <Stack direction="row" justifyContent="center" spacing={4} sx={{ padding: '48px', marginLeft: '-250px' }}>
+    <Stack
+      direction="row"
+      justifyContent="center"
+      spacing={4}
+      sx={{ padding: '48px', marginTop: '45px', marginLeft: '-250px' }}
+    >
       <Stack>
         <SidebarMenu />
       </Stack>
