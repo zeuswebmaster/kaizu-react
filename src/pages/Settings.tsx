@@ -1,9 +1,9 @@
 import { Stack, Typography } from '@mui/material';
 
-export default function Home() {
+export default function Settings() {
   return (
     <Stack>
-      <Typography variant="h3">Home</Typography>
+      <Typography variant="h3">Settings</Typography>
     </Stack>
   );
 }

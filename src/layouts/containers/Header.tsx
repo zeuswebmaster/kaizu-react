@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import {
   AppBar,
@@ -16,12 +16,18 @@ import {
   MenuItem,
   MenuProps,
   Button,
+  Drawer,
 } from '@mui/material';
+
+import ContrastIcon from '@mui/icons-material/Contrast';
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
 import PersonIcon from '@mui/icons-material/Person';
 import SettingsIcon from '@mui/icons-material/Settings';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import { DrawerItem, ThemeItem } from '../../components';
 
 const notifications: {
   id: number;
@@ -68,20 +74,20 @@ const users = [
 ];
 
 export default function Header() {
+  const router = useNavigate();
+
   const [menuNotice, setMenuNotice] = useState<HTMLElement | null>(null);
   const [menuUser, setMenuUser] = useState<HTMLElement | null>(null);
+  const [menuTheme, setMenuTheme] = useState<HTMLElement | null>(null);
+  const [selectTheme, setSelectTheme] = useState<string>('light');
+  const [selectFontSize, setSelectFontSize] = useState<string>('12');
+  const [openDrawer, setOpenDrawer] = useState<boolean>(false);
 
-  const StyledLogWrapper = styled('div')(() => ({
+  const StyledLogoWrapper = styled('div')(() => ({
+    cursor: 'pointer',
     '& img': {
       width: '100%',
       height: '100%',
-    },
-  }));
-
-  const StyleIconWrapper = styled('div')(() => ({
-    '& img': {
-      width: '18px',
-      height: '18px',
     },
   }));
 
@@ -93,20 +99,19 @@ export default function Header() {
       padding: '0',
       backgroundColor: '#BE3856',
       top: '5px',
+      right: '3px',
     },
   }));
 
-  const StyleNotificationMenu = styled(Menu)<MenuProps>(() => ({
+  const StyleMenu = styled(Menu)<MenuProps>(() => ({
     '& .MuiPaper-root': {
-      backgroundColor: '#1f3845',
+      backgroundColor: 'transparent',
       minWidth: '200px',
-    },
-  }));
-
-  const StyleUserMenu = styled(Menu)<MenuProps>(() => ({
-    '& .MuiPaper-root': {
-      backgroundColor: '#1f3845',
-      minWidth: '200px',
+      borderRadius: '8px',
+      '& ul': {
+        backgroundColor: '#1f3845',
+        marginTop: '10px',
+      },
     },
   }));
 
@@ -118,12 +123,28 @@ export default function Header() {
     setMenuUser(event.currentTarget);
   };
 
+  const handleOpenThemeMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setMenuTheme(event.currentTarget);
+  };
+
   const handleCloseUserMenu = () => {
     setMenuUser(null);
   };
 
   const handleCloseNotificationsMenu = () => {
     setMenuNotice(null);
+  };
+
+  const handleCloseThemeMenu = () => {
+    setMenuTheme(null);
+  };
+
+  const handleClickHome = () => {
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem('menuPath', '/');
+    }
+
+    router('/');
   };
 
   return (
@@ -136,24 +157,20 @@ export default function Header() {
           borderBottom: '1px solid #707070',
         }}
       >
-        <NavLink to="/">
-          <StyledLogWrapper>
-            <img src="/images/logo.png" alt="KAIZU Logo" loading="lazy" />
-          </StyledLogWrapper>
-        </NavLink>
+        <StyledLogoWrapper onClick={handleClickHome}>
+          <img src="/images/logo.png" alt="KAIZU Logo" loading="lazy" />
+        </StyledLogoWrapper>
         <Box sx={{ flexGrow: 1 }} />{' '}
-        <Stack direction="row" spacing={2} alignItems="center">
+        <Stack direction="row" spacing={3} alignItems="center">
           <Stack>
             <IconButton size="small" color="inherit" sx={{ padding: 0 }} onClick={handleOpenNotificaitonsMenu}>
               <StyledBadge badgeContent={4} overlap="rectangular" color="error">
-                <StyleIconWrapper>
-                  <img src="/icons/bell.svg" alt="" />
-                </StyleIconWrapper>
+                <NotificationsNoneIcon sx={{ width: 20, height: 20, color: '#81b9ae' }} />
               </StyledBadge>
             </IconButton>
-            <StyleNotificationMenu
+            <StyleMenu
               sx={{
-                mt: '35px',
+                mt: '26px',
               }}
               anchorEl={menuNotice}
               anchorOrigin={{
@@ -168,6 +185,23 @@ export default function Header() {
               open={Boolean(menuNotice)}
               onClose={handleCloseNotificationsMenu}
             >
+              <Box
+                sx={{
+                  position: 'relative',
+                  mt: '10px',
+                  '&::before': {
+                    backgroundColor: '#1f3845',
+                    content: '""',
+                    display: 'block',
+                    position: 'absolute',
+                    width: 8,
+                    height: 8,
+                    top: '-22px',
+                    transform: 'rotate(45deg)',
+                    left: '4%',
+                  },
+                }}
+              />
               {notifications.map((item) => (
                 <MenuItem key={item.id} onClick={handleCloseNotificationsMenu}>
                   <Stack direction="row" spacing={1} alignItems="center">
@@ -190,30 +224,70 @@ export default function Header() {
                     width: '100%',
                     backgroundColor: '#111f27',
                     '&:hover': {
-                      opacity: 25,
+                      opacity: 10,
                       backgroundColor: '#2d414c',
                     },
                   }}
                 >
-                  View All Notifications
+                  <Typography fontSize={12}>View All Notifications</Typography>
                 </Button>
               </Stack>
-            </StyleNotificationMenu>
+            </StyleMenu>
           </Stack>
-          <IconButton size="small" color="inherit" sx={{ padding: 0 }}>
-            <StyleIconWrapper>
-              <img src="/icons/menu-theme.svg" alt="" />
-            </StyleIconWrapper>
-          </IconButton>
+          <Stack>
+            <IconButton size="small" color="inherit" sx={{ padding: 0 }} onClick={handleOpenThemeMenu}>
+              <ContrastIcon sx={{ width: 20, height: 20, color: '#81b9ae' }} />
+            </IconButton>
+            <StyleMenu
+              sx={{
+                mt: '26px',
+              }}
+              anchorEl={menuTheme}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              open={Boolean(menuTheme)}
+              onClose={handleCloseThemeMenu}
+            >
+              <Box
+                sx={{
+                  position: 'relative',
+                  mt: '10px',
+                  '&::before': {
+                    backgroundColor: '#1f3845',
+                    content: '""',
+                    display: 'block',
+                    position: 'absolute',
+                    width: 8,
+                    height: 8,
+                    top: '-22px',
+                    transform: 'rotate(45deg)',
+                    left: '3%',
+                  },
+                }}
+              />
+              <ThemeItem
+                selectTheme={selectTheme}
+                setSelectTheme={setSelectTheme}
+                selectFontSize={selectFontSize}
+                setSelectFontSize={setSelectFontSize}
+                setMenuTheme={setMenuTheme}
+              />
+            </StyleMenu>
+          </Stack>
           <Stack>
             <IconButton size="small" color="inherit" sx={{ padding: 0 }} onClick={handleOpenUserMenu}>
-              <StyleIconWrapper>
-                <img src="/icons/user.svg" alt="" />
-              </StyleIconWrapper>
+              <AccountCircleIcon sx={{ width: 20, height: 20, color: '#81b9ae' }} />
             </IconButton>
-            <StyleUserMenu
+            <StyleMenu
               sx={{
-                mt: '35px',
+                mt: '26px',
               }}
               anchorEl={menuUser}
               anchorOrigin={{
@@ -228,6 +302,23 @@ export default function Header() {
               open={Boolean(menuUser)}
               onClose={handleCloseUserMenu}
             >
+              <Box
+                sx={{
+                  position: 'relative',
+                  mt: '10px',
+                  '&::before': {
+                    backgroundColor: '#1f3845',
+                    content: '""',
+                    display: 'block',
+                    position: 'absolute',
+                    width: 8,
+                    height: 8,
+                    top: '-22px',
+                    transform: 'rotate(45deg)',
+                    left: '4%',
+                  },
+                }}
+              />
               {users.map((item) => (
                 <MenuItem key={item.id} onClick={handleCloseUserMenu}>
                   <Stack direction="row" spacing={1} alignItems="center">
@@ -240,7 +331,7 @@ export default function Header() {
                   </Stack>
                 </MenuItem>
               ))}
-            </StyleUserMenu>
+            </StyleMenu>
           </Stack>
           <Stack direction="row" spacing={1}>
             <Typography fontSize={13} color="#43BAA3" fontWeight={500}>
@@ -261,9 +352,27 @@ export default function Header() {
               borderRadius: '100%',
             }}
           >
-            <IconButton size="small" color="inherit" sx={{ padding: 0 }}>
+            <IconButton size="small" color="inherit" sx={{ padding: 0 }} onClick={() => setOpenDrawer(true)}>
               <Avatar src="/images/Clip.png" alt="" sx={{ width: 22, height: 22 }} />
             </IconButton>
+            <Drawer
+              anchor="right"
+              open={openDrawer}
+              onClose={() => setOpenDrawer(false)}
+              sx={{
+                [`& .MuiDrawer-paper`]: {
+                  boxSizing: 'border-box',
+                  top: '50px',
+                  maxHeight: 'calc(100% - 110px)',
+                  height: 'auto',
+                  overflowY: 'auto',
+                  boxShadow:
+                    '0px 0px 17px 9px rgba(0, 0, 0, 0.2), 0px 16px 24px 10px rgba(0, 0, 0, 0.14), 0px 6px 30px 10px rgba(0, 0, 0, 0.12)',
+                },
+              }}
+            >
+              <DrawerItem />
+            </Drawer>
           </Stack>
         </Stack>
       </Toolbar>
