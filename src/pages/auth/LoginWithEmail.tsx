@@ -30,7 +30,13 @@ export default function LoginWithEmail() {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = () => {};
+  const onSubmit = () => {
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem('sessionId', 'login');
+    }
+
+    router('/');
+  };
 
   return (
     <Stack>

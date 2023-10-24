@@ -323,7 +323,21 @@ export default function Header() {
               />
               {users.map((item) => (
                 <MenuItem key={item.id} onClick={handleCloseUserMenu}>
-                  <Stack direction="row" spacing={1} alignItems="center">
+                  <Stack
+                    direction="row"
+                    spacing={1}
+                    alignItems="center"
+                    {...(item.id === 3
+                      ? {
+                          onClick: () => {
+                            if (typeof window !== 'undefined') {
+                              window.localStorage.removeItem('sessionId');
+                              router('/sign-in');
+                            }
+                          },
+                        }
+                      : {})}
+                  >
                     <Stack>{item.icon}</Stack>
                     <Stack>
                       <Typography fontSize={14} fontWeight={500} color={themeGlobal.palette.common.white}>

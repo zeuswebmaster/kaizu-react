@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { Stack, Typography, Button, TextField, useTheme } from '@mui/material';
 
 import { Controller, useForm } from 'react-hook-form';
@@ -5,6 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 export default function SignUp() {
+  const router = useNavigate();
   const theme = useTheme();
 
   const schema = yup.object({
@@ -33,7 +35,13 @@ export default function SignUp() {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = () => {};
+  const onSubmit = () => {
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem('sessionId', 'login');
+    }
+
+    router('/');
+  };
 
   return (
     <Stack>
