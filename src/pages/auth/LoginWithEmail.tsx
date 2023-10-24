@@ -31,10 +31,8 @@ export default function LoginWithEmail() {
   });
 
   const onSubmit = () => {
-    if (typeof window !== 'undefined') {
-      window.localStorage.setItem('sessionId', 'login');
-    }
-
+    window.localStorage.setItem('sessionId', 'login');
+    window.localStorage.setItem('menuPath', '/');
     router('/');
   };
 

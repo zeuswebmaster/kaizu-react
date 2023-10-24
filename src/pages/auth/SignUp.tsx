@@ -36,10 +36,8 @@ export default function SignUp() {
   });
 
   const onSubmit = () => {
-    if (typeof window !== 'undefined') {
-      window.localStorage.setItem('sessionId', 'login');
-    }
-
+    window.localStorage.setItem('sessionId', 'login');
+    window.localStorage.setItem('menuPath', '/');
     router('/');
   };
 

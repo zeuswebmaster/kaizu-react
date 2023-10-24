@@ -26,7 +26,7 @@ export default function Footer() {
             display: 'flex',
             alignItems: 'center',
             width: 515,
-            backgroundColor: '#18474C',
+            backgroundColor: theme.palette.secondary.main,
             height: '40px',
             borderRadius: '6px',
           }}
