@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import { Stack } from '@mui/material';
+import { useEffect } from 'react';
 import Header from './Header';
 import Wrapper from './Wrapper';
 import Footer from './Footer';
-import { useEffect } from 'react';
 
 export default function MainLayout() {
   const router = useNavigate();
