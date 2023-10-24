@@ -17,10 +17,6 @@ export default function CssBaseline(theme: Theme) {
         body: {
           minWidth: '768px',
           minHeight: '100vh',
-          backgroundImage: 'url(/images/kaizu-bg-default.png)',
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
         },
         '#root': {
           width: '100%',

@@ -58,21 +58,21 @@ declare module '@mui/material' {
 const PRIMARY = {
   lighter: '#327EBB',
   light: '#196EB2',
-  main: '#005EAA',
+  main: '#2b4a58',
   dark: '#004176',
   darker: '#002544',
 };
 const SECONDARY = {
   lighter: '#C8FACD',
   light: '#5BE584',
-  main: '#00855B',
+  main: '#1f3845',
   dark: '#007B55',
   darker: '#005249',
 };
 const INFO = {
   lighter: '#327EBB',
   light: '#196EB2',
-  main: '#005EAA',
+  main: '#3aad9b',
   dark: '#004176',
   darker: '#002544',
 };
@@ -87,7 +87,7 @@ const SUCCESS = {
 const WARNING = {
   lighter: '#FFF7CD',
   light: '#CC6F3D',
-  main: '#DB6A00',
+  main: '#eecc81',
   dark: '#B76F0F',
   darker: '#7A4F01',
 };
@@ -95,13 +95,12 @@ const WARNING = {
 const ERROR = {
   lighter: '#FFE7D9',
   light: '#CC5056',
-  main: '#DB1F22',
+  main: '#BE3856',
   dark: '#B72136',
   darker: '#7A0C2E',
 };
 
 const GREY = {
-  grey: '#0D1117',
   0: '#FFFFFF',
   30: '#EEEEEE',
   100: '#EDF0F3',
@@ -113,14 +112,14 @@ const GREY = {
   700: '#5C6066',
   800: '#454950',
   900: '#1C2024',
-  500_8: alpha('#919EAB', 0.08),
-  500_12: alpha('#919EAB', 0.12),
-  500_16: alpha('#919EAB', 0.16),
-  500_24: alpha('#919EAB', 0.24),
-  500_32: alpha('#919EAB', 0.32),
-  500_48: alpha('#919EAB', 0.48),
-  500_56: alpha('#919EAB', 0.56),
-  500_80: alpha('#919EAB', 0.8),
+  500_8: alpha('#9cafb8', 0.08),
+  500_12: alpha('#9cafb8', 0.12),
+  500_16: alpha('#9cafb8', 0.16),
+  500_24: alpha('#9cafb8', 0.24),
+  500_32: alpha('#9cafb8', 0.32),
+  500_48: alpha('#9cafb8', 0.48),
+  500_56: alpha('#9cafb8', 0.56),
+  500_80: alpha('#9cafb8', 0.8),
 };
 
 const GRADIENTS = {
@@ -143,7 +142,7 @@ const COMMON = {
     black: '#000',
     white: '#FFF',
     red: '#FC636B',
-    pink: '#E91E63',
+    pink: '#eecc81',
     green: '#3BE8B0',
   },
   primary: { ...PRIMARY, contrastText: '#FFF' },
@@ -172,14 +171,14 @@ const palette = {
     ...COMMON,
     mode: 'light',
     text: { primary: GREY[800], secondary: GREY[600], disabled: GREY[500] },
-    background: { paper: '#FFF', default: GREY[30] },
+    background: { paper: '#101D24', default: GREY[30] },
     action: { active: GREY[600], ...COMMON.action },
   },
   dark: {
     ...COMMON,
     mode: 'dark',
     text: { primary: GREY[30], secondary: GREY[500], disabled: GREY[600] },
-    background: { paper: GREY[900], default: GREY[900] },
+    background: { paper: '#101D24', default: GREY[900] },
     action: { active: GREY[500], ...COMMON.action },
   },
 } as const;
