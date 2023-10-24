@@ -17,6 +17,7 @@ import {
   MenuProps,
   Button,
   Drawer,
+  useTheme,
 } from '@mui/material';
 
 import ContrastIcon from '@mui/icons-material/Contrast';
@@ -55,26 +56,27 @@ const notifications: {
   },
 ];
 
-const users = [
-  {
-    id: 1,
-    title: 'Profile',
-    icon: <PersonIcon sx={{ color: '#3aad9b' }} />,
-  },
-  {
-    id: 2,
-    title: 'Settings',
-    icon: <SettingsIcon sx={{ color: '#3aad9b' }} />,
-  },
-  {
-    id: 3,
-    title: 'Sign out',
-    icon: <ExitToAppIcon sx={{ color: '#3aad9b' }} />,
-  },
-];
-
 export default function Header() {
   const router = useNavigate();
+  const themeGlobal = useTheme();
+
+  const users = [
+    {
+      id: 1,
+      title: 'Profile',
+      icon: <PersonIcon sx={{ color: themeGlobal.palette.info.main }} />,
+    },
+    {
+      id: 2,
+      title: 'Settings',
+      icon: <SettingsIcon sx={{ color: themeGlobal.palette.info.main }} />,
+    },
+    {
+      id: 3,
+      title: 'Sign out',
+      icon: <ExitToAppIcon sx={{ color: themeGlobal.palette.info.main }} />,
+    },
+  ];
 
   const [menuNotice, setMenuNotice] = useState<HTMLElement | null>(null);
   const [menuUser, setMenuUser] = useState<HTMLElement | null>(null);
@@ -97,19 +99,19 @@ export default function Header() {
       minWidth: '13px',
       height: '14px',
       padding: '0',
-      backgroundColor: '#BE3856',
+      backgroundColor: themeGlobal.palette.error.main,
       top: '5px',
       right: '3px',
     },
   }));
 
-  const StyleMenu = styled(Menu)<MenuProps>(() => ({
+  const StyleMenu = styled(Menu)<MenuProps>(({ theme }) => ({
     '& .MuiPaper-root': {
       backgroundColor: 'transparent',
       minWidth: '200px',
       borderRadius: '8px',
       '& ul': {
-        backgroundColor: '#1f3845',
+        backgroundColor: theme.palette.secondary.main,
         marginTop: '10px',
       },
     },
@@ -153,8 +155,8 @@ export default function Header() {
         sx={{
           minHeight: '42px !important',
           padding: '10px 35px !important',
-          backgroundColor: '#101D24',
-          borderBottom: '1px solid #707070',
+          backgroundColor: themeGlobal.palette.background.paper,
+          borderBottom: `1px solid ${themeGlobal.palette.grey[700]}`,
         }}
       >
         <StyledLogoWrapper onClick={handleClickHome}>
@@ -165,7 +167,7 @@ export default function Header() {
           <Stack>
             <IconButton size="small" color="inherit" sx={{ padding: 0 }} onClick={handleOpenNotificaitonsMenu}>
               <StyledBadge badgeContent={4} overlap="rectangular" color="error">
-                <NotificationsNoneIcon sx={{ width: 20, height: 20, color: '#81b9ae' }} />
+                <NotificationsNoneIcon sx={{ width: 20, height: 20, color: themeGlobal.palette.info.main }} />
               </StyledBadge>
             </IconButton>
             <StyleMenu
@@ -190,7 +192,7 @@ export default function Header() {
                   position: 'relative',
                   mt: '10px',
                   '&::before': {
-                    backgroundColor: '#1f3845',
+                    backgroundColor: themeGlobal.palette.secondary.main,
                     content: '""',
                     display: 'block',
                     position: 'absolute',
@@ -207,10 +209,10 @@ export default function Header() {
                   <Stack direction="row" spacing={1} alignItems="center">
                     <Stack>{item.icon}</Stack>
                     <Stack>
-                      <Typography fontSize={14} fontWeight={500} color="#fff">
+                      <Typography fontSize={14} fontWeight={500} color={themeGlobal.palette.common.white}>
                         {item.primaryText}
                       </Typography>
-                      <Typography fontSize={12} color="#9cafb8">
+                      <Typography fontSize={12} color={themeGlobal.palette.grey[500_80]}>
                         {item.secondaryText}
                       </Typography>
                     </Stack>
@@ -222,10 +224,10 @@ export default function Header() {
                   variant="contained"
                   sx={{
                     width: '100%',
-                    backgroundColor: '#111f27',
+                    backgroundColor: themeGlobal.palette.primary.main,
                     '&:hover': {
                       opacity: 10,
-                      backgroundColor: '#2d414c',
+                      backgroundColor: themeGlobal.palette.grey[500_8],
                     },
                   }}
                 >
@@ -236,7 +238,7 @@ export default function Header() {
           </Stack>
           <Stack>
             <IconButton size="small" color="inherit" sx={{ padding: 0 }} onClick={handleOpenThemeMenu}>
-              <ContrastIcon sx={{ width: 20, height: 20, color: '#81b9ae' }} />
+              <ContrastIcon sx={{ width: 20, height: 20, color: themeGlobal.palette.info.main }} />
             </IconButton>
             <StyleMenu
               sx={{
@@ -260,7 +262,7 @@ export default function Header() {
                   position: 'relative',
                   mt: '10px',
                   '&::before': {
-                    backgroundColor: '#1f3845',
+                    backgroundColor: themeGlobal.palette.secondary.main,
                     content: '""',
                     display: 'block',
                     position: 'absolute',
@@ -283,7 +285,7 @@ export default function Header() {
           </Stack>
           <Stack>
             <IconButton size="small" color="inherit" sx={{ padding: 0 }} onClick={handleOpenUserMenu}>
-              <AccountCircleIcon sx={{ width: 20, height: 20, color: '#81b9ae' }} />
+              <AccountCircleIcon sx={{ width: 20, height: 20, color: themeGlobal.palette.info.main }} />
             </IconButton>
             <StyleMenu
               sx={{
@@ -307,7 +309,7 @@ export default function Header() {
                   position: 'relative',
                   mt: '10px',
                   '&::before': {
-                    backgroundColor: '#1f3845',
+                    backgroundColor: themeGlobal.palette.secondary.main,
                     content: '""',
                     display: 'block',
                     position: 'absolute',
@@ -321,10 +323,24 @@ export default function Header() {
               />
               {users.map((item) => (
                 <MenuItem key={item.id} onClick={handleCloseUserMenu}>
-                  <Stack direction="row" spacing={1} alignItems="center">
+                  <Stack
+                    direction="row"
+                    spacing={1}
+                    alignItems="center"
+                    {...(item.id === 3
+                      ? {
+                          onClick: () => {
+                            if (typeof window !== 'undefined') {
+                              window.localStorage.removeItem('sessionId');
+                              router('/sign-in');
+                            }
+                          },
+                        }
+                      : {})}
+                  >
                     <Stack>{item.icon}</Stack>
                     <Stack>
-                      <Typography fontSize={14} fontWeight={500} color="#fff">
+                      <Typography fontSize={14} fontWeight={500} color={themeGlobal.palette.common.white}>
                         {item.title}
                       </Typography>
                     </Stack>
@@ -334,10 +350,10 @@ export default function Header() {
             </StyleMenu>
           </Stack>
           <Stack direction="row" spacing={1}>
-            <Typography fontSize={13} color="#43BAA3" fontWeight={500}>
+            <Typography fontSize={13} color={themeGlobal.palette.info.main} fontWeight={500}>
               Sun Aug 13
             </Typography>
-            <Typography fontSize={13} color="#fff" fontWeight={500}>
+            <Typography fontSize={13} color={themeGlobal.palette.common.white} fontWeight={500}>
               04:36
             </Typography>
           </Stack>

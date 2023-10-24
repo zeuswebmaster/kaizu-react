@@ -1,10 +1,15 @@
-import { Stack, Paper, IconButton, InputBase } from '@mui/material';
+import { Stack, Paper, IconButton, InputBase, useTheme } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import HelpIcon from '@mui/icons-material/Help';
 
 export default function Footer() {
+  const theme = useTheme();
+
   return (
-    <Stack position="fixed" sx={{ bottom: 0, width: '100%', height: '52px', backgroundColor: '#101D24' }}>
+    <Stack
+      position="fixed"
+      sx={{ bottom: 0, width: '100%', height: '52px', backgroundColor: theme.palette.background.paper }}
+    >
       <Stack
         direction="row"
         alignItems="center"
@@ -13,7 +18,7 @@ export default function Footer() {
         sx={{ padding: '8px 20px', height: '100%' }}
       >
         <IconButton type="button" sx={{ position: 'absolute', left: '20px' }}>
-          <HelpIcon sx={{ width: 21, height: 21, color: '#43bba4' }} />
+          <HelpIcon sx={{ width: 21, height: 21, color: theme.palette.info.main }} />
         </IconButton>
         <Paper
           component="form"
@@ -27,9 +32,12 @@ export default function Footer() {
           }}
         >
           <Stack sx={{ p: '10px' }}>
-            <SearchIcon sx={{ color: '#a3c1d0' }} />
+            <SearchIcon sx={{ color: theme.palette.grey[500_80] }} />
           </Stack>
-          <InputBase sx={{ ml: 1, flex: 1, color: '#AECADA' }} placeholder="Search any asset, metric or event" />
+          <InputBase
+            sx={{ ml: 1, flex: 1, color: theme.palette.grey[500_80] }}
+            placeholder="Search any asset, metric or event"
+          />
         </Paper>
       </Stack>
     </Stack>

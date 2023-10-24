@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Collapse, List, Stack, Typography, styled } from '@mui/material';
+import { Collapse, List, Stack, Typography, styled, useTheme } from '@mui/material';
 
 import HomeIcon from '@mui/icons-material/Home';
 import DashboardIcon from '@mui/icons-material/Dashboard';
@@ -14,6 +14,7 @@ import { MenuItem } from '../../types/global';
 
 export default function SidebarMenu() {
   const router = useNavigate();
+  const theme = useTheme();
 
   const [currentKey, setCurrentKey] = useState<string>('');
   const [expandStudio, setExpandStudio] = useState<boolean>(false);
@@ -25,32 +26,40 @@ export default function SidebarMenu() {
         <Typography
           fontSize={14}
           fontWeight={500}
-          color={currentKey === '/' ? '#eecc81' : '#fff'}
+          color={currentKey === '/' ? theme.palette.warning.main : theme.palette.common.white}
           sx={{ paddingLeft: '10px' }}
         >
           Home
         </Typography>
       ),
       key: '/',
-      icon: <HomeIcon sx={{ color: `${currentKey === '/' ? '#eecc81' : '#6bb8a4'}` }} />,
+      icon: <HomeIcon sx={{ color: `${currentKey === '/' ? theme.palette.warning.main : theme.palette.info.main}` }} />,
     },
     {
       label: (
         <Typography
           fontSize={14}
           fontWeight={500}
-          color={currentKey === 'studio' ? '#eecc81' : '#fff'}
+          color={currentKey === 'studio' ? theme.palette.warning.main : theme.palette.common.white}
           sx={{ paddingLeft: '10px' }}
         >
           Studio
         </Typography>
       ),
       key: 'studio',
-      icon: <DashboardIcon sx={{ color: `${currentKey === 'studio' ? '#eecc81' : '#6bb8a4'}` }} />,
+      icon: (
+        <DashboardIcon
+          sx={{ color: `${currentKey === 'studio' ? theme.palette.warning.main : theme.palette.info.main}` }}
+        />
+      ),
       children: [
         {
           label: (
-            <Typography fontSize={12} fontWeight={500} color={currentKey === '/studio/dashboard' ? '#eecc81' : '#fff'}>
+            <Typography
+              fontSize={12}
+              fontWeight={500}
+              color={currentKey === '/studio/dashboard' ? theme.palette.warning.main : theme.palette.common.white}
+            >
               Dashboards
             </Typography>
           ),
@@ -58,7 +67,7 @@ export default function SidebarMenu() {
           icon: (
             <MenuIcon
               sx={{
-                color: `${currentKey === 'studio/dashboard' ? '#eecc81' : '#6bb8a4'}`,
+                color: `${currentKey === 'studio/dashboard' ? theme.palette.warning.main : theme.palette.info.main}`,
                 width: '18px',
                 height: '22px',
               }}
@@ -67,7 +76,11 @@ export default function SidebarMenu() {
         },
         {
           label: (
-            <Typography fontSize={12} fontWeight={500} color={currentKey === '/studio/rankings' ? '#eecc81' : '#fff'}>
+            <Typography
+              fontSize={12}
+              fontWeight={500}
+              color={currentKey === '/studio/rankings' ? theme.palette.warning.main : theme.palette.common.white}
+            >
               Rankings
             </Typography>
           ),
@@ -75,7 +88,7 @@ export default function SidebarMenu() {
           icon: (
             <MenuIcon
               sx={{
-                color: `${currentKey === '/studio/rankings' ? '#eecc81' : '#6bb8a4'}`,
+                color: `${currentKey === '/studio/rankings' ? theme.palette.warning.main : theme.palette.info.main}`,
                 width: '18px',
                 height: '22px',
               }}
@@ -84,7 +97,11 @@ export default function SidebarMenu() {
         },
         {
           label: (
-            <Typography fontSize={12} fontWeight={500} color={currentKey === '/studio/watchlists' ? '#eecc81' : '#fff'}>
+            <Typography
+              fontSize={12}
+              fontWeight={500}
+              color={currentKey === '/studio/watchlists' ? theme.palette.warning.main : theme.palette.common.white}
+            >
               Watchlists
             </Typography>
           ),
@@ -92,7 +109,7 @@ export default function SidebarMenu() {
           icon: (
             <MenuIcon
               sx={{
-                color: `${currentKey === '/studio/watchlists' ? '#eecc81' : '#6bb8a4'}`,
+                color: `${currentKey === '/studio/watchlists' ? theme.palette.warning.main : theme.palette.info.main}`,
                 width: '18px',
                 height: '22px',
               }}
@@ -106,49 +123,63 @@ export default function SidebarMenu() {
         <Typography
           fontSize={14}
           fontWeight={500}
-          color={currentKey === '/portfolio' ? '#eecc81' : '#fff'}
+          color={currentKey === '/portfolio' ? theme.palette.warning.main : theme.palette.common.white}
           sx={{ paddingLeft: '10px' }}
         >
           Portfolio
         </Typography>
       ),
       key: '/portfolio',
-      icon: <BarChartIcon sx={{ color: `${currentKey === '/portfolio' ? '#eecc81' : '#6bb8a4'}` }} />,
+      icon: (
+        <BarChartIcon
+          sx={{ color: `${currentKey === '/portfolio' ? theme.palette.warning.main : theme.palette.info.main}` }}
+        />
+      ),
     },
     {
       label: (
         <Typography
           fontSize={14}
           fontWeight={500}
-          color={currentKey === '/news' ? '#eecc81' : '#fff'}
+          color={currentKey === '/news' ? theme.palette.warning.main : theme.palette.common.white}
           sx={{ paddingLeft: '10px' }}
         >
           News
         </Typography>
       ),
       key: '/news',
-      icon: <BackupTableIcon sx={{ color: `${currentKey === '/news' ? '#eecc81' : '#6bb8a4'}` }} />,
+      icon: (
+        <BackupTableIcon
+          sx={{ color: `${currentKey === '/news' ? theme.palette.warning.main : theme.palette.info.main}` }}
+        />
+      ),
     },
     {
       label: (
         <Typography
           fontSize={14}
           fontWeight={500}
-          color={currentKey === 'calendar' ? '#eecc81' : '#fff'}
+          color={currentKey === 'calendar' ? theme.palette.warning.main : theme.palette.common.white}
           sx={{ paddingLeft: '10px' }}
         >
           Calendar
         </Typography>
       ),
       key: 'calendar',
-      icon: <CalendarMonthIcon sx={{ color: `${currentKey === 'calendar' ? '#eecc81' : '#6bb8a4'}` }} />,
+      icon: (
+        <CalendarMonthIcon
+          sx={{ color: `${currentKey === 'calendar' ? theme.palette.warning.main : theme.palette.info.main}` }}
+        />
+      ),
       children: [
         {
           label: (
             <Typography
               fontSize={12}
               fontWeight={500}
-              color={currentKey === '/calendar/macro_calendar' ? '#eecc81' : '#fff'}
+              color={
+                currentKey === '/calendar/macro_calendar' ? theme.palette.warning.main : theme.palette.common.white
+              }
             >
               Macro Calendar
             </Typography>
@@ -157,7 +188,9 @@ export default function SidebarMenu() {
           icon: (
             <MenuIcon
               sx={{
-                color: `${currentKey === '/calendar/macro_calendar' ? '#eecc81' : '#6bb8a4'}`,
+                color: `${
+                  currentKey === '/calendar/macro_calendar' ? theme.palette.warning.main : theme.palette.info.main
+                }`,
                 width: '18px',
                 height: '22px',
               }}
@@ -166,7 +199,11 @@ export default function SidebarMenu() {
         },
         {
           label: (
-            <Typography fontSize={12} fontWeight={500} color={currentKey === '/calendar/stocks' ? '#eecc81' : '#fff'}>
+            <Typography
+              fontSize={12}
+              fontWeight={500}
+              color={currentKey === '/calendar/stocks' ? theme.palette.warning.main : theme.palette.common.white}
+            >
               Asian Tech stocks
             </Typography>
           ),
@@ -174,7 +211,7 @@ export default function SidebarMenu() {
           icon: (
             <MenuIcon
               sx={{
-                color: `${currentKey === '/calendar/stocks' ? '#eecc81' : '#6bb8a4'}`,
+                color: `${currentKey === '/calendar/stocks' ? theme.palette.warning.main : theme.palette.info.main}`,
                 width: '18px',
                 height: '22px',
               }}
@@ -183,7 +220,11 @@ export default function SidebarMenu() {
         },
         {
           label: (
-            <Typography fontSize={12} fontWeight={500} color={currentKey === '/calendar/see_all' ? '#eecc81' : '#fff'}>
+            <Typography
+              fontSize={12}
+              fontWeight={500}
+              color={currentKey === '/calendar/see_all' ? theme.palette.warning.main : theme.palette.common.white}
+            >
               See All
             </Typography>
           ),
@@ -191,7 +232,7 @@ export default function SidebarMenu() {
           icon: (
             <MenuIcon
               sx={{
-                color: `${currentKey === '/calendar/see_all' ? '#eecc81' : '#6bb8a4'}`,
+                color: `${currentKey === '/calendar/see_all' ? theme.palette.warning.main : theme.palette.info.main}`,
                 width: '18px',
                 height: '22px',
               }}
@@ -205,24 +246,28 @@ export default function SidebarMenu() {
         <Typography
           fontSize={14}
           fontWeight={500}
-          color={currentKey === '/settings' ? '#eecc81' : '#fff'}
+          color={currentKey === '/settings' ? theme.palette.warning.main : theme.palette.common.white}
           sx={{ paddingLeft: '10px' }}
         >
           Settings
         </Typography>
       ),
       key: '/settings',
-      icon: <SettingsIcon sx={{ color: `${currentKey === '/settings' ? '#eecc81' : '#6bb8a4'}` }} />,
+      icon: (
+        <SettingsIcon
+          sx={{ color: `${currentKey === '/settings' ? theme.palette.warning.main : theme.palette.info.main}` }}
+        />
+      ),
     },
   ];
 
   const StyleMenuWrapper = styled('div')(() => ({
     '&:hover': {
       '& svg': {
-        color: '#eecc81',
+        color: theme.palette.warning.main,
       },
       '& p': {
-        color: '#eecc81',
+        color: theme.palette.warning.main,
       },
     },
   }));
