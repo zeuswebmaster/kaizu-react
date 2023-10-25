@@ -330,10 +330,8 @@ export default function Header() {
                     {...(item.id === 3
                       ? {
                           onClick: () => {
-                            if (typeof window !== 'undefined') {
-                              window.localStorage.removeItem('sessionId');
-                              router('/sign-in');
-                            }
+                            window.localStorage.clear();
+                            router('/sign-in');
                           },
                         }
                       : {})}

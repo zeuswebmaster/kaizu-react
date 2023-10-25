@@ -1,4 +1,4 @@
-import { Stack, Typography, Button, Tooltip, styled, TooltipProps, tooltipClasses } from '@mui/material';
+import { Stack, Typography, Button, Tooltip, styled } from '@mui/material';
 
 import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
@@ -8,20 +8,6 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import CloseIcon from '@mui/icons-material/Close';
 
 export default function DrawerItem() {
-  const StyleTooltip = styled(({ className, ...props }: TooltipProps) => (
-    <Tooltip {...props} classes={{ popper: className }} />
-  ))(() => ({
-    [`& .${tooltipClasses.tooltip}`]: {
-      backgroundColor: '#cfdce3',
-      color: 'rgba(0, 0, 0, 0.87)',
-      fontSize: 11,
-      borderRadius: '7px',
-    },
-    [`& .${tooltipClasses.arrow}`]: {
-      color: '#cfdce3',
-    },
-  }));
-
   const StyledButton = styled(Button)(() => ({
     backgroundColor: '#263c48',
     padding: '4px 8px',
@@ -66,42 +52,42 @@ export default function DrawerItem() {
           </Typography>
         </Stack>
         <Stack direction="row" alignItems="center" spacing={1}>
-          <StyleTooltip title="Expand" arrow>
+          <Tooltip title="Expand" arrow>
             <StyledButton
               variant="contained"
               startIcon={<OpenInFullIcon sx={{ color: '#cfd2d3', width: '16px', height: '16px' }} />}
             />
-          </StyleTooltip>
-          <StyleTooltip title="Info" arrow>
+          </Tooltip>
+          <Tooltip title="Info" arrow>
             <StyledButton
               variant="contained"
               startIcon={<InfoOutlinedIcon sx={{ color: '#cfd2d3', width: '16px', height: '16px' }} />}
             />
-          </StyleTooltip>
-          <StyleTooltip title="Save report" arrow>
+          </Tooltip>
+          <Tooltip title="Save report" arrow>
             <StyledButton
               variant="contained"
               startIcon={<StarIcon sx={{ color: '#cfd2d3', width: '16px', height: '16px' }} />}
             />
-          </StyleTooltip>
-          <StyleTooltip title="Refresh" arrow>
+          </Tooltip>
+          <Tooltip title="Refresh" arrow>
             <StyledButton
               variant="contained"
               startIcon={<RefreshIcon sx={{ color: '#cfd2d3', width: '16px', height: '16px' }} />}
             />
-          </StyleTooltip>
-          <StyleTooltip title="More" arrow>
+          </Tooltip>
+          <Tooltip title="More" arrow>
             <StyledButton
               variant="contained"
               startIcon={<MoreHorizIcon sx={{ color: '#cfd2d3', width: '16px', height: '16px' }} />}
             />
-          </StyleTooltip>
-          <StyleTooltip title="Close" arrow>
+          </Tooltip>
+          <Tooltip title="Close" arrow>
             <StyledButton
               variant="contained"
               startIcon={<CloseIcon sx={{ color: '#cfd2d3', width: '16px', height: '16px' }} />}
             />
-          </StyleTooltip>
+          </Tooltip>
         </Stack>
       </Stack>
       <Stack sx={{ padding: '20px 50px' }}>

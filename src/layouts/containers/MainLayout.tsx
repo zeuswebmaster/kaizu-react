@@ -9,13 +9,7 @@ export default function MainLayout() {
   const router = useNavigate();
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      if (window.localStorage.getItem('sessionId')) {
-        router('/');
-      } else {
-        router('/sign-in');
-      }
-    }
+    if (!window.localStorage.getItem('sessionId')) router('/sign-in');
   }, [router]);
 
   return (
