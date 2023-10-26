@@ -1,17 +1,12 @@
-import { Stack, CircularProgress } from '@mui/material';
+import { Backdrop, CircularProgress } from '@mui/material';
 
 export default function Spinner() {
   return (
-    <Stack
-      sx={{
-        position: 'absolute',
-        top: '47%',
-        left: '47%',
-        width: '64px',
-        height: '64px',
-      }}
+    <Backdrop
+      sx={{ color: '#388e3c', zIndex: (theme) => theme.zIndex.drawer + 1, backgroundColor: 'rgba(0, 0, 0, 0)' }}
+      open
     >
-      <CircularProgress size="lg" />
-    </Stack>
+      <CircularProgress color="inherit" />
+    </Backdrop>
   );
 }

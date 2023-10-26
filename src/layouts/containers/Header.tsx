@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import {
   AppBar,
   Box,
@@ -23,12 +22,12 @@ import {
 import ContrastIcon from '@mui/icons-material/Contrast';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-
 import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
 import PersonIcon from '@mui/icons-material/Person';
 import SettingsIcon from '@mui/icons-material/Settings';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { DrawerItem, ThemeItem } from '../../components';
+import { useAuthStore } from '../../features';
 
 const notifications: {
   id: number;
@@ -59,6 +58,7 @@ const notifications: {
 export default function Header() {
   const router = useNavigate();
   const themeGlobal = useTheme();
+  const logout = useAuthStore((state) => state.logout);
 
   const users = [
     {
@@ -142,10 +142,7 @@ export default function Header() {
   };
 
   const handleClickHome = () => {
-    if (typeof window !== 'undefined') {
-      window.localStorage.setItem('menuPath', '/');
-    }
-
+    window.localStorage.setItem('menuPath', '/');
     router('/');
   };
 
@@ -329,9 +326,8 @@ export default function Header() {
                     alignItems="center"
                     {...(item.id === 3
                       ? {
-                          onClick: () => {
-                            window.localStorage.clear();
-                            router('/sign-in');
+                          onClick: async () => {
+                            await logout();
                           },
                         }
                       : {})}

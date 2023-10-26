@@ -16,10 +16,7 @@ module.exports = {
   },
   plugins: ['react-refresh', 'prettier'],
   rules: {
-    'react-refresh/only-export-components': [
-      'warn',
-      { allowConstantExport: true },
-    ],
+    'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     'react/react-in-jsx-scope': 0,
     '@typescript-eslint/no-explicit-any': ['off'],
     'import/no-extraneous-dependencies': 'off',
@@ -37,5 +34,6 @@ module.exports = {
     'react/jsx-no-useless-fragment': 'off',
     'import/extensions': 'off',
     'react-refresh/only-export-components': 'off',
+    'react-hooks/exhaustive-deps': 'off',
   },
 };
