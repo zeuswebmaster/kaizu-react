@@ -2,14 +2,17 @@ import { Backdrop, CircularProgress } from '@mui/material';
 
 interface SpinnerBackProps {
   open: boolean;
+  backgroundColor?: string;
+  color?: string;
 }
 
-export default function SpinnerBack({ open }: SpinnerBackProps) {
+export default function SpinnerBack({
+  open,
+  backgroundColor = 'rgba(0, 0, 0, 0.5)',
+  color = '#fff',
+}: SpinnerBackProps) {
   return (
-    <Backdrop
-      sx={{ color: '#388e3c', zIndex: (theme) => theme.zIndex.drawer + 1, backgroundColor: 'rgba(10, 40, 51, 1)' }}
-      open={open}
-    >
+    <Backdrop sx={{ color, zIndex: (theme) => theme.zIndex.drawer + 1, backgroundColor }} open={open}>
       <CircularProgress color="inherit" />
     </Backdrop>
   );

@@ -181,6 +181,6 @@ const palette = {
     background: { paper: '#101D24', default: GREY[900] },
     action: { active: GREY[500], ...COMMON.action },
   },
-} as const;
+};
 
 export default palette;

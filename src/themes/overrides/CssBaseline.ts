@@ -28,6 +28,7 @@ export default function CssBaseline(theme: Theme) {
         },
         '*::-webkit-scrollbar': {
           width: '6px',
+          height: '6px',
         },
         '*::-webkit-scrollbar-track': {
           background: 'none',

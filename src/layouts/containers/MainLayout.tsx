@@ -1,54 +1,48 @@
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Stack } from '@mui/material';
 
-import { supabase, useAuthStore } from '../../features';
+import { useAuthStore } from '../../features';
 
 import Header from './Header';
 import Wrapper from './Wrapper';
 import Footer from './Footer';
-
-import type { UserResponse } from '../../types/auth';
+import { SpinnerBack } from '../../components';
 
 export default function MainLayout() {
-  const setIsAuthenticated = useAuthStore((state) => state.setIsAuthenticated);
+  const router = useNavigate();
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
-  const setUser = useAuthStore((state) => state.setUser);
-  const logout = useAuthStore((state) => state.logout);
-  const setAccessToken = useAuthStore((state) => state.setAccessToken);
+  const loadUser = useAuthStore((state) => state.loadUser);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     (async () => {
-      const {
-        data: { session },
-        error,
-      } = await supabase.auth.getSession();
-
-      if (!error && session) {
-        setIsAuthenticated(true);
-        setUser(session?.user as UserResponse);
-        setAccessToken(session?.access_token);
-      } else {
-        await logout();
-      }
+      await loadUser();
     })();
-  }, [isAuthenticated]);
+  }, [isAuthenticated, router]);
 
   return (
     <>
-      <Stack
-        sx={{
-          width: '100%',
-          height: '100%',
-          backgroundImage: 'url(/images/kaizu-bg-default.png)',
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        <Header />
-        <Wrapper />
-        <Footer />
-      </Stack>
+      <>
+        {!isAuthenticated ? (
+          <SpinnerBack open={isAuthenticated} />
+        ) : (
+          <Stack
+            sx={{
+              width: '100%',
+              minHeight: '100%',
+              backgroundImage: 'url(/images/kaizu-bg-default.png)',
+              backgroundRepeat: 'no-repeat',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundAttachment: 'fixed',
+            }}
+          >
+            <Header />
+            <Wrapper />
+            <Footer />
+          </Stack>
+        )}
+      </>
     </>
   );
 }
