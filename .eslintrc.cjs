@@ -35,5 +35,6 @@ module.exports = {
     'import/extensions': 'off',
     'react-refresh/only-export-components': 'off',
     'react-hooks/exhaustive-deps': 'off',
+    'react/require-default-props': 'off',
   },
 };

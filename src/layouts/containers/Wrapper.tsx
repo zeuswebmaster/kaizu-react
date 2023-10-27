@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 
 import { Outlet } from 'react-router-dom';
 import { Stack } from '@mui/material';
@@ -11,7 +11,7 @@ export default function Wrapper() {
 
   const [marginValue, setMarginValue] = useState<string>('-200px');
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (windowWidth > 1800) {
       setMarginValue('-200px');
       return;
@@ -34,7 +34,6 @@ export default function Wrapper() {
     <Stack
       direction="row"
       justifyContent="center"
-      spacing={4}
       sx={{
         padding: '48px',
         marginTop: '45px',
@@ -45,19 +44,24 @@ export default function Wrapper() {
         <SidebarMenu />
       </Stack>
       <Stack
-        direction="row"
-        alignItems="center"
-        justifyContent="center"
         sx={{
           width: 1220,
-          height: 600,
-          borderRadius: '8px',
-          backgroundColor: 'rgb(0 0 0 / 45%)',
-          boxShadow:
-            '0px 1px 5px 2px rgba(0, 0, 0, 0.2), 0px 2px 24px 10px rgba(0, 0, 0, 0.14), 0px 6px 30px 10px rgba(0, 0, 0, 0.12)',
+          marginBottom: '52px !important',
+          marginLeft: windowWidth >= 1200 ? '219px' : '64px',
         }}
       >
-        <Outlet />
+        <Stack
+          sx={{
+            width: '100%',
+            borderRadius: '8px',
+            backgroundColor: 'rgb(0 0 0 / 45%)',
+            padding: '16px',
+            boxShadow:
+              '0px 1px 5px 2px rgba(0, 0, 0, 0.2), 0px 2px 24px 10px rgba(0, 0, 0, 0.14), 0px 6px 30px 10px rgba(0, 0, 0, 0.12)',
+          }}
+        >
+          <Outlet />
+        </Stack>
       </Stack>
     </Stack>
   );

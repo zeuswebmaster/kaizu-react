@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useLayoutEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Collapse, IconButton, List, Menu, Stack, Tooltip, Typography, styled, useTheme } from '@mui/material';
@@ -284,7 +284,7 @@ export default function SidebarMenu() {
     },
   }));
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (window.localStorage.getItem('menuPath')) {
       setCurrentKey(window.localStorage.getItem('menuPath') as string);
 
@@ -352,6 +352,7 @@ export default function SidebarMenu() {
       {windowWidth >= 1200 && (
         <Stack
           sx={{
+            position: 'fixed',
             width: '187px',
             borderRadius: '8px',
             backgroundColor: theme.palette.background.paper,
@@ -429,6 +430,7 @@ export default function SidebarMenu() {
             width: '50px',
             borderRadius: '8px',
             backgroundColor: '#091319',
+            position: 'fixed',
           }}
         >
           {MENUS.map((item: Items) => (

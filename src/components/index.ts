@@ -5,3 +5,5 @@ export { default as Toast } from './common/Toast';
 
 export { default as ThemeItem } from './header/ThemeItem';
 export { default as DrawerItem } from './header/DrawerItem';
+
+export { default as PartComponent } from './content/PartComponent';
