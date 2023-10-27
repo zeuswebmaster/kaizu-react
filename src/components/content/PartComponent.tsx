@@ -4,12 +4,18 @@ interface PartComponentProps {
   children: React.ReactNode;
   backgroundImage?: string;
   backgroundColor?: string;
+  padding?: string;
 }
 
-export default function PartComponent({ children, backgroundImage, backgroundColor }: PartComponentProps) {
+export default function PartComponent({
+  children,
+  backgroundImage,
+  backgroundColor,
+  padding = '16px',
+}: PartComponentProps) {
   return (
     <Stack
-      padding={2}
+      padding={padding}
       sx={{
         ...(backgroundImage ? { backgroundImage } : {}),
         ...(backgroundColor ? { backgroundColor } : {}),
