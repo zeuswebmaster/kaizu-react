@@ -22,27 +22,25 @@ export default function MainLayout() {
 
   return (
     <>
-      <>
-        {!isAuthenticated ? (
-          <SpinnerBack open={isAuthenticated} />
-        ) : (
-          <Stack
-            sx={{
-              width: '100%',
-              minHeight: '100%',
-              backgroundImage: 'url(/images/kaizu-bg-default.png)',
-              backgroundRepeat: 'no-repeat',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundAttachment: 'fixed',
-            }}
-          >
-            <Header />
-            <Wrapper />
-            <Footer />
-          </Stack>
-        )}
-      </>
+      {!isAuthenticated ? (
+        <SpinnerBack open={!isAuthenticated} />
+      ) : (
+        <Stack
+          sx={{
+            width: '100%',
+            minHeight: '100%',
+            backgroundImage: 'url(/images/kaizu-bg-default.png)',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundAttachment: 'fixed',
+          }}
+        >
+          <Header />
+          <Wrapper />
+          <Footer />
+        </Stack>
+      )}
     </>
   );
 }

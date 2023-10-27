@@ -1,13 +1,7 @@
-import { lazy } from 'react';
 import { Navigate } from 'react-router-dom';
 
 import { AuthLayout } from '../layouts';
-import { LoadComponent } from '../components';
-
-const SignIn = LoadComponent(lazy(() => import('../pages/auth/SignIn')));
-const SignUp = LoadComponent(lazy(() => import('../pages/auth/SignUp')));
-const LoginWithEmail = LoadComponent(lazy(() => import('../pages/auth/LoginWithEmail')));
-const Page404 = LoadComponent(lazy(() => import('../pages/Page404')));
+import { SignIn, SignUp, LoginWithEmail, Page404 } from '../pages';
 
 const AuthRoutes = [
   {
