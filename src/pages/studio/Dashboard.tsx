@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { Grid, Stack, Typography, useTheme, styled, Button } from '@mui/material';
 
 import GridViewSharpIcon from '@mui/icons-material/GridViewSharp';
@@ -7,6 +8,7 @@ import DeleteForeverSharpIcon from '@mui/icons-material/DeleteForeverSharp';
 import { PartComponent } from '../../components';
 
 export default function Dashboard() {
+  const router = useNavigate();
   const themeGlobal = useTheme();
 
   const StyledButton = styled(Button)(({ theme }) => ({
@@ -23,7 +25,7 @@ export default function Dashboard() {
   }));
 
   return (
-    <Stack>
+    <>
       <Typography variant="h4" color={themeGlobal.palette.common.white} mb={2}>
         My Dashboards
       </Typography>
@@ -35,7 +37,11 @@ export default function Dashboard() {
           >
             <Stack direction="row" alignItems="center" justifyContent="flex-end">
               <Stack direction="row" alignItems="center" spacing={1.5}>
-                <StyledButton variant="contained" startIcon={<EditSharpIcon />} />
+                <StyledButton
+                  variant="contained"
+                  startIcon={<EditSharpIcon />}
+                  onClick={() => router('/studio/macro_dashboard')}
+                />
                 <StyledButton variant="contained" startIcon={<DeleteForeverSharpIcon />} />
               </Stack>
             </Stack>
@@ -131,6 +137,6 @@ export default function Dashboard() {
           </PartComponent>
         </Grid>
       </Grid>
-    </Stack>
+    </>
   );
 }

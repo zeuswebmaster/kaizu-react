@@ -7,3 +7,9 @@ export { default as ThemeItem } from './header/ThemeItem';
 export { default as DrawerItem } from './header/DrawerItem';
 
 export { default as PartComponent } from './content/PartComponent';
+
+export { default as KindMenu } from './content/KindMenu';
+export { default as ControllerMenu } from './content/ControllerMenu';
+export { default as NewsMenu } from './content/NewsMenu';
+export { default as CalendarMenu } from './content/CalendarMenu';
+export { default as LineChart } from './chart/LineChart';

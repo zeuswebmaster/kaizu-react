@@ -10,6 +10,7 @@ import {
   Stocks,
   SeeAll,
   Settings,
+  MacroDashboard,
 } from '../pages';
 
 const MainRoutes = {
@@ -18,6 +19,7 @@ const MainRoutes = {
   children: [
     { element: <Home />, index: true },
     { path: 'studio/dashboard', element: <Dashboard /> },
+    { path: 'studio/macro_dashboard', element: <MacroDashboard /> },
     { path: 'studio/rankings', element: <Rankings /> },
     { path: 'studio/watchlists', element: <Watchlists /> },
     { path: 'portfolio', element: <Portfolio /> },
