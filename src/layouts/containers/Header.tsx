@@ -113,6 +113,8 @@ export default function Header() {
       '& ul': {
         backgroundColor: theme.palette.secondary.main,
         marginTop: '10px',
+        borderTopLeftRadius: '4px',
+        borderTopRightRadius: '4px',
       },
     },
   }));
@@ -187,7 +189,6 @@ export default function Header() {
               <Box
                 sx={{
                   position: 'relative',
-                  mt: '10px',
                   '&::before': {
                     backgroundColor: themeGlobal.palette.secondary.main,
                     content: '""',
@@ -195,7 +196,7 @@ export default function Header() {
                     position: 'absolute',
                     width: 8,
                     height: 8,
-                    top: '-22px',
+                    top: '-12px',
                     transform: 'rotate(45deg)',
                     left: '4%',
                   },
@@ -257,7 +258,6 @@ export default function Header() {
               <Box
                 sx={{
                   position: 'relative',
-                  mt: '10px',
                   '&::before': {
                     backgroundColor: themeGlobal.palette.secondary.main,
                     content: '""',
@@ -265,7 +265,7 @@ export default function Header() {
                     position: 'absolute',
                     width: 8,
                     height: 8,
-                    top: '-22px',
+                    top: '-12px',
                     transform: 'rotate(45deg)',
                     left: '3%',
                   },
@@ -304,7 +304,6 @@ export default function Header() {
               <Box
                 sx={{
                   position: 'relative',
-                  mt: '10px',
                   '&::before': {
                     backgroundColor: themeGlobal.palette.secondary.main,
                     content: '""',
@@ -312,7 +311,7 @@ export default function Header() {
                     position: 'absolute',
                     width: 8,
                     height: 8,
-                    top: '-22px',
+                    top: '-12px',
                     transform: 'rotate(45deg)',
                     left: '4%',
                   },

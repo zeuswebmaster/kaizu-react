@@ -7,6 +7,7 @@ export { default as Home } from './Home';
 export { default as Dashboard } from './studio/Dashboard';
 export { default as Rankings } from './studio/Rankings';
 export { default as Watchlists } from './studio/Watchlists';
+export { default as MacroDashboard } from './studio/MacroDashboard';
 export { default as Portfolio } from './Portfolio';
 export { default as News } from './News';
 export { default as MacroCalendar } from './calendar/MacroCalendar';
