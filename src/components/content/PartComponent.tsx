@@ -15,6 +15,7 @@ export default function PartComponent({
 }: PartComponentProps) {
   return (
     <Stack
+      position="relative"
       padding={padding}
       sx={{
         ...(backgroundImage ? { backgroundImage } : {}),

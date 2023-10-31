@@ -92,7 +92,7 @@ export default function MoreSettingMenu({ menuKind, onClose, StyleMenu }: MoreSe
             </Stack>
           </Stack>
           <Typography variant="subtitle2" color={theme.palette.common.white}>
-            Create Alert
+            Share
           </Typography>
         </Stack>
       </MenuItem>
