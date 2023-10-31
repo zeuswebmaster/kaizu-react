@@ -144,7 +144,6 @@ export default function Header() {
   };
 
   const handleClickHome = () => {
-    window.localStorage.setItem('menuPath', '/');
     router('/');
   };
 

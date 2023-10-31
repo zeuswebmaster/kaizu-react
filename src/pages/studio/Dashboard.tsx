@@ -130,7 +130,13 @@ export default function Dashboard() {
               <Typography variant="subtitle1" color={themeGlobal.palette.common.white} mb={1}>
                 New Dashboard
               </Typography>
-              <Typography variant="caption" color={themeGlobal.palette.common.white} sx={{ opacity: '0.6' }} mb={2}>
+              <Typography
+                variant="caption"
+                color={themeGlobal.palette.common.white}
+                sx={{ opacity: '0.6' }}
+                mb={2}
+                textAlign="center"
+              >
                 Create a new dashboard <br /> and manually add widgets
               </Typography>
             </Stack>
