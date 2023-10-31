@@ -25,8 +25,15 @@ import ForwardIcon from '@mui/icons-material/Forward';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ArrowDropDownCircleIcon from '@mui/icons-material/ArrowDropDownCircle';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import MoreSettingMenu from '../../components/content/MoreSettingMenu';
-import { KindMenu, PartComponent, ControllerMenu, NewsMenu, CalendarMenu, LineChart } from '../../components';
+import {
+  KindMenu,
+  PartComponent,
+  ControllerMenu,
+  NewsMenu,
+  CalendarMenu,
+  LineChart,
+  MoreSettingMenu,
+} from '../../components';
 
 const NEWS = [
   {
@@ -390,7 +397,11 @@ export default function MacroDashboard() {
             <TableContainer>
               <Table sx={{ minWidth: 450 }}>
                 <TableHead>
-                  <TableRow>
+                  <TableRow
+                    sx={{
+                      '& td, & th': { border: 0 },
+                    }}
+                  >
                     <StyledTableCell>&nbsp;</StyledTableCell>
                     <StyledTableCell>CURRENCY</StyledTableCell>
                     <StyledTableCell align="right">ACTUAL</StyledTableCell>

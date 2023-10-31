@@ -1,5 +1,5 @@
 import { Fragment, useLayoutEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import { Collapse, IconButton, List, Menu, Stack, Tooltip, Typography, styled, useTheme } from '@mui/material';
 
@@ -15,6 +15,8 @@ import useWidth from '../../hooks/useWidth';
 
 export default function SidebarMenu() {
   const router = useNavigate();
+  const { pathname } = useLocation();
+
   const theme = useTheme();
   const windowWidth = useWidth();
 
@@ -45,7 +47,7 @@ export default function SidebarMenu() {
         <Typography
           fontSize={14}
           fontWeight={500}
-          color={currentKey === 'studio' ? theme.palette.warning.main : theme.palette.common.white}
+          color={currentKey.search('/studio') !== -1 ? theme.palette.warning.main : theme.palette.common.white}
           sx={{ paddingLeft: '10px' }}
         >
           Studio
@@ -55,130 +57,8 @@ export default function SidebarMenu() {
       key: 'studio',
       icon: (
         <DashboardIcon
-          sx={{ color: `${currentKey.search('studio') !== -1 ? theme.palette.warning.main : theme.palette.info.main}` }}
-        />
-      ),
-      children: [
-        {
-          label: (
-            <Typography
-              fontSize={12}
-              fontWeight={500}
-              color={currentKey === '/studio/dashboard' ? theme.palette.warning.main : theme.palette.common.white}
-            >
-              Dashboards
-            </Typography>
-          ),
-          key: '/studio/dashboard',
-          icon: (
-            <MenuIcon
-              sx={{
-                color: `${currentKey === 'studio/dashboard' ? theme.palette.warning.main : theme.palette.info.main}`,
-                width: '18px',
-                height: '22px',
-              }}
-            />
-          ),
-        },
-        {
-          label: (
-            <Typography
-              fontSize={12}
-              fontWeight={500}
-              color={currentKey === '/studio/rankings' ? theme.palette.warning.main : theme.palette.common.white}
-            >
-              Rankings
-            </Typography>
-          ),
-          key: '/studio/rankings',
-          icon: (
-            <MenuIcon
-              sx={{
-                color: `${currentKey === '/studio/rankings' ? theme.palette.warning.main : theme.palette.info.main}`,
-                width: '18px',
-                height: '22px',
-              }}
-            />
-          ),
-        },
-        {
-          label: (
-            <Typography
-              fontSize={12}
-              fontWeight={500}
-              color={currentKey === '/studio/watchlists' ? theme.palette.warning.main : theme.palette.common.white}
-            >
-              Watchlists
-            </Typography>
-          ),
-          key: '/studio/watchlists',
-          icon: (
-            <MenuIcon
-              sx={{
-                color: `${currentKey === '/studio/watchlists' ? theme.palette.warning.main : theme.palette.info.main}`,
-                width: '18px',
-                height: '22px',
-              }}
-            />
-          ),
-        },
-      ],
-    },
-    {
-      label: (
-        <Typography
-          fontSize={14}
-          fontWeight={500}
-          color={currentKey === '/portfolio' ? theme.palette.warning.main : theme.palette.common.white}
-          sx={{ paddingLeft: '10px' }}
-        >
-          Portfolio
-        </Typography>
-      ),
-      value: 'Portfolio',
-      key: '/portfolio',
-      icon: (
-        <BarChartIcon
-          sx={{ color: `${currentKey === '/portfolio' ? theme.palette.warning.main : theme.palette.info.main}` }}
-        />
-      ),
-    },
-    {
-      label: (
-        <Typography
-          fontSize={14}
-          fontWeight={500}
-          color={currentKey === '/news' ? theme.palette.warning.main : theme.palette.common.white}
-          sx={{ paddingLeft: '10px' }}
-        >
-          News
-        </Typography>
-      ),
-      value: 'News',
-      key: '/news',
-      icon: (
-        <BackupTableIcon
-          sx={{ color: `${currentKey === '/news' ? theme.palette.warning.main : theme.palette.info.main}` }}
-        />
-      ),
-    },
-    {
-      label: (
-        <Typography
-          fontSize={14}
-          fontWeight={500}
-          color={currentKey === 'calendar' ? theme.palette.warning.main : theme.palette.common.white}
-          sx={{ paddingLeft: '10px' }}
-        >
-          Calendar
-        </Typography>
-      ),
-      value: 'Calendar',
-      key: 'calendar',
-      icon: (
-        <CalendarMonthIcon
           sx={{
-            color: `${currentKey.search('calendar') !== -1 ? theme.palette.warning.main : theme.palette.info.main}`,
+            color: `${currentKey.search('/studio') !== -1 ? theme.palette.warning.main : theme.palette.info.main}`,
           }}
         />
       ),
@@ -189,18 +69,18 @@ export default function SidebarMenu() {
               fontSize={12}
               fontWeight={500}
               color={
-                currentKey === '/calendar/macro_calendar' ? theme.palette.warning.main : theme.palette.common.white
+                currentKey.search('/studio/dashboard') !== -1 ? theme.palette.warning.main : theme.palette.common.white
               }
             >
-              Macro Calendar
+              Dashboards
             </Typography>
           ),
-          key: '/calendar/macro_calendar',
+          key: '/studio/dashboard',
           icon: (
             <MenuIcon
               sx={{
                 color: `${
-                  currentKey === '/calendar/macro_calendar' ? theme.palette.warning.main : theme.palette.info.main
+                  currentKey.search('/studio/dashboard') !== -1 ? theme.palette.warning.main : theme.palette.info.main
                 }`,
                 width: '18px',
                 height: '22px',
@@ -213,16 +93,20 @@ export default function SidebarMenu() {
             <Typography
               fontSize={12}
               fontWeight={500}
-              color={currentKey === '/calendar/stocks' ? theme.palette.warning.main : theme.palette.common.white}
+              color={
+                currentKey.search('/studio/rankings') !== -1 ? theme.palette.warning.main : theme.palette.common.white
+              }
             >
-              Asian Tech stocks
+              Rankings
             </Typography>
           ),
-          key: '/calendar/stocks',
+          key: '/studio/rankings',
           icon: (
             <MenuIcon
               sx={{
-                color: `${currentKey === '/calendar/stocks' ? theme.palette.warning.main : theme.palette.info.main}`,
+                color: `${
+                  currentKey.search('/studio/rankings') !== -1 ? theme.palette.warning.main : theme.palette.info.main
+                }`,
                 width: '18px',
                 height: '22px',
               }}
@@ -234,16 +118,20 @@ export default function SidebarMenu() {
             <Typography
               fontSize={12}
               fontWeight={500}
-              color={currentKey === '/calendar/see_all' ? theme.palette.warning.main : theme.palette.common.white}
+              color={
+                currentKey.search('/studio/watchlists') !== -1 ? theme.palette.warning.main : theme.palette.common.white
+              }
             >
-              See All
+              Watchlists
             </Typography>
           ),
-          key: '/calendar/see_all',
+          key: '/studio/watchlists',
           icon: (
             <MenuIcon
               sx={{
-                color: `${currentKey === '/calendar/see_all' ? theme.palette.warning.main : theme.palette.info.main}`,
+                color: `${
+                  currentKey.search('/studio/watchlists') !== -1 ? theme.palette.warning.main : theme.palette.info.main
+                }`,
                 width: '18px',
                 height: '22px',
               }}
@@ -257,7 +145,149 @@ export default function SidebarMenu() {
         <Typography
           fontSize={14}
           fontWeight={500}
-          color={currentKey === '/settings' ? theme.palette.warning.main : theme.palette.common.white}
+          color={currentKey.search('/portfolio') !== -1 ? theme.palette.warning.main : theme.palette.common.white}
+          sx={{ paddingLeft: '10px' }}
+        >
+          Portfolio
+        </Typography>
+      ),
+      value: 'Portfolio',
+      key: '/portfolio',
+      icon: (
+        <BarChartIcon
+          sx={{
+            color: `${currentKey.search('/portfolio') !== -1 ? theme.palette.warning.main : theme.palette.info.main}`,
+          }}
+        />
+      ),
+    },
+    {
+      label: (
+        <Typography
+          fontSize={14}
+          fontWeight={500}
+          color={currentKey.search('/news') !== -1 ? theme.palette.warning.main : theme.palette.common.white}
+          sx={{ paddingLeft: '10px' }}
+        >
+          News
+        </Typography>
+      ),
+      value: 'News',
+      key: '/news',
+      icon: (
+        <BackupTableIcon
+          sx={{ color: `${currentKey.search('/news') !== -1 ? theme.palette.warning.main : theme.palette.info.main}` }}
+        />
+      ),
+    },
+    {
+      label: (
+        <Typography
+          fontSize={14}
+          fontWeight={500}
+          color={currentKey.search('/calendar') !== -1 ? theme.palette.warning.main : theme.palette.common.white}
+          sx={{ paddingLeft: '10px' }}
+        >
+          Calendar
+        </Typography>
+      ),
+      value: 'Calendar',
+      key: 'calendar',
+      icon: (
+        <CalendarMonthIcon
+          sx={{
+            color: `${currentKey.search('/calendar') !== -1 ? theme.palette.warning.main : theme.palette.info.main}`,
+          }}
+        />
+      ),
+      children: [
+        {
+          label: (
+            <Typography
+              fontSize={12}
+              fontWeight={500}
+              color={
+                currentKey.search('/calendar/macro_calendar') !== -1
+                  ? theme.palette.warning.main
+                  : theme.palette.common.white
+              }
+            >
+              Macro Calendar
+            </Typography>
+          ),
+          key: '/calendar/macro_calendar',
+          icon: (
+            <MenuIcon
+              sx={{
+                color: `${
+                  currentKey.search('/calendar/macro_calendar') !== -1
+                    ? theme.palette.warning.main
+                    : theme.palette.info.main
+                }`,
+                width: '18px',
+                height: '22px',
+              }}
+            />
+          ),
+        },
+        {
+          label: (
+            <Typography
+              fontSize={12}
+              fontWeight={500}
+              color={
+                currentKey.search('/calendar/stocks') !== -1 ? theme.palette.warning.main : theme.palette.common.white
+              }
+            >
+              Asian Tech stocks
+            </Typography>
+          ),
+          key: '/calendar/stocks',
+          icon: (
+            <MenuIcon
+              sx={{
+                color: `${
+                  currentKey.search('/calendar/stocks') !== -1 ? theme.palette.warning.main : theme.palette.info.main
+                }`,
+                width: '18px',
+                height: '22px',
+              }}
+            />
+          ),
+        },
+        {
+          label: (
+            <Typography
+              fontSize={12}
+              fontWeight={500}
+              color={
+                currentKey.search('/calendar/see_all') !== -1 ? theme.palette.warning.main : theme.palette.common.white
+              }
+            >
+              See All
+            </Typography>
+          ),
+          key: '/calendar/see_all',
+          icon: (
+            <MenuIcon
+              sx={{
+                color: `${
+                  currentKey.search('/calendar/see_all') !== -1 ? theme.palette.warning.main : theme.palette.info.main
+                }`,
+                width: '18px',
+                height: '22px',
+              }}
+            />
+          ),
+        },
+      ],
+    },
+    {
+      label: (
+        <Typography
+          fontSize={14}
+          fontWeight={500}
+          color={currentKey.search('/settings') !== -1 ? theme.palette.warning.main : theme.palette.common.white}
           sx={{ paddingLeft: '10px' }}
         >
           Settings
@@ -267,7 +297,9 @@ export default function SidebarMenu() {
       value: 'Settings',
       icon: (
         <SettingsIcon
-          sx={{ color: `${currentKey === '/settings' ? theme.palette.warning.main : theme.palette.info.main}` }}
+          sx={{
+            color: `${currentKey.search('/settings') !== -1 ? theme.palette.warning.main : theme.palette.info.main}`,
+          }}
         />
       ),
     },
@@ -285,24 +317,20 @@ export default function SidebarMenu() {
   }));
 
   useLayoutEffect(() => {
-    if (window.localStorage.getItem('menuPath')) {
-      setCurrentKey(window.localStorage.getItem('menuPath') as string);
+    setCurrentKey(pathname);
 
-      if (window.localStorage.getItem('menuPath')?.search('studio') !== -1) {
-        setExpandStudio(true);
-      } else {
-        setExpandStudio(false);
-      }
-
-      if (window.localStorage.getItem('menuPath')?.search('calendar') !== -1) {
-        setExpandCalendar(true);
-      } else {
-        setExpandCalendar(false);
-      }
+    if (pathname?.search('/studio') !== -1) {
+      setExpandStudio(true);
     } else {
-      setCurrentKey('/');
+      setExpandStudio(false);
     }
-  }, [router]);
+
+    if (pathname?.search('/calendar') !== -1) {
+      setExpandCalendar(true);
+    } else {
+      setExpandCalendar(false);
+    }
+  }, [router, pathname]);
 
   const handleExpandMenu = (index: string) => {
     if (index === 'studio') {
@@ -317,7 +345,6 @@ export default function SidebarMenu() {
       return;
     }
 
-    window.localStorage.setItem('menuPath', index);
     router(index);
   };
 
@@ -332,19 +359,13 @@ export default function SidebarMenu() {
   const handleCloseStudioMenu = (index?: string) => {
     setMenuStudio(null);
 
-    if (index) {
-      window.localStorage.setItem('menuPath', index);
-      router(index);
-    }
+    if (index) router(index);
   };
 
   const handleCloseCalendarMenu = (index?: string) => {
     setMenuCalendar(null);
 
-    if (index) {
-      window.localStorage.setItem('menuPath', index);
-      router(index);
-    }
+    if (index) router(index);
   };
 
   return (
