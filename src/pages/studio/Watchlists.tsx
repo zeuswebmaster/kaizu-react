@@ -75,7 +75,7 @@ export default function Watchlists() {
                 <StyledButton
                   variant="contained"
                   startIcon={<EditSharpIcon />}
-                  onClick={() => router('/studio/macro_dashboard')}
+                  onClick={() => router('/studio/assets')}
                 />
                 <StyledButton variant="contained" startIcon={<DeleteForeverSharpIcon />} />
               </Stack>
@@ -111,7 +111,7 @@ export default function Watchlists() {
                 <StyledButton
                   variant="contained"
                   startIcon={<EditSharpIcon />}
-                  onClick={() => router('/studio/macro_dashboard')}
+                  onClick={() => router('/studio/assets')}
                 />
                 <StyledButton variant="contained" startIcon={<DeleteForeverSharpIcon />} />
               </Stack>
