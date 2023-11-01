@@ -55,7 +55,6 @@ export default function Wrapper() {
             width: '100%',
             borderRadius: '8px',
             backgroundColor: 'rgba(0, 0, 0, 0.45)',
-            padding: '16px',
             boxShadow:
               '0px 1px 5px 2px rgba(0, 0, 0, 0.2), 0px 2px 24px 10px rgba(0, 0, 0, 0.14), 0px 6px 30px 10px rgba(0, 0, 0, 0.12)',
           }}

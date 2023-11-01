@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Grid, Typography, useTheme } from '@mui/material';
+import { Grid, Stack, Typography, useTheme } from '@mui/material';
 
 import GridViewSharpIcon from '@mui/icons-material/GridViewSharp';
 import AddCircleOutlineSharpIcon from '@mui/icons-material/AddCircleOutlineSharp';
@@ -28,7 +28,7 @@ export default function Dashboard() {
   const handleDeleteThird = () => {};
 
   return (
-    <>
+    <Stack padding={2}>
       <Typography variant="h4" color={theme.palette.common.white} mb={2}>
         My Dashboards
       </Typography>
@@ -103,6 +103,6 @@ export default function Dashboard() {
           />
         </Grid>
       </Grid>
-    </>
+    </Stack>
   );
 }

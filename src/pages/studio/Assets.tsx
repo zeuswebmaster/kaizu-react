@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Menu,
   MenuProps,
@@ -176,6 +177,7 @@ const ASSETS = [
 ];
 
 export default function Assets() {
+  const router = useNavigate();
   const themeGlobal = useTheme();
 
   const [menuMoreSetting, setMenuMoreSetting] = useState<HTMLElement | null>(null);
@@ -241,189 +243,191 @@ export default function Assets() {
   };
 
   return (
-    <PartComponent padding="0" backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))">
-      <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ padding: '22px 26px' }}>
-        <Stack>
-          <Typography variant="h4" color={themeGlobal.palette.common.white} mb={1}>
-            All Assets -
-          </Typography>
-          <Typography variant="caption" color={themeGlobal.palette.grey[200]}>
-            Market Cap: $90.764 T / 3,564 Assets
-          </Typography>
-        </Stack>
-        <Stack direction="row" alignItems="center" spacing={2}>
-          <Button
-            startIcon={
-              <>
-                <Stack
-                  direction="row"
-                  alignItems="center"
-                  justifyContent="center"
-                  sx={{
-                    backgroundColor: '#1e2f38',
-                    borderTopLeftRadius: '4px',
-                    borderBottomLeftRadius: '4px',
-                    width: 30,
-                    height: 30,
-                    marginLeft: '-14px',
-                  }}
-                >
-                  <FilterAltOutlinedIcon />
-                </Stack>
-              </>
-            }
-            sx={{
-              backgroundColor: '#334D5B',
-              color: themeGlobal.palette.grey[200],
-              fontSize: '11px',
-              width: 80,
-              height: 30,
-              padding: 0,
-              '&:hover': {
-                backgroundColor: '#2d4551',
-              },
-            }}
-          >
-            Filter
-          </Button>
+    <Stack padding={2}>
+      <PartComponent padding="0" backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))">
+        <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ padding: '22px 26px' }}>
           <Stack>
+            <Typography variant="h4" color={themeGlobal.palette.common.white} mb={1}>
+              All Assets -
+            </Typography>
+            <Typography variant="caption" color={themeGlobal.palette.grey[200]}>
+              Market Cap: $90.764 T / 3,564 Assets
+            </Typography>
+          </Stack>
+          <Stack direction="row" alignItems="center" spacing={2}>
             <Button
-              variant="contained"
-              startIcon={<MoreHorizIcon />}
-              sx={StyleButton}
-              onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'moreSetting')}
-            />
-            <MoreSettingMenu
-              StyleMenu={StyleMenu}
-              menuKind={menuMoreSetting as HTMLElement}
-              onClose={handleCloseMenu}
-            />
+              startIcon={
+                <>
+                  <Stack
+                    direction="row"
+                    alignItems="center"
+                    justifyContent="center"
+                    sx={{
+                      backgroundColor: '#314149',
+                      borderTopLeftRadius: '4px',
+                      borderBottomLeftRadius: '4px',
+                      width: 30,
+                      height: 30,
+                      marginLeft: '-14px',
+                    }}
+                  >
+                    <FilterAltOutlinedIcon />
+                  </Stack>
+                </>
+              }
+              sx={{
+                backgroundColor: '#334D5B',
+                color: themeGlobal.palette.grey[200],
+                fontSize: '11px',
+                width: 80,
+                height: 30,
+                padding: 0,
+                '&:hover': {
+                  backgroundColor: '#2d4551',
+                },
+              }}
+            >
+              Filter
+            </Button>
+            <Stack>
+              <Button
+                variant="contained"
+                startIcon={<MoreHorizIcon />}
+                sx={StyleButton}
+                onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'moreSetting')}
+              />
+              <MoreSettingMenu
+                StyleMenu={StyleMenu}
+                menuKind={menuMoreSetting as HTMLElement}
+                onClose={handleCloseMenu}
+              />
+            </Stack>
           </Stack>
         </Stack>
-      </Stack>
-      <TableContainer sx={{ marginBottom: '70px' }}>
-        <Table sx={{ minWidth: 450 }}>
-          <TableHead>
-            <TableRow>
-              <StyledTableCell align="center">#</StyledTableCell>
-              <StyledTableCell align="left">SYMBOL/NAME</StyledTableCell>
-              <StyledTableCell align="center">PRICE</StyledTableCell>
-              <StyledTableCell align="center">MARKET CAP</StyledTableCell>
-              <StyledTableCell align="center">24H VOLUME</StyledTableCell>
-              <StyledTableCell align="center">24H %</StyledTableCell>
-              <StyledTableCell align="center">7D %</StyledTableCell>
-              <StyledTableCell align="center">30D %</StyledTableCell>
-              <StyledTableCell align="center">1Y %</StyledTableCell>
-              <StyledTableCell align="center">TYPE</StyledTableCell>
-              <StyledTableCell align="center">&nbsp;</StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {ASSETS.map((item) => (
-              <TableRow key={item.id}>
-                <StyledTableCell align="center">{item.id}</StyledTableCell>
-                <StyledTableCell align="center">
-                  <Stack direction="row" alignItems="center" spacing={2} sx={{ width: '100%' }}>
-                    <Stack
-                      direction="row"
-                      alignItems="center"
-                      justifyContent="center"
-                      sx={{
-                        width: 25,
-                        height: 25,
-                        borderRadius: '100%',
-                        backgroundColor: themeGlobal.palette.common.white,
-                      }}
-                    >
-                      <img src={item.icon} alt="" />
-                    </Stack>
-                    <Stack textAlign="left">
-                      <Typography variant="caption">{item.symbol}</Typography>
-                      <Typography fontSize={10}>{item.name}</Typography>
-                    </Stack>
-                  </Stack>
-                </StyledTableCell>
-                <StyledTableCell align="center">
-                  $
-                  {parseFloat(item.price.toString())
-                    .toFixed(2)
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                </StyledTableCell>
-                <StyledTableCell align="center">
-                  $
-                  {parseFloat(item.market.toString())
-                    .toFixed(3)
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                  T
-                </StyledTableCell>
-                <StyledTableCell align="center">
-                  $
-                  {parseFloat(item.hourlyValue.toString())
-                    .toFixed(2)
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                </StyledTableCell>
-                <StyledTableCell
-                  align="center"
-                  sx={{ color: item.hourly < 0 ? themeGlobal.palette.error.main : themeGlobal.palette.info.main }}
-                >
-                  {parseFloat(item.hourly.toString())
-                    .toFixed(2)
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                  %
-                </StyledTableCell>
-                <StyledTableCell
-                  align="center"
-                  sx={{ color: item.week < 0 ? themeGlobal.palette.error.main : themeGlobal.palette.info.main }}
-                >
-                  {parseFloat(item.week.toString())
-                    .toFixed(2)
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                  %
-                </StyledTableCell>
-                <StyledTableCell
-                  align="center"
-                  sx={{ color: item.day < 0 ? themeGlobal.palette.error.main : themeGlobal.palette.info.main }}
-                >
-                  {parseFloat(item.day.toString())
-                    .toFixed(2)
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                  %
-                </StyledTableCell>
-                <StyledTableCell
-                  align="center"
-                  sx={{ color: item.year < 0 ? themeGlobal.palette.error.main : themeGlobal.palette.info.main }}
-                >
-                  {parseFloat(item.year.toString())
-                    .toFixed(2)
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                  %
-                </StyledTableCell>
-                <StyledTableCell align="center">{item.type}</StyledTableCell>
-                <StyledTableCell align="center">
-                  {item.favority === '0' && (
-                    <StarBorderIcon
-                      sx={{
-                        width: 14,
-                        height: 14,
-                      }}
-                    />
-                  )}
-
-                  {item.favority === '1' && (
-                    <StarIcon
-                      sx={{
-                        width: 14,
-                        height: 14,
-                        color: themeGlobal.palette.warning.main,
-                      }}
-                    />
-                  )}
-                </StyledTableCell>
+        <TableContainer sx={{ marginBottom: '70px' }}>
+          <Table sx={{ minWidth: 450 }}>
+            <TableHead>
+              <TableRow>
+                <StyledTableCell align="center">#</StyledTableCell>
+                <StyledTableCell align="left">SYMBOL/NAME</StyledTableCell>
+                <StyledTableCell align="center">PRICE</StyledTableCell>
+                <StyledTableCell align="center">MARKET CAP</StyledTableCell>
+                <StyledTableCell align="center">24H VOLUME</StyledTableCell>
+                <StyledTableCell align="center">24H %</StyledTableCell>
+                <StyledTableCell align="center">7D %</StyledTableCell>
+                <StyledTableCell align="center">30D %</StyledTableCell>
+                <StyledTableCell align="center">1Y %</StyledTableCell>
+                <StyledTableCell align="center">TYPE</StyledTableCell>
+                <StyledTableCell align="center">&nbsp;</StyledTableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </PartComponent>
+            </TableHead>
+            <TableBody>
+              {ASSETS.map((item) => (
+                <TableRow key={item.id} sx={{ cursor: 'pointer' }} onClick={() => router(`/studio/assets/${item.id}`)}>
+                  <StyledTableCell align="center">{item.id}</StyledTableCell>
+                  <StyledTableCell align="center">
+                    <Stack direction="row" alignItems="center" spacing={2} sx={{ width: '100%' }}>
+                      <Stack
+                        direction="row"
+                        alignItems="center"
+                        justifyContent="center"
+                        sx={{
+                          width: 25,
+                          height: 25,
+                          borderRadius: '100%',
+                          backgroundColor: themeGlobal.palette.common.white,
+                        }}
+                      >
+                        <img src={item.icon} alt="" />
+                      </Stack>
+                      <Stack textAlign="left">
+                        <Typography variant="caption">{item.symbol}</Typography>
+                        <Typography fontSize={10}>{item.name}</Typography>
+                      </Stack>
+                    </Stack>
+                  </StyledTableCell>
+                  <StyledTableCell align="center">
+                    $
+                    {parseFloat(item.price.toString())
+                      .toFixed(2)
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                  </StyledTableCell>
+                  <StyledTableCell align="center">
+                    $
+                    {parseFloat(item.market.toString())
+                      .toFixed(3)
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                    T
+                  </StyledTableCell>
+                  <StyledTableCell align="center">
+                    $
+                    {parseFloat(item.hourlyValue.toString())
+                      .toFixed(2)
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                  </StyledTableCell>
+                  <StyledTableCell
+                    align="center"
+                    sx={{ color: item.hourly < 0 ? themeGlobal.palette.error.main : themeGlobal.palette.info.main }}
+                  >
+                    {parseFloat(item.hourly.toString())
+                      .toFixed(2)
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                    %
+                  </StyledTableCell>
+                  <StyledTableCell
+                    align="center"
+                    sx={{ color: item.week < 0 ? themeGlobal.palette.error.main : themeGlobal.palette.info.main }}
+                  >
+                    {parseFloat(item.week.toString())
+                      .toFixed(2)
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                    %
+                  </StyledTableCell>
+                  <StyledTableCell
+                    align="center"
+                    sx={{ color: item.day < 0 ? themeGlobal.palette.error.main : themeGlobal.palette.info.main }}
+                  >
+                    {parseFloat(item.day.toString())
+                      .toFixed(2)
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                    %
+                  </StyledTableCell>
+                  <StyledTableCell
+                    align="center"
+                    sx={{ color: item.year < 0 ? themeGlobal.palette.error.main : themeGlobal.palette.info.main }}
+                  >
+                    {parseFloat(item.year.toString())
+                      .toFixed(2)
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                    %
+                  </StyledTableCell>
+                  <StyledTableCell align="center">{item.type}</StyledTableCell>
+                  <StyledTableCell align="center">
+                    {item.favority === '0' && (
+                      <StarBorderIcon
+                        sx={{
+                          width: 14,
+                          height: 14,
+                        }}
+                      />
+                    )}
+
+                    {item.favority === '1' && (
+                      <StarIcon
+                        sx={{
+                          width: 14,
+                          height: 14,
+                          color: themeGlobal.palette.warning.main,
+                        }}
+                      />
+                    )}
+                  </StyledTableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </PartComponent>
+    </Stack>
   );
 }

@@ -12,6 +12,7 @@ import {
   Settings,
   MacroDashboard,
   Assets,
+  AssetsDetail,
 } from '../pages';
 
 const MainRoutes = {
@@ -24,6 +25,7 @@ const MainRoutes = {
     { path: 'studio/rankings', element: <Rankings /> },
     { path: 'studio/watchlists', element: <Watchlists /> },
     { path: 'studio/assets', element: <Assets /> },
+    { path: 'studio/assets/:id', element: <AssetsDetail /> },
     { path: 'portfolio', element: <Portfolio /> },
     { path: 'news', element: <News /> },
     { path: 'calendar/macro_calendar', element: <MacroCalendar /> },

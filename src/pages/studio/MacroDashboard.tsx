@@ -262,7 +262,7 @@ export default function MacroDashboard() {
   };
 
   return (
-    <>
+    <Stack padding={2}>
       <Stack direction="row" alignItems="center" spacing={1.5} mb={2}>
         <GridViewSharpIcon sx={{ width: 17, height: 17, color: themeGlobal.palette.info.main }} />
         <Typography variant="h4" color={themeGlobal.palette.common.white}>
@@ -581,6 +581,6 @@ export default function MacroDashboard() {
           </PartComponent>
         </Grid>
       </Grid>
-    </>
+    </Stack>
   );
 }
