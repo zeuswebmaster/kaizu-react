@@ -227,7 +227,7 @@ export default function Home() {
   }));
 
   return (
-    <Stack direction="column" spacing={2}>
+    <Stack direction="column" spacing={2} padding={2}>
       <PartComponent backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))">
         <Stack padding={2}>
           <Stack direction="row" alignItems="center" spacing={1} mb={2}>

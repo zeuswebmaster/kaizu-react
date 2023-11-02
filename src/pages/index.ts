@@ -9,6 +9,7 @@ export { default as Rankings } from './studio/Rankings';
 export { default as Watchlists } from './studio/Watchlists';
 export { default as MacroDashboard } from './studio/MacroDashboard';
 export { default as Assets } from './studio/Assets';
+export { default as AssetsDetail } from './studio/AssetsDetail';
 export { default as Portfolio } from './Portfolio';
 export { default as News } from './News';
 export { default as MacroCalendar } from './calendar/MacroCalendar';
