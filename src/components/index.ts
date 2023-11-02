@@ -13,5 +13,7 @@ export { default as MoreSettingMenu } from './content/MoreSettingMenu';
 export { default as NewsMenu } from './content/NewsMenu';
 export { default as CalendarMenu } from './content/CalendarMenu';
 export { default as MenuSelectItem } from './content/MenuSelectItem';
+export { default as AssetsLeftComponent } from './content/assets/AssetsLeftComponent';
+export { default as AssetsRightComponent } from './content/assets/AssetsRightComponent';
 
 export { default as LineChart } from './chart/LineChart';
