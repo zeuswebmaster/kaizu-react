@@ -73,16 +73,16 @@ export default function AssetsLeftComponent() {
   };
 
   const StyleSlider = {
-    color: '#8FBACA',
+    color: '#8FBACA !important',
     '& .MuiSlider-thumb': { width: '6px', height: '13px', borderRadius: '3px' },
     '& .MuiSlider-valueLabel': {
       fontSize: 12,
       fontWeight: 'normal',
-      top: 0,
+      top: 36,
       backgroundColor: 'unset',
       color: themeGlobal.palette.text.primary,
       '&:before': {
-        display: 'none',
+        display: 'block !important',
       },
       '& *': {
         background: 'transparent',
@@ -230,7 +230,14 @@ export default function AssetsLeftComponent() {
             <Typography variant="caption" color={themeGlobal.palette.common.white}>
               $27,314
             </Typography>
-            <Slider size="small" defaultValue={70} aria-label="Small" valueLabelDisplay="auto" sx={StyleSlider} />
+            <Slider
+              size="small"
+              defaultValue={70}
+              aria-label="Small"
+              valueLabelDisplay="on"
+              disabled
+              sx={StyleSlider}
+            />
             <Typography variant="caption" color={themeGlobal.palette.common.white}>
               $29,414
             </Typography>
@@ -248,7 +255,14 @@ export default function AssetsLeftComponent() {
             </Typography>
           </Stack>
           <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={1}>
-            <Slider size="small" defaultValue={70} aria-label="Small" valueLabelDisplay="auto" sx={StyleSlider} />
+            <Slider
+              size="small"
+              defaultValue={30}
+              aria-label="Small"
+              valueLabelDisplay="on"
+              disabled
+              sx={StyleSlider}
+            />
             <Typography variant="caption" color={themeGlobal.palette.common.white}>
               92.6%
             </Typography>
