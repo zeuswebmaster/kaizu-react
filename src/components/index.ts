@@ -17,3 +17,4 @@ export { default as AssetsLeftComponent } from './content/assets/AssetsLeftCompo
 export { default as AssetsRightComponent } from './content/assets/AssetsRightComponent';
 
 export { default as LineChart } from './chart/LineChart';
+export { default as PieChart } from './chart/PieChart';
