@@ -279,9 +279,7 @@ export default function Assets() {
                 backgroundColor: '#334D5B',
                 color: themeGlobal.palette.grey[200],
                 fontSize: '11px',
-                width: 80,
                 height: 30,
-                padding: 0,
                 '&:hover': {
                   backgroundColor: '#2d4551',
                 },
