@@ -14,6 +14,7 @@ interface MenuSelectItemProps {
   info?: string;
   value?: number;
   subInfo?: React.ReactNode;
+  otherInfo?: React.ReactNode;
   url?: string;
   menu?: HTMLElement;
   onOpen?: (e: React.MouseEvent<HTMLElement>) => void;
@@ -22,6 +23,7 @@ interface MenuSelectItemProps {
   setMask?: React.Dispatch<React.SetStateAction<boolean>>;
   onDelete?: (index?: string) => void;
   kind: string;
+  color?: string;
 }
 
 export default function MenuSelectItem({
@@ -39,6 +41,8 @@ export default function MenuSelectItem({
   setMask,
   onDelete,
   kind,
+  otherInfo,
+  color,
 }: MenuSelectItemProps) {
   const router = useNavigate();
   const themeGlobal = useTheme();
@@ -125,6 +129,7 @@ export default function MenuSelectItem({
                   onClick={onOpen}
                 />
                 <StyleMenu
+                  disableScrollLock
                   sx={{ marginTop: '26px' }}
                   anchorEl={menu as HTMLElement}
                   anchorOrigin={{
@@ -243,7 +248,7 @@ export default function MenuSelectItem({
           </Typography>
 
           {info && (
-            <Stack direction="row" alignItems="center" spacing={1} mb={1}>
+            <Stack direction="row" alignItems="center" spacing={1} {...(!otherInfo ? { mb: 1 } : {})}>
               <Typography variant="caption" color={themeGlobal.palette.common.white}>
                 {info}
               </Typography>
@@ -261,12 +266,13 @@ export default function MenuSelectItem({
             </Stack>
           )}
 
-          <Typography
-            variant="caption"
-            color={themeGlobal.palette.grey[400]}
-            textAlign="center"
-            {...(info ? { mb: 2 } : { mb: 3 })}
-          >
+          {otherInfo && (
+            <Typography variant="caption" color={color} textAlign="center">
+              {otherInfo}
+            </Typography>
+          )}
+
+          <Typography variant="caption" color={themeGlobal.palette.grey[400]} textAlign="center" mb={1}>
             {subInfo}
           </Typography>
         </Stack>

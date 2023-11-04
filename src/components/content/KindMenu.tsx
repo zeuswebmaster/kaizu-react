@@ -15,6 +15,7 @@ export default function DashboardKindMenu({ menuKind, onClose, StyleMenu }: Dash
 
   return (
     <StyleMenu
+      disableScrollLock
       sx={{ marginTop: '26px' }}
       anchorEl={menuKind}
       anchorOrigin={{

@@ -60,6 +60,7 @@ export default function CalendarMenu({ menuKind, onClose }: CalendarMenuProps) {
 
   return (
     <StyleMenu
+      disableScrollLock
       sx={{ marginTop: '26px' }}
       anchorEl={menuKind}
       anchorOrigin={{

@@ -2,6 +2,7 @@ export { default as Spinner } from './common/Spinner';
 export { default as SpinnerBack } from './common/SpinnerBack';
 export { default as LoadComponent } from './common/LoadComponent';
 export { default as Toast } from './common/Toast';
+export { default as ModalComponent } from './common/ModalComponent';
 
 export { default as ThemeItem } from './header/ThemeItem';
 export { default as DrawerItem } from './header/DrawerItem';
@@ -18,3 +19,6 @@ export { default as AssetsRightComponent } from './content/assets/AssetsRightCom
 
 export { default as LineChart } from './chart/LineChart';
 export { default as PieChart } from './chart/PieChart';
+
+export { default as CreatePortfolio } from './portfolio/CreatePortfolio';
+export { default as AddTransaction } from './portfolio/AddTransaction';
