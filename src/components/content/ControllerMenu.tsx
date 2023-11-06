@@ -54,6 +54,7 @@ export default function ControllerMenu({ menuKind, onClose, StyleMenu }: Control
 
   return (
     <StyleMenu
+      disableScrollLock
       sx={{ marginTop: '26px' }}
       anchorEl={menuKind}
       anchorOrigin={{

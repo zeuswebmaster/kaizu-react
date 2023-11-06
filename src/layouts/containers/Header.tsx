@@ -169,6 +169,7 @@ export default function Header() {
               </StyledBadge>
             </IconButton>
             <StyleMenu
+              disableScrollLock
               sx={{
                 mt: '26px',
               }}
@@ -238,6 +239,7 @@ export default function Header() {
               <ContrastIcon sx={{ width: 20, height: 20, color: themeGlobal.palette.info.main }} />
             </IconButton>
             <StyleMenu
+              disableScrollLock
               sx={{
                 mt: '26px',
               }}
@@ -284,6 +286,7 @@ export default function Header() {
               <AccountCircleIcon sx={{ width: 20, height: 20, color: themeGlobal.palette.info.main }} />
             </IconButton>
             <StyleMenu
+              disableScrollLock
               sx={{
                 mt: '26px',
               }}

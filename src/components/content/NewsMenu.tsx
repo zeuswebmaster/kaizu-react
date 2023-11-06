@@ -26,6 +26,7 @@ export default function NewsMenu({ menuKind, onClose }: NewsMenuProps) {
 
   return (
     <StyleMenu
+      disableScrollLock
       sx={{ marginTop: '26px' }}
       anchorEl={menuKind}
       anchorOrigin={{

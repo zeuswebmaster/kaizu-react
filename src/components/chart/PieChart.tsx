@@ -11,7 +11,7 @@ export default function PieChart({ data, size }: PieChartProps) {
 
   return (
     <PieChartComponent
-      series={[{ data, innerRadius: 80 }]}
+      series={[{ data, innerRadius: 100 }]}
       {...size}
       slotProps={{
         legend: {
@@ -23,7 +23,7 @@ export default function PieChart({ data, size }: PieChartProps) {
           markGap: 8,
           itemMarkWidth: 14,
           itemMarkHeight: 14,
-          itemGap: 15,
+          itemGap: 25,
         },
       }}
       sx={{

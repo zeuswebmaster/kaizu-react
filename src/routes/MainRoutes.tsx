@@ -13,6 +13,7 @@ import {
   MacroDashboard,
   Assets,
   AssetsDetail,
+  PortfolioDetail,
 } from '../pages';
 
 const MainRoutes = {
@@ -27,6 +28,7 @@ const MainRoutes = {
     { path: 'studio/assets', element: <Assets /> },
     { path: 'studio/assets/:id', element: <AssetsDetail /> },
     { path: 'portfolio', element: <Portfolio /> },
+    { path: 'portfolio/detail', element: <PortfolioDetail /> },
     { path: 'news', element: <News /> },
     { path: 'calendar/macro_calendar', element: <MacroCalendar /> },
     { path: 'calendar/stocks', element: <Stocks /> },

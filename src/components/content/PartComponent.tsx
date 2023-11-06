@@ -21,6 +21,7 @@ export default function PartComponent({
         ...(backgroundImage ? { backgroundImage } : {}),
         ...(backgroundColor ? { backgroundColor } : {}),
         width: '100%',
+        height: '100%',
         borderRadius: '7px',
       }}
     >

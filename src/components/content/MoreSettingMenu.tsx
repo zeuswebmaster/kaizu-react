@@ -19,6 +19,7 @@ export default function MoreSettingMenu({ menuKind, onClose, StyleMenu }: MoreSe
 
   return (
     <StyleMenu
+      disableScrollLock
       sx={{ marginTop: '26px' }}
       anchorEl={menuKind}
       anchorOrigin={{
