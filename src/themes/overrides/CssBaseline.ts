@@ -27,15 +27,15 @@ export default function CssBaseline(theme: Theme) {
           maxWidth: '100%',
         },
         '*::-webkit-scrollbar': {
-          width: '6px',
-          height: '6px',
+          width: 0,
+          height: 0,
         },
         '*::-webkit-scrollbar-track': {
           background: 'none',
         },
         '*::-webkit-scrollbar-thumb': {
           background: theme.palette.grey[700],
-          borderRadius: '10px',
+          borderRadius: 0,
         },
       },
     },
