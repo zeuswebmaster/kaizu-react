@@ -12,7 +12,7 @@ export { default as Assets } from './studio/Assets';
 export { default as AssetsDetail } from './studio/AssetsDetail';
 export { default as Portfolio } from './portfolio/Portfolio';
 export { default as PortfolioDetail } from './portfolio/PortfolioDetail';
-export { default as News } from './News';
+export { default as News } from './news/News';
 export { default as MacroCalendar } from './calendar/MacroCalendar';
 export { default as Stocks } from './calendar/Stocks';
 export { default as SeeAll } from './calendar/SeeAll';
