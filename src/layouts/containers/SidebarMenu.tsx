@@ -348,7 +348,7 @@ export default function SidebarMenu() {
         sx={{
           height: '100%',
           overflowY: 'auto',
-          padding: '93px 40px 100px 40px',
+          padding: '93px 30px 100px 30px',
           top: 0,
         }}
       >

@@ -37,6 +37,8 @@ export default function MenuSmall({ MENUS, onExpandMenu }: { MENUS: Items[]; onE
         width: '50px',
         borderRadius: '8px',
         backgroundColor: '#091319',
+        boxShadow:
+          '0px 1px 9px 6px rgba(0, 0, 0, 0.2), 0px 13px 24px 10px rgba(0, 0, 0, 0.14), 0px 6px 30px 10px rgba(0, 0, 0, 0.12)',
       }}
     >
       {MENUS.map((item: Items) => (

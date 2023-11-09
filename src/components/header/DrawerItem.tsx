@@ -6,8 +6,11 @@ import StarIcon from '@mui/icons-material/Star';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import CloseIcon from '@mui/icons-material/Close';
+import useResponsive from '../../hooks/useResponsive';
 
 export default function DrawerItem() {
+  const isSmDown = useResponsive('down', 'sm');
+
   const StyledButton = styled(Button)(() => ({
     backgroundColor: '#263c48',
     padding: '4px 8px',
@@ -23,22 +26,21 @@ export default function DrawerItem() {
   return (
     <Stack
       sx={{
-        width: 450,
+        width: '100%',
         height: '100%',
         backgroundImage: 'linear-gradient(to right, rgba(20, 42, 53, 1), rgba(40, 72, 86, 1))',
       }}
     >
       <Stack
-        direction="row"
-        alignItems="center"
+        direction={{ sm: 'row', xs: 'column' }}
+        alignItems={{ sm: 'center', xs: 'flex-start' }}
         justifyContent="space-between"
         sx={{
-          width: '100%',
           backgroundImage: 'linear-gradient(to right, rgba(10, 21, 26, 1), rgba(19, 35, 42, 1))',
-          padding: '20px 30px',
+          padding: isSmDown ? '10px 15px' : '20px 30px',
         }}
       >
-        <Stack>
+        <Stack sx={{ marginBottom: isSmDown ? '16px' : 0 }}>
           <Stack
             sx={{
               width: '45px',
@@ -90,7 +92,7 @@ export default function DrawerItem() {
           </Tooltip>
         </Stack>
       </Stack>
-      <Stack sx={{ padding: '20px 50px' }}>
+      <Stack sx={{ padding: isSmDown ? '10px 15px' : '20px 50px' }}>
         <Typography fontSize={14} color="#67777e" mt={1}>
           BITCOIN PRICE
         </Typography>
