@@ -10,34 +10,23 @@ export default function Wrapper() {
   const windowWidth = useWidth();
 
   const [marginValue, setMarginValue] = useState<string>('-200px');
-  const [leftValue, setLeftValue] = useState<string>('130px');
 
   useLayoutEffect(() => {
-    if (windowWidth > 1920) {
-      setMarginValue('-180px');
-      setLeftValue('130px');
-      return;
-    }
-
     if (windowWidth > 1800) {
       setMarginValue('-200px');
-      setLeftValue('80px');
       return;
     }
 
     if (windowWidth > 1700) {
       setMarginValue('-160px');
-      setLeftValue('30px');
       return;
     }
 
-    if (windowWidth > 1600) {
-      setMarginValue('-80px');
-      setLeftValue('15px');
+    if (windowWidth > 1800) {
+      setMarginValue('-130px');
       return;
     }
 
-    setLeftValue('0');
     setMarginValue('0');
   }, [windowWidth]);
 
@@ -45,33 +34,20 @@ export default function Wrapper() {
     <Stack
       direction="row"
       justifyContent="center"
-      position="relative"
       sx={{
         padding: '48px',
         marginTop: '45px',
         marginLeft: marginValue,
       }}
     >
-      <Stack
-        position="fixed"
-        left={leftValue}
-        top={0}
-        sx={{
-          height: '100%',
-          paddingTop: '91px',
-          paddingBottom: '100px',
-          overflowY: 'auto',
-          paddingLeft: '40px',
-          paddingRight: '40px',
-        }}
-      >
+      <Stack>
         <SidebarMenu />
       </Stack>
       <Stack
         sx={{
           width: 1220,
           marginBottom: '52px !important',
-          marginLeft: windowWidth >= 1200 ? '219px' : '64px',
+          marginLeft: windowWidth >= 1200 ? '259px' : '104px',
         }}
       >
         <Stack

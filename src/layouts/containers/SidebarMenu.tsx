@@ -341,7 +341,17 @@ export default function SidebarMenu() {
 
   return (
     <>
-      <Stack direction="column" spacing={2.5}>
+      <Stack
+        direction="column"
+        spacing={2.5}
+        position="fixed"
+        sx={{
+          height: '100%',
+          overflowY: 'auto',
+          padding: '93px 40px 100px 40px',
+          top: 0,
+        }}
+      >
         <Stack>
           {windowWidth >= 1200 && (
             <MenuNormal
