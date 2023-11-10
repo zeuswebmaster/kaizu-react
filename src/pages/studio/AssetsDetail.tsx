@@ -5,10 +5,10 @@ export default function AssetsDetail() {
   return (
     <>
       <Grid container>
-        <Grid item sm={5} lg={4}>
+        <Grid item xxs={12} md={5} lg={4}>
           <AssetsLeftComponent />
         </Grid>
-        <Grid item sm={7} lg={8}>
+        <Grid item xxs={12} md={7} lg={8}>
           <AssetsRightComponent />
         </Grid>
       </Grid>

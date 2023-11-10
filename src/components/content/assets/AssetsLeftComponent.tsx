@@ -12,6 +12,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import RedditIcon from '@mui/icons-material/Reddit';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import useResponsive from '../../../hooks/useResponsive';
 
 const CHANGES_ITEMS = [
   {
@@ -48,6 +49,7 @@ const CHANGES_ITEMS = [
 
 export default function AssetsLeftComponent() {
   const themeGlobal = useTheme();
+  const isMdDown = useResponsive('down', 'md');
 
   const StyleButton = {
     height: 23,
@@ -125,7 +127,12 @@ export default function AssetsLeftComponent() {
     <Stack
       direction="column"
       padding={2}
-      sx={{ backgroundColor: 'rgba(19, 21, 30, 0.8)', borderTopLeftRadius: '8px', borderBottomLeftRadius: '8px' }}
+      sx={{
+        backgroundColor: 'rgba(19, 21, 30, 0.8)',
+        borderTopLeftRadius: '8px',
+        borderBottomLeftRadius: !isMdDown ? '8px' : 0,
+        borderTopRightRadius: isMdDown ? '8px' : 0,
+      }}
       spacing={2}
     >
       <Stack direction="row" alignItems="flex-start" justifyContent="space-between">
@@ -197,7 +204,7 @@ export default function AssetsLeftComponent() {
       <Stack>
         <Grid container spacing={1.2}>
           {CHANGES_ITEMS.map((item) => (
-            <Grid item sm={6} lg={4} key={item.id}>
+            <Grid item xxs={6} lg={4} key={item.id}>
               <Card variant="outlined" sx={{ border: '1.5px solid #265161' }}>
                 <CardContent sx={{ padding: '8px 11px !important' }}>
                   <Typography variant="caption" color={themeGlobal.palette.common.white}>

@@ -3,6 +3,7 @@ import { StyledComponent } from '@emotion/styled';
 
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import HomeIcon from '@mui/icons-material/Home';
+import useResponsive from '../../hooks/useResponsive';
 
 interface DashboardKindMenuProps {
   StyleMenu: StyledComponent<MenuProps>;
@@ -12,6 +13,7 @@ interface DashboardKindMenuProps {
 
 export default function DashboardKindMenu({ menuKind, onClose, StyleMenu }: DashboardKindMenuProps) {
   const theme = useTheme();
+  const isSmDown = useResponsive('down', 'sm');
 
   return (
     <StyleMenu
@@ -49,8 +51,8 @@ export default function DashboardKindMenu({ menuKind, onClose, StyleMenu }: Dash
       <Stack
         position="absolute"
         sx={{
-          minWidth: '200px',
-          height: '110px',
+          minWidth: '288px',
+          height: isSmDown ? 150 : 110,
           top: 0,
           backgroundImage: 'linear-gradient(to left, rgba(29, 51, 63, 1), rgba(41, 65, 79, 1))',
           borderTopLeftRadius: '8px',
@@ -60,9 +62,9 @@ export default function DashboardKindMenu({ menuKind, onClose, StyleMenu }: Dash
       <Stack
         position="absolute"
         sx={{
-          minWidth: '200px',
-          height: '110px',
-          top: '110px',
+          minWidth: '288px',
+          height: isSmDown ? 153 : 110,
+          top: isSmDown ? 150 : 110,
           backgroundColor: '#293f4c',
         }}
       ></Stack>

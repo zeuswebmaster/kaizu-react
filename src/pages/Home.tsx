@@ -21,6 +21,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import { PartComponent } from '../components';
+import useResponsive from '../hooks/useResponsive';
 
 const DASHBOARDS = [
   {
@@ -203,6 +204,8 @@ const WATCHLIST = [
 
 export default function Home() {
   const themeGlobal = useTheme();
+  const isMdDown = useResponsive('down', 'md');
+  const isSmDown = useResponsive('down', 'sm');
 
   const StylesTypography = styled(Typography)<TypographyProps>(() => ({
     overflow: 'hidden',
@@ -227,18 +230,23 @@ export default function Home() {
   }));
 
   return (
-    <Stack direction="column" spacing={2} padding={2}>
-      <PartComponent backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))">
-        <Stack padding={2}>
+    <Stack direction="column" spacing={2} padding={isSmDown ? 1 : 2}>
+      <PartComponent
+        backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))"
+        {...(isSmDown ? { padding: '8px' } : {})}
+      >
+        <Stack padding={isSmDown ? 1 : 2}>
           <Stack direction="row" alignItems="center" spacing={1} mb={2}>
             <Typography variant="h5" color={themeGlobal.palette.common.white}>
               Welcome back, Ser James. Today is Wednesday, August 23, 2023
             </Typography>
-            <Tooltip title="Info" arrow>
-              <Stack sx={{ cursor: 'pointer' }}>
-                <img src="/icons/info.svg" alt="" />
-              </Stack>
-            </Tooltip>
+            {!isMdDown && (
+              <Tooltip title="Info" arrow>
+                <Stack sx={{ cursor: 'pointer' }}>
+                  <img src="/icons/info.svg" alt="" />
+                </Stack>
+              </Tooltip>
+            )}
           </Stack>
           <Typography fontSize={15} fontWeight={400} lineHeight={1.8} color={themeGlobal.palette.common.white}>
             Welcome to Kaizu`s Financial Fables: Where bear markets become unicorns overnight! Today`s tale:{' '}
@@ -249,10 +257,13 @@ export default function Home() {
           </Typography>
         </Stack>
       </PartComponent>
-      <PartComponent backgroundColor={themeGlobal.palette.background.paper}>
+      <PartComponent backgroundColor={themeGlobal.palette.background.paper} {...(isSmDown ? { padding: '8px' } : {})}>
         <Grid container spacing={2} mb={2}>
-          <Grid item sm={12} md={6} xs={12}>
-            <PartComponent backgroundImage="linear-gradient(to right, rgba(23, 41, 51, 1), rgba(31, 54, 67, 1), rgba(23, 41, 52, 1))">
+          <Grid item md={6} xxs={12}>
+            <PartComponent
+              backgroundImage="linear-gradient(to right, rgba(23, 41, 51, 1), rgba(31, 54, 67, 1), rgba(23, 41, 52, 1))"
+              {...(isSmDown ? { padding: '8px' } : {})}
+            >
               <Stack direction="row" alignItems="center" spacing={1} mb={2.5}>
                 <DashboardIcon sx={{ width: 16, height: 16, color: themeGlobal.palette.info.main }} />
                 <Typography fontSize={12} fontWeight={700} color={themeGlobal.palette.common.white}>
@@ -262,8 +273,11 @@ export default function Home() {
               <Stack mb={2}>
                 <Grid container spacing={1}>
                   {DASHBOARDS.map((item) => (
-                    <Grid key={item.id} item sm={12} md={12} xs={12} lg={6} xl={4}>
-                      <PartComponent backgroundImage="linear-gradient(to bottom, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))">
+                    <Grid key={item.id} item xxs={12} lg={6} xl={4}>
+                      <PartComponent
+                        backgroundImage="linear-gradient(to bottom, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))"
+                        {...(isSmDown ? { padding: '8px' } : {})}
+                      >
                         <Stack direction="row" alignItems="center" spacing={1}>
                           <img src={item.icon} alt="" />
                           <Stack>
@@ -296,8 +310,11 @@ export default function Home() {
               </Button>
             </PartComponent>
           </Grid>
-          <Grid item sm={12} md={6} xs={12}>
-            <PartComponent backgroundImage="linear-gradient(to right, rgba(23, 41, 51, 1), rgba(31, 54, 67, 1), rgba(23, 41, 52, 1))">
+          <Grid item md={6} xxs={12}>
+            <PartComponent
+              backgroundImage="linear-gradient(to right, rgba(23, 41, 51, 1), rgba(31, 54, 67, 1), rgba(23, 41, 52, 1))"
+              {...(isSmDown ? { padding: '8px' } : {})}
+            >
               <Stack direction="row" alignItems="center" spacing={1} mb={2.5}>
                 <SettingsIcon sx={{ width: 16, height: 16, color: themeGlobal.palette.info.main }} />
                 <Typography fontSize={12} fontWeight={700} color={themeGlobal.palette.common.white}>
@@ -306,7 +323,7 @@ export default function Home() {
               </Stack>
               <Stack mb={2}>
                 <TableContainer>
-                  <Table sx={{ minWidth: 450 }}>
+                  <Table sx={{ minWidth: 400 }}>
                     <TableHead>
                       <TableRow>
                         <StyledTableCell>UPDATE</StyledTableCell>
@@ -342,8 +359,11 @@ export default function Home() {
           </Grid>
         </Grid>
         <Grid container spacing={2} mb={2}>
-          <Grid item sm={12} md={4} xs={12}>
-            <PartComponent backgroundImage="linear-gradient(to right, rgba(23, 41, 51, 1), rgba(31, 54, 67, 1), rgba(23, 41, 52, 1))">
+          <Grid item md={4} xxs={12}>
+            <PartComponent
+              backgroundImage="linear-gradient(to right, rgba(23, 41, 51, 1), rgba(31, 54, 67, 1), rgba(23, 41, 52, 1))"
+              {...(isSmDown ? { padding: '8px' } : {})}
+            >
               <Stack direction="row" alignItems="center" spacing={1} mb={2.5}>
                 <BarChartIcon sx={{ width: 16, height: 16, color: themeGlobal.palette.info.main }} />
                 <Typography fontSize={12} fontWeight={700} color={themeGlobal.palette.common.white}>
@@ -390,8 +410,11 @@ export default function Home() {
               </Button>
             </PartComponent>
           </Grid>
-          <Grid item sm={12} md={4} xs={12}>
-            <PartComponent backgroundImage="linear-gradient(to right, rgba(23, 41, 51, 1), rgba(31, 54, 67, 1), rgba(23, 41, 52, 1))">
+          <Grid item md={4} xxs={12}>
+            <PartComponent
+              backgroundImage="linear-gradient(to right, rgba(23, 41, 51, 1), rgba(31, 54, 67, 1), rgba(23, 41, 52, 1))"
+              {...(isSmDown ? { padding: '8px' } : {})}
+            >
               <Stack direction="row" alignItems="center" spacing={1} mb={2.5}>
                 <CalendarMonthIcon sx={{ width: 16, height: 16, color: themeGlobal.palette.info.main }} />
                 <Typography fontSize={12} fontWeight={700} color={themeGlobal.palette.common.white}>
@@ -434,8 +457,11 @@ export default function Home() {
               </Button>
             </PartComponent>
           </Grid>
-          <Grid item sm={12} md={4} xs={12}>
-            <PartComponent backgroundImage="linear-gradient(to right, rgba(23, 41, 51, 1), rgba(31, 54, 67, 1), rgba(23, 41, 52, 1))">
+          <Grid item md={4} xxs={12}>
+            <PartComponent
+              backgroundImage="linear-gradient(to right, rgba(23, 41, 51, 1), rgba(31, 54, 67, 1), rgba(23, 41, 52, 1))"
+              {...(isSmDown ? { padding: '8px' } : {})}
+            >
               <Stack direction="row" alignItems="center" spacing={1} mb={2.5}>
                 <img src="/icons/ico_watchlist.svg" alt="" />
                 <Typography fontSize={12} fontWeight={700} color={themeGlobal.palette.common.white}>

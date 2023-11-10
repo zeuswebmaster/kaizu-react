@@ -22,6 +22,7 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarIcon from '@mui/icons-material/Star';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { PartComponent, MoreSettingMenu } from '../../components';
+import useResponsive from '../../hooks/useResponsive';
 
 const ASSETS = [
   {
@@ -179,17 +180,19 @@ const ASSETS = [
 export default function Assets() {
   const router = useNavigate();
   const themeGlobal = useTheme();
+  const isLgDown = useResponsive('down', 'lg');
+  const isSmDown = useResponsive('down', 'sm');
 
   const [menuMoreSetting, setMenuMoreSetting] = useState<HTMLElement | null>(null);
 
   const StyleMenu = styled(Menu)<MenuProps>(() => ({
     '& .MuiPaper-root': {
       backgroundColor: 'transparent',
-      minWidth: '200px',
+      minWidth: '288px',
       borderRadius: '8px',
       boxShadow: 'none',
       '& ul': {
-        marginTop: '10px',
+        marginTop: isLgDown ? 0 : '10px',
         position: 'relative',
         backgroundImage: 'linear-gradient(to left, rgba(29, 51, 63, 1), rgba(41, 65, 79, 1))',
         borderTopLeftRadius: '8px',
@@ -243,11 +246,19 @@ export default function Assets() {
   };
 
   return (
-    <Stack padding={2}>
-      <PartComponent padding="0" backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))">
-        <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ padding: '22px 26px' }}>
-          <Stack>
-            <Typography variant="h4" color={themeGlobal.palette.common.white} mb={1}>
+    <Stack padding={isSmDown ? 1 : 2}>
+      <PartComponent
+        backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))"
+        {...(isSmDown ? { padding: '8px' } : {})}
+      >
+        <Stack
+          direction={{ sm: 'row', xxs: 'column' }}
+          alignItems={{ sm: 'center', xxs: 'flex-start' }}
+          justifyContent="space-between"
+          sx={{ padding: isSmDown ? '9px 8px 15px 8px' : '22px 26px' }}
+        >
+          <Stack mb={{ xxs: 1 }}>
+            <Typography variant="h4" color={themeGlobal.palette.common.white}>
               All Assets -
             </Typography>
             <Typography variant="caption" color={themeGlobal.palette.grey[200]}>

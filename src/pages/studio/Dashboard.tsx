@@ -3,10 +3,12 @@ import { Grid, Stack, Typography, useTheme } from '@mui/material';
 
 import GridViewSharpIcon from '@mui/icons-material/GridViewSharp';
 import AddCircleOutlineSharpIcon from '@mui/icons-material/AddCircleOutlineSharp';
+import useResponsive from '../../hooks/useResponsive';
 import { MenuSelectItem } from '../../components';
 
 export default function Dashboard() {
   const theme = useTheme();
+  const isSmDown = useResponsive('down', 'sm');
 
   const [menu, setMenu] = useState<HTMLElement | null>(null);
   const [maskFirst, setMaskFirst] = useState<boolean>(false);
@@ -28,12 +30,12 @@ export default function Dashboard() {
   const handleDeleteThird = () => {};
 
   return (
-    <Stack padding={2}>
+    <Stack padding={isSmDown ? 1 : 2}>
       <Typography variant="h4" color={theme.palette.common.white} mb={2}>
         My Dashboards
       </Typography>
-      <Grid container spacing={2}>
-        <Grid item md={3} sm={6}>
+      <Grid container spacing={isSmDown ? 1 : 2}>
+        <Grid item lg={3} sm={6} xxs={12}>
           <MenuSelectItem
             icon={<GridViewSharpIcon sx={{ width: 64, height: 64, color: theme.palette.info.main }} />}
             url="/studio/macro_dashboard"
@@ -49,7 +51,7 @@ export default function Dashboard() {
             kind="dashboard"
           />
         </Grid>
-        <Grid item md={3} sm={6}>
+        <Grid item lg={3} sm={6} xxs={12}>
           <MenuSelectItem
             icon={<GridViewSharpIcon sx={{ width: 64, height: 64, color: theme.palette.info.main }} />}
             url="/studio/macro_dashboard"
@@ -65,7 +67,7 @@ export default function Dashboard() {
             kind="dashboard"
           />
         </Grid>
-        <Grid item md={3} sm={6}>
+        <Grid item lg={3} sm={6} xxs={12}>
           <MenuSelectItem
             icon={<GridViewSharpIcon sx={{ width: 64, height: 64, color: theme.palette.info.main }} />}
             url="/studio/macro_dashboard"
@@ -81,7 +83,7 @@ export default function Dashboard() {
             kind="dashboard"
           />
         </Grid>
-        <Grid item md={3} sm={6}>
+        <Grid item lg={3} sm={6} xxs={12}>
           <MenuSelectItem
             icon={
               <AddCircleOutlineSharpIcon

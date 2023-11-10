@@ -6,6 +6,7 @@ import DeleteForeverSharpIcon from '@mui/icons-material/DeleteForeverSharp';
 import RectangleIcon from '@mui/icons-material/Rectangle';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import { PartComponent } from '..';
+import useResponsive from '../../hooks/useResponsive';
 
 interface MenuSelectItemProps {
   icon: React.ReactNode;
@@ -46,15 +47,16 @@ export default function MenuSelectItem({
 }: MenuSelectItemProps) {
   const router = useNavigate();
   const themeGlobal = useTheme();
+  const isLgDown = useResponsive('down', 'lg');
 
   const StyleMenu = styled(Menu)<MenuProps>(() => ({
     '& .MuiPaper-root': {
       backgroundColor: 'transparent',
-      minWidth: '150px',
+      minWidth: '288px',
       borderRadius: '8px',
       boxShadow: 'none',
       '& ul': {
-        marginTop: '10px',
+        marginTop: isLgDown ? 0 : '10px',
         position: 'relative',
         backgroundImage: 'linear-gradient(to left, rgba(29, 51, 63, 1), rgba(41, 65, 79, 1))',
         borderTopLeftRadius: '8px',

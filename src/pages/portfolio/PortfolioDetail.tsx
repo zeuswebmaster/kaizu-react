@@ -36,7 +36,7 @@ import {
   PartComponent,
   PieChart,
 } from '../../components';
-import useWidth from '../../hooks/useWidth';
+import useResponsive from '../../hooks/useResponsive';
 
 const PORTFOLIO = [
   {
@@ -139,11 +139,6 @@ const pieData = [
   { value: 12.4, label: 'IEAC', color: '#F7AD57' },
 ];
 
-const pieSize = {
-  width: 450,
-  height: 250,
-};
-
 const xAxis = [
   {
     id: 'Years',
@@ -166,7 +161,13 @@ const series1 = [
 
 export default function PortfolioDetail() {
   const themeGlobal = useTheme();
-  const windowWidth = useWidth();
+  const isSmDown = useResponsive('down', 'sm');
+  const isXsDown = useResponsive('down', 'xs');
+
+  const pieSize = {
+    width: isXsDown ? 230 : 350,
+    height: 250,
+  };
 
   const [menuNews, setMenuNews] = useState<HTMLElement | null>(null);
   const [menuCalendar, setMenuCalendar] = useState<HTMLElement | null>(null);
@@ -242,27 +243,31 @@ export default function PortfolioDetail() {
 
   return (
     <>
-      <ModalComponent open={modalTransaction} setOpen={setModalTransaction} width={400}>
+      <ModalComponent open={modalTransaction} setOpen={setModalTransaction} width={isSmDown ? '95%' : '400px'}>
         <Stack padding={1} direction="column" spacing={1} sx={{ width: '100%' }}>
           <AddTransaction setModalTransaction={setModalTransaction} />
         </Stack>
       </ModalComponent>
-      <Stack padding={2}>
+      <Stack padding={isSmDown ? 1 : 2}>
         <PartComponent padding="0" backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(14, 29, 36, 1))">
           <Stack
-            direction="row"
-            alignItems="center"
+            direction={{ md: 'row', xxs: 'column' }}
+            alignItems={{ md: 'center', xxs: 'flex-start' }}
             justifyContent="space-between"
-            sx={{ padding: '22px 26px 0 26px' }}
+            sx={{ padding: isSmDown ? '8px 8px 15px 15px' : '22px 26px 0 26px' }}
           >
-            <Stack>
+            <Stack mb={{ xxs: 2 }}>
               <Stack direction="row" alignItems="center" spacing={1}>
                 <Typography variant="subtitle2" color={themeGlobal.palette.common.white} mb={1}>
                   Nate’s Custom Portfolio
                 </Typography>
                 <ArrowDropDownCircleIcon sx={{ color: themeGlobal.palette.common.white, width: 14, height: 14 }} />
               </Stack>
-              <Stack direction="row" alignItems="center" spacing={1}>
+              <Stack
+                direction={{ sm: 'row', xxs: 'column' }}
+                alignItems={{ sm: 'center', xxs: 'flex-start' }}
+                spacing={1}
+              >
                 <Typography variant="h3" color={themeGlobal.palette.common.white}>
                   $32,159,160
                 </Typography>
@@ -281,7 +286,7 @@ export default function PortfolioDetail() {
                 </Stack>
               </Stack>
             </Stack>
-            <Stack direction="row" alignItems="center" spacing={2}>
+            <Stack direction="row" alignItems="center" spacing={2} ml={{ xxl: 1 }}>
               <Button
                 startIcon={
                   <>
@@ -343,10 +348,13 @@ export default function PortfolioDetail() {
               </Stack>
             </Stack>
           </Stack>
-          <Stack sx={{ padding: '22px 26px' }}>
+          <Stack sx={{ padding: isSmDown ? '8px 12px' : '22px 26px' }}>
             <Grid container spacing={2}>
-              <Grid item md={12} sm={12} xl={6}>
-                <PartComponent backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))">
+              <Grid item xxs={12} xl={6}>
+                <PartComponent
+                  backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))"
+                  {...(isSmDown ? { padding: '8px' } : {})}
+                >
                   <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
                     <Stack direction="row" alignItems="center" spacing={1}>
                       <Typography variant="subtitle2" color={themeGlobal.palette.common.white}>
@@ -383,7 +391,10 @@ export default function PortfolioDetail() {
                 </PartComponent>
               </Grid>
               <Grid item md={12} sm={12} xl={6}>
-                <PartComponent backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))">
+                <PartComponent
+                  backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))"
+                  {...(isSmDown ? { padding: '8px' } : {})}
+                >
                   <Stack direction="row" alignItems="center" justifyContent="space-between" mb={4}>
                     <Stack direction="row" alignItems="center" spacing={1}>
                       <Typography variant="subtitle2" color={themeGlobal.palette.common.white}>
@@ -407,21 +418,30 @@ export default function PortfolioDetail() {
                       </Stack>
                     </Stack>
                   </Stack>
-                  <Stack position="relative">
+                  <Stack direction={{ sm: 'row', xxs: 'column' }} alignItems="center" sx={{ width: '100%' }}>
                     <PieChart data={pieData} size={pieSize} />
-                    <Stack
-                      position="absolute"
-                      sx={{ right: windowWidth > 1535 || windowWidth <= 1024 ? 0 : '200px', top: '39px' }}
-                    >
+                    <Stack sx={{ marginLeft: isSmDown ? 0 : '-80px' }} mt={{ xxs: 2 }}>
                       {pieData.map((item) => (
-                        <Typography
-                          variant="caption"
-                          color={themeGlobal.palette.common.white}
+                        <Stack
+                          direction="row"
+                          alignItems="center"
+                          justifyContent="space-between"
+                          mb={2}
+                          spacing={6}
                           key={item.label}
-                          sx={{ marginBottom: '21px' }}
                         >
-                          {item.value}%
-                        </Typography>
+                          <Stack direction="row" alignItems="center" spacing={1}>
+                            <Stack
+                              sx={{ width: 15, height: 15, bgcolor: `${item.color}`, borderRadius: '100%' }}
+                            ></Stack>
+                            <Typography variant="overline" color={themeGlobal.palette.common.white}>
+                              {item.label}
+                            </Typography>
+                          </Stack>
+                          <Typography variant="caption" color={themeGlobal.palette.common.white}>
+                            {item.value}%
+                          </Typography>
+                        </Stack>
                       ))}
                     </Stack>
                   </Stack>

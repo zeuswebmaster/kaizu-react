@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { Grid, Stack, Typography, useTheme } from '@mui/material';
 import AddCircleOutlineSharpIcon from '@mui/icons-material/AddCircleOutlineSharp';
 import { MenuSelectItem } from '../../components';
+import useResponsive from '../../hooks/useResponsive';
 
 export default function Watchlists() {
   const theme = useTheme();
+  const isSmDown = useResponsive('down', 'sm');
 
   const [menu, setMenu] = useState<HTMLElement | null>(null);
   const [maskFirst, setMaskFirst] = useState<boolean>(false);
@@ -26,12 +28,12 @@ export default function Watchlists() {
   const handleDeleteThird = () => {};
 
   return (
-    <Stack padding={2}>
+    <Stack padding={isSmDown ? 1 : 2}>
       <Typography variant="h4" color={theme.palette.common.white} mb={2}>
         My Watchlists
       </Typography>
-      <Grid container spacing={2}>
-        <Grid item md={3} sm={6}>
+      <Grid container spacing={isSmDown ? 1 : 2}>
+        <Grid item lg={3} sm={6} xxs={12}>
           <MenuSelectItem
             icon={<img src="/icons/asset-watchlist.svg" alt="" />}
             url="/studio/assets"
@@ -48,7 +50,7 @@ export default function Watchlists() {
             kind="watchlist"
           />
         </Grid>
-        <Grid item md={3} sm={6}>
+        <Grid item lg={3} sm={6} xxs={12}>
           <MenuSelectItem
             icon={<img src="/icons/asset-watchlist.svg" alt="" />}
             url="/studio/assets"
@@ -65,7 +67,7 @@ export default function Watchlists() {
             kind="watchlist"
           />
         </Grid>
-        <Grid item md={3} sm={6}>
+        <Grid item lg={3} sm={6} xxs={12}>
           <MenuSelectItem
             icon={<img src="/icons/asset-watchlist.svg" alt="" />}
             url="/studio/assets"
@@ -82,7 +84,7 @@ export default function Watchlists() {
             kind="watchlist"
           />
         </Grid>
-        <Grid item md={3} sm={6}>
+        <Grid item lg={3} sm={6} xxs={12}>
           <MenuSelectItem
             icon={
               <AddCircleOutlineSharpIcon
