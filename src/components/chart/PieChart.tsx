@@ -1,5 +1,5 @@
-import { useTheme } from '@mui/material';
 import { PieChart as PieChartComponent } from '@mui/x-charts';
+import useResponsive from '../../hooks/useResponsive';
 
 interface PieChartProps {
   data: Array<{ label: string; value: number; color: string }>;
@@ -7,29 +7,24 @@ interface PieChartProps {
 }
 
 export default function PieChart({ data, size }: PieChartProps) {
-  const theme = useTheme();
+  const isSmDown = useResponsive('down', 'sm');
 
   return (
     <PieChartComponent
-      series={[{ data, innerRadius: 100 }]}
+      series={[{ data, innerRadius: 100, outerRadius: 85 }]}
       {...size}
       slotProps={{
         legend: {
-          labelStyle: {
-            fontSize: 12,
-            fontWeight: 600,
-            fill: theme.palette.common.white,
-          },
-          markGap: 8,
-          itemMarkWidth: 14,
-          itemMarkHeight: 14,
-          itemGap: 25,
+          hidden: true,
         },
       }}
       sx={{
         '.MuiChartsLegend-mark': {
           rx: 10,
         },
+      }}
+      margin={{
+        left: isSmDown ? 100 : -50,
       }}
     />
   );

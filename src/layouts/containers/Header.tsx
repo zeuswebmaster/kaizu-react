@@ -26,6 +26,7 @@ import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
 import PersonIcon from '@mui/icons-material/Person';
 import SettingsIcon from '@mui/icons-material/Settings';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import useResponsive from '../../hooks/useResponsive';
 import { DrawerItem, ThemeItem } from '../../components';
 import { useAuthStore } from '../../features';
 
@@ -59,6 +60,9 @@ export default function Header() {
   const router = useNavigate();
   const themeGlobal = useTheme();
   const logout = useAuthStore((state) => state.logout);
+
+  const isMdDown = useResponsive('down', 'md');
+  const isSmDown = useResponsive('down', 'sm');
 
   const users = [
     {
@@ -108,11 +112,11 @@ export default function Header() {
   const StyleMenu = styled(Menu)<MenuProps>(({ theme }) => ({
     '& .MuiPaper-root': {
       backgroundColor: 'transparent',
-      minWidth: '200px',
+      minWidth: '288px',
       borderRadius: '8px',
       '& ul': {
         backgroundColor: theme.palette.secondary.main,
-        marginTop: '10px',
+        marginTop: isMdDown ? 0 : '10px',
         borderTopLeftRadius: '4px',
         borderTopRightRadius: '4px',
       },
@@ -152,7 +156,7 @@ export default function Header() {
       <Toolbar
         sx={{
           minHeight: '42px !important',
-          padding: '10px 35px !important',
+          padding: isSmDown ? '10px 15px !important' : '10px 35px !important',
           backgroundColor: themeGlobal.palette.background.paper,
           borderBottom: `1px solid ${themeGlobal.palette.grey[700]}`,
         }}
@@ -198,16 +202,21 @@ export default function Header() {
                     height: 8,
                     top: '-12px',
                     transform: 'rotate(45deg)',
-                    left: '4%',
+                    left: '3%',
                   },
                 }}
               />
+
               {notifications.map((item) => (
                 <MenuItem key={item.id} onClick={handleCloseNotificationsMenu}>
-                  <Stack direction="row" spacing={1} alignItems="center">
-                    <Stack>{item.icon}</Stack>
-                    <Stack>
-                      <Typography fontSize={14} fontWeight={500} color={themeGlobal.palette.common.white}>
+                  <Stack direction="row" spacing={1} alignItems="center" sx={{ width: '100%' }}>
+                    <Stack sx={{ width: '10%' }}>{item.icon}</Stack>
+                    <Stack sx={{ width: '90%' }}>
+                      <Typography
+                        variant="body2"
+                        color={themeGlobal.palette.common.white}
+                        sx={{ display: 'block', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}
+                      >
                         {item.primaryText}
                       </Typography>
                       <Typography fontSize={12} color={themeGlobal.palette.grey[500_80]}>
@@ -268,7 +277,7 @@ export default function Header() {
                     height: 8,
                     top: '-12px',
                     transform: 'rotate(45deg)',
-                    left: '3%',
+                    left: '10%',
                   },
                 }}
               />
@@ -315,7 +324,7 @@ export default function Header() {
                     height: 8,
                     top: '-12px',
                     transform: 'rotate(45deg)',
-                    left: '4%',
+                    left: '25%',
                   },
                 }}
               />
@@ -344,14 +353,18 @@ export default function Header() {
               ))}
             </StyleMenu>
           </Stack>
-          <Stack direction="row" spacing={1}>
-            <Typography fontSize={13} color={themeGlobal.palette.info.main} fontWeight={500}>
-              Sun Aug 13
-            </Typography>
-            <Typography fontSize={13} color={themeGlobal.palette.common.white} fontWeight={500}>
-              04:36
-            </Typography>
-          </Stack>
+
+          {!isMdDown && (
+            <Stack direction="row" spacing={1}>
+              <Typography fontSize={13} color={themeGlobal.palette.info.main} fontWeight={500}>
+                Sun Aug 13
+              </Typography>
+              <Typography fontSize={13} color={themeGlobal.palette.common.white} fontWeight={500}>
+                04:36
+              </Typography>
+            </Stack>
+          )}
+
           <Stack
             direction="row"
             alignItems="center"
@@ -375,6 +388,7 @@ export default function Header() {
                   boxSizing: 'border-box',
                   top: '50px',
                   maxHeight: 'calc(100% - 110px)',
+                  width: isMdDown ? '90%' : 450,
                   height: 'auto',
                   overflowY: 'auto',
                   boxShadow:

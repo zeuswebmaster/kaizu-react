@@ -5,29 +5,50 @@ import { Stack } from '@mui/material';
 
 import { SidebarMenu } from '..';
 import useWidth from '../../hooks/useWidth';
+import useResponsive from '../../hooks/useResponsive';
 
 export default function Wrapper() {
   const windowWidth = useWidth();
+  const isXXXL = useResponsive('up', 'xxxl');
+  const isXXLAndXXXL = useResponsive('between', 'xxl', 'xxxl');
+  const isXLAndXXL = useResponsive('between', 'xl', 'xxl');
+  const isXLDown = useResponsive('down', 'xl');
+  const isXLUp = useResponsive('up', 'xl');
+  const isXsDown = useResponsive('down', 'xs');
+  const isSmDown = useResponsive('down', 'sm');
 
-  const [marginValue, setMarginValue] = useState<string>('-200px');
+  const [marginValue, setMarginValue] = useState<string>('-270px');
+  const [paddingLeft, setPaddingLeft] = useState<string>('48px');
+  const [subMarginLeft, setSubMarginLeft] = useState<string>('');
 
   useLayoutEffect(() => {
-    if (windowWidth > 1800) {
-      setMarginValue('-200px');
+    if (isXLUp) {
+      setSubMarginLeft('240px');
+    } else if (isXsDown) {
+      setSubMarginLeft('82px');
+    } else if (isSmDown) {
+      setSubMarginLeft('85px');
+    } else {
+      setSubMarginLeft('104px');
+    }
+
+    if (isXXXL) {
+      setMarginValue('-270px');
       return;
     }
 
-    if (windowWidth > 1700) {
-      setMarginValue('-160px');
+    if (isXXLAndXXXL) {
+      setMarginValue('-100px');
       return;
     }
 
-    if (windowWidth > 1800) {
-      setMarginValue('-130px');
+    if (isXLAndXXL) {
+      setMarginValue('-40px');
       return;
     }
 
     setMarginValue('0');
+    if (isXLDown) setPaddingLeft('5px');
   }, [windowWidth]);
 
   return (
@@ -35,7 +56,10 @@ export default function Wrapper() {
       direction="row"
       justifyContent="center"
       sx={{
-        padding: '48px',
+        paddingTop: '48px',
+        paddingRight: '48px',
+        paddingBottom: '48px',
+        paddingLeft,
         marginTop: '45px',
         marginLeft: marginValue,
       }}
@@ -45,9 +69,10 @@ export default function Wrapper() {
       </Stack>
       <Stack
         sx={{
-          width: 1220,
+          width: '100%',
+          maxWidth: 1220,
           marginBottom: '52px !important',
-          marginLeft: windowWidth >= 1200 ? '259px' : '104px',
+          marginLeft: subMarginLeft,
         }}
       >
         <Stack

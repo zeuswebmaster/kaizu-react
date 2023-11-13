@@ -25,6 +25,7 @@ import ForwardIcon from '@mui/icons-material/Forward';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ArrowDropDownCircleIcon from '@mui/icons-material/ArrowDropDownCircle';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import useResponsive from '../../hooks/useResponsive';
 import {
   KindMenu,
   PartComponent,
@@ -229,6 +230,8 @@ const series = [
 
 export default function MacroDashboard() {
   const themeGlobal = useTheme();
+  const isLgDown = useResponsive('down', 'lg');
+  const isSmDown = useResponsive('down', 'sm');
 
   const [menuKind, setMenuKind] = useState<HTMLElement | null>(null);
   const [menuController, setMenuController] = useState<HTMLElement | null>(null);
@@ -239,11 +242,11 @@ export default function MacroDashboard() {
   const StyleMenu = styled(Menu)<MenuProps>(() => ({
     '& .MuiPaper-root': {
       backgroundColor: 'transparent',
-      minWidth: '200px',
+      minWidth: '288px',
       borderRadius: '8px',
       boxShadow: 'none',
       '& ul': {
-        marginTop: '10px',
+        marginTop: isLgDown ? 0 : '10px',
         position: 'relative',
         backgroundImage: 'linear-gradient(to left, rgba(29, 51, 63, 1), rgba(41, 65, 79, 1))',
         borderTopLeftRadius: '8px',
@@ -315,7 +318,7 @@ export default function MacroDashboard() {
   };
 
   return (
-    <Stack padding={2}>
+    <Stack padding={isSmDown ? 1 : 2}>
       <Stack direction="row" alignItems="center" spacing={1.5} mb={2}>
         <GridViewSharpIcon sx={{ width: 17, height: 17, color: themeGlobal.palette.info.main }} />
         <Typography variant="h4" color={themeGlobal.palette.common.white}>
@@ -331,10 +334,18 @@ export default function MacroDashboard() {
         <KindMenu StyleMenu={StyleMenu} menuKind={menuKind as HTMLElement} onClose={handleCloseMenu} />
       </Stack>
       <Grid container spacing={2}>
-        <Grid item md={6} sm={12}>
-          <PartComponent backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))">
-            <Stack direction="row" alignItems="center" justifyContent="space-between" mb={4}>
-              <Stack direction="row" alignItems="center" spacing={1}>
+        <Grid item md={6} xxs={12}>
+          <PartComponent
+            backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))"
+            {...(isSmDown ? { padding: '8px' } : {})}
+          >
+            <Stack
+              direction={{ lg: 'row', xxs: 'column' }}
+              alignItems={{ lg: 'center', xxs: 'flex-start' }}
+              justifyContent="space-between"
+              mb={4}
+            >
+              <Stack direction="row" alignItems={{ xxs: 'flex-start' }} spacing={1} mb={{ xxs: 1 }}>
                 <Typography variant="caption" color={themeGlobal.palette.common.white}>
                   News
                 </Typography>
@@ -409,10 +420,18 @@ export default function MacroDashboard() {
             </TableContainer>
           </PartComponent>
         </Grid>
-        <Grid item md={6} sm={12}>
-          <PartComponent backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))">
-            <Stack direction="row" alignItems="center" justifyContent="space-between" mb={4}>
-              <Stack direction="row" alignItems="center" spacing={1}>
+        <Grid item md={6} xxs={12}>
+          <PartComponent
+            backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))"
+            {...(isSmDown ? { padding: '8px' } : {})}
+          >
+            <Stack
+              direction={{ xs: 'row', xxs: 'column' }}
+              alignItems={{ xs: 'center', xxs: 'flex-start' }}
+              justifyContent="space-between"
+              mb={4}
+            >
+              <Stack direction="row" alignItems="center" spacing={1} mb={{ xxs: 1 }}>
                 <Typography variant="caption" color={themeGlobal.palette.common.white}>
                   Screener: FX
                 </Typography>
@@ -490,10 +509,18 @@ export default function MacroDashboard() {
             </TableContainer>
           </PartComponent>
         </Grid>
-        <Grid item md={6} sm={12}>
-          <PartComponent backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))">
-            <Stack direction="row" alignItems="flex-start" justifyContent="space-between" mb={1}>
-              <Stack>
+        <Grid item md={6} xxs={12}>
+          <PartComponent
+            backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))"
+            {...(isSmDown ? { padding: '8px' } : {})}
+          >
+            <Stack
+              direction={{ lg: 'row', xxs: 'column' }}
+              alignItems="flex-start"
+              justifyContent="space-between"
+              mb={1}
+            >
+              <Stack mb={{ xxs: 1 }}>
                 <Stack direction="row" alignItems="center" spacing={1} mb={0.5}>
                   <Typography variant="caption" color={themeGlobal.palette.common.white}>
                     Bitcoin Price
@@ -574,8 +601,11 @@ export default function MacroDashboard() {
             </Stack>
           </PartComponent>
         </Grid>
-        <Grid item md={6} sm={12}>
-          <PartComponent backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))">
+        <Grid item md={6} xxs={12}>
+          <PartComponent
+            backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))"
+            {...(isSmDown ? { padding: '8px' } : {})}
+          >
             <Stack direction="row" alignItems="flex-start" justifyContent="space-between" mb={1}>
               <Stack>
                 <Stack direction="row" alignItems="center" spacing={1} mb={0.5}>

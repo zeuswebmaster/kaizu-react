@@ -11,6 +11,19 @@ type Context = {
 
 const AppThemeContext = createContext<Context | null>(null);
 
+declare module '@mui/material/styles' {
+  interface BreakpointOverrides {
+    xxs: true;
+    xs: true;
+    sm: true;
+    md: true;
+    lg: true;
+    xl: true;
+    xxl: true;
+    xxxl: true;
+  }
+}
+
 export default function AppThemeProvider({ children }: { children: ReactNode }) {
   const [themeMode, setThemeMode] = useState<'light' | 'dark'>('light');
 
@@ -18,6 +31,7 @@ export default function AppThemeProvider({ children }: { children: ReactNode }) 
     () => ({
       palette: themeMode === 'light' ? palette.light : palette.dark,
       typography,
+      breakpoints: { values: { xxs: 320, xs: 480, sm: 576, md: 768, lg: 992, xl: 1200, xxl: 1600, xxxl: 1800 } },
       shadows: themeMode === 'light' ? shadows.light : shadows.dark,
     }),
     [themeMode]

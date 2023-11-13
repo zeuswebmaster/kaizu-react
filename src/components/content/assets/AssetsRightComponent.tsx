@@ -27,6 +27,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 
 import { CalendarMenu, ControllerMenu, LineChart, MoreSettingMenu, NewsMenu } from '../..';
 import PartComponent from '../PartComponent';
+import useResponsive from '../../../hooks/useResponsive';
 
 const SELECT_ITEMS = [
   'On-Chain Intelligence',
@@ -213,6 +214,8 @@ const NEWS = [
 
 export default function AssetsRightComponent() {
   const themeGlobal = useTheme();
+  const isLgDown = useResponsive('down', 'lg');
+  const isSmDown = useResponsive('down', 'sm');
 
   const [selectItem, setSelectItem] = useState<string>('On-Chain Intelligence');
   const [menuController, setMenuController] = useState<HTMLElement | null>(null);
@@ -223,11 +226,11 @@ export default function AssetsRightComponent() {
   const StyleMenu = styled(Menu)<MenuProps>(() => ({
     '& .MuiPaper-root': {
       backgroundColor: 'transparent',
-      minWidth: '200px',
+      minWidth: '288px',
       borderRadius: '8px',
       boxShadow: 'none',
       '& ul': {
-        marginTop: '10px',
+        marginTop: isLgDown ? 0 : '10px',
         position: 'relative',
         backgroundImage: 'linear-gradient(to left, rgba(29, 51, 63, 1), rgba(41, 65, 79, 1))',
         borderTopLeftRadius: '8px',
@@ -297,9 +300,9 @@ export default function AssetsRightComponent() {
   };
 
   return (
-    <Stack direction="column" padding={2} spacing={2}>
+    <Stack direction="column" padding={isSmDown ? 1 : 2} spacing={2}>
       <Stack>
-        <Grid container spacing={1} direction="row" justifyContent="flex-end">
+        <Grid container spacing={1} direction="row" justifyContent={{ md: 'flex-end', xxs: 'flex-start' }}>
           {SELECT_ITEMS.map((item: string) => (
             <Grid item key={item}>
               <Button
@@ -321,9 +324,17 @@ export default function AssetsRightComponent() {
         </Grid>
       </Stack>
       <Stack>
-        <PartComponent backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))">
-          <Stack direction="row" alignItems="center" justifyContent="space-between" mb={1}>
-            <Stack direction="row" alignItems="center" spacing={1}>
+        <PartComponent
+          backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))"
+          {...(isSmDown ? { padding: '8px' } : {})}
+        >
+          <Stack
+            direction={{ lg: 'row', xxs: 'column' }}
+            alignItems={{ lg: 'center', xxs: 'flex-start' }}
+            justifyContent="space-between"
+            mb={1}
+          >
+            <Stack direction="row" alignItems="center" spacing={1} mb={{ xxs: 1 }}>
               <Stack
                 direction="row"
                 alignItems="center"
@@ -411,9 +422,17 @@ export default function AssetsRightComponent() {
         </PartComponent>
       </Stack>
       <Stack>
-        <PartComponent backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))">
-          <Stack direction="row" alignItems="center" justifyContent="space-between" mb={1}>
-            <Typography variant="caption" fontWeight={600} color={themeGlobal.palette.common.white}>
+        <PartComponent
+          backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))"
+          {...(isSmDown ? { padding: '8px' } : {})}
+        >
+          <Stack
+            direction={{ lg: 'row', xxs: 'column' }}
+            alignItems={{ lg: 'center', xxs: 'flex-start' }}
+            justifyContent="space-between"
+            mb={1}
+          >
+            <Typography variant="caption" fontWeight={600} color={themeGlobal.palette.common.white} mb={{ xxs: 1 }}>
               About Bitcoin
             </Typography>
             <Stack>
@@ -442,9 +461,12 @@ export default function AssetsRightComponent() {
         </PartComponent>
       </Stack>
       <Stack>
-        <PartComponent backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))">
-          <Stack direction="row" alignItems="flex-start" justifyContent="space-between" mb={1}>
-            <Stack>
+        <PartComponent
+          backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))"
+          {...(isSmDown ? { padding: '8px' } : {})}
+        >
+          <Stack direction={{ lg: 'row', xxs: 'column' }} alignItems="flex-start" justifyContent="space-between" mb={1}>
+            <Stack mb={{ xxs: 1 }}>
               <Stack direction="row" alignItems="center" spacing={1} mb={0.5}>
                 <Typography variant="caption" color={themeGlobal.palette.common.white}>
                   Bitcoin Average Transaction Fee
@@ -509,10 +531,18 @@ export default function AssetsRightComponent() {
       </Stack>
       <Stack>
         <Grid container spacing={2}>
-          <Grid item md={6} sm={12}>
-            <PartComponent backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))">
-              <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="caption" color={themeGlobal.palette.common.white}>
+          <Grid item lg={6} xxs={12}>
+            <PartComponent
+              backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))"
+              {...(isSmDown ? { padding: '8px' } : {})}
+            >
+              <Stack
+                direction={{ lg: 'row', xxs: 'column' }}
+                alignItems={{ lg: 'center', xxs: 'flex-start' }}
+                justifyContent="space-between"
+                mb={2}
+              >
+                <Typography variant="caption" color={themeGlobal.palette.common.white} mb={{ xxs: 1 }}>
                   Bitcoin Calendar
                 </Typography>
                 <Stack direction="row" alignItems="center" spacing={1}>
@@ -575,10 +605,18 @@ export default function AssetsRightComponent() {
               </TableContainer>
             </PartComponent>
           </Grid>
-          <Grid item md={6} sm={12}>
-            <PartComponent backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))">
-              <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Stack direction="row" alignItems="center" spacing={1}>
+          <Grid item lg={6} xxs={12}>
+            <PartComponent
+              backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))"
+              {...(isSmDown ? { padding: '8px' } : {})}
+            >
+              <Stack
+                direction={{ lg: 'row', xxs: 'column' }}
+                alignItems={{ lg: 'center', xxs: 'flex-start' }}
+                justifyContent="space-between"
+                mb={2}
+              >
+                <Stack direction="row" alignItems="center" spacing={1} mb={{ xxs: 1 }}>
                   <Typography variant="caption" color={themeGlobal.palette.common.white}>
                     Bitcoin Mining Companies
                   </Typography>
@@ -671,9 +709,17 @@ export default function AssetsRightComponent() {
         </Grid>
       </Stack>
       <Stack>
-        <PartComponent backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))">
-          <Stack direction="row" alignItems="center" justifyContent="space-between" mb={3}>
-            <Stack direction="row" alignItems="center" spacing={1}>
+        <PartComponent
+          backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))"
+          {...(isSmDown ? { padding: '8px' } : {})}
+        >
+          <Stack
+            direction={{ lg: 'row', xxs: 'column' }}
+            alignItems={{ lg: 'center', xxs: 'flex-start' }}
+            justifyContent="space-between"
+            mb={3}
+          >
+            <Stack direction="row" alignItems="center" spacing={1} mb={{ xxs: 1 }}>
               <Typography variant="caption" color={themeGlobal.palette.common.white}>
                 Related News
               </Typography>

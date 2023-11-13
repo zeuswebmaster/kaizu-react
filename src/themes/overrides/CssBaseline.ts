@@ -15,7 +15,7 @@ export default function CssBaseline(theme: Theme) {
           WebkitOverflowScrolling: 'touch',
         },
         body: {
-          minWidth: '768px',
+          width: '100%',
           minHeight: '100vh',
         },
         '#root': {

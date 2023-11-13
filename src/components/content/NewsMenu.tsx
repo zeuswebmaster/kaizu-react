@@ -1,4 +1,5 @@
 import { Stack, Typography, MenuProps, Box, useTheme, styled, Menu } from '@mui/material';
+import useResponsive from '../../hooks/useResponsive';
 
 interface NewsMenuProps {
   menuKind: HTMLElement;
@@ -7,15 +8,16 @@ interface NewsMenuProps {
 
 export default function NewsMenu({ menuKind, onClose }: NewsMenuProps) {
   const theme = useTheme();
+  const isLgDown = useResponsive('down', 'lg');
 
   const StyleMenu = styled(Menu)<MenuProps>(() => ({
     '& .MuiPaper-root': {
       backgroundColor: 'transparent',
-      minWidth: '500px',
+      minWidth: '288px',
       borderRadius: '8px',
       boxShadow: 'none',
       '& ul': {
-        marginTop: '10px',
+        marginTop: isLgDown ? 0 : '10px',
         position: 'relative',
         backgroundImage: 'linear-gradient(to left, rgba(29, 51, 63, 1), rgba(41, 65, 79, 1))',
         borderTopLeftRadius: '8px',
@@ -57,7 +59,7 @@ export default function NewsMenu({ menuKind, onClose }: NewsMenuProps) {
           },
         }}
       />
-      <Stack sx={{ padding: '65px 25px 25px 25px' }}>
+      <Stack sx={{ padding: isLgDown ? '25px 15px 15px 15px' : '65px 25px 25px 25px' }}>
         <Typography variant="body1" color={theme.palette.grey[400]}>
           AUG 3, 2023 - BITCOIN PRICE
         </Typography>
