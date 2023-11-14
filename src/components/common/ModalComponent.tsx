@@ -5,9 +5,12 @@ interface ModalComponentProps {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   children: React.ReactNode;
   width?: string;
+  bgColor?: string;
 }
 
-export default function ModalComponent({ open, setOpen, children, width }: ModalComponentProps) {
+const bgGradient = 'linear-gradient(to top, rgba(15, 29, 37, 1), rgba(26, 51, 64, 1))';
+
+export default function ModalComponent({ open, setOpen, children, width, bgColor }: ModalComponentProps) {
   const style = {
     position: 'absolute',
     top: '50%',
@@ -15,7 +18,7 @@ export default function ModalComponent({ open, setOpen, children, width }: Modal
     transform: 'translate(-50%, -50%)',
     width: { width },
     boxShadow: '0 2px 4px 0 rgb(0 35 11 / 20%)',
-    backgroundImage: 'linear-gradient(to top, rgba(15, 29, 37, 1), rgba(26, 51, 64, 1))',
+    ...(bgColor ? { backgroundColor: bgColor } : { backgroundImage: bgGradient }),
     borderRadius: '6px',
   };
 
