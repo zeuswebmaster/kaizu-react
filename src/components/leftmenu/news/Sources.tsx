@@ -1,5 +1,36 @@
 import { Button, Checkbox, FormControlLabel, Stack, Typography, useTheme } from '@mui/material';
 
+const SOURCES = [
+  {
+    label: 'All',
+    checked: false,
+  },
+  {
+    label: 'Bitcoin Magazine',
+    checked: false,
+  },
+  {
+    label: 'Bloomberg',
+    checked: false,
+  },
+  {
+    label: 'CNBC CoinDesk',
+    checked: false,
+  },
+  {
+    label: 'CryptoSlate',
+    checked: false,
+  },
+  {
+    label: 'NASDAQ',
+    checked: false,
+  },
+  {
+    label: 'The Street Reuters',
+    checked: false,
+  },
+];
+
 export default function Sources() {
   const theme = useTheme();
 
@@ -18,140 +49,30 @@ export default function Sources() {
       <Typography variant="subtitle2" color={theme.palette.common.white}>
         Sources
       </Typography>
-      <FormControlLabel
-        control={
-          <Checkbox
-            size="small"
-            sx={{
-              color: '#A4C7D4',
-              paddingBottom: 0,
-              '&.Mui-checked': {
+      {SOURCES.map((item) => (
+        <FormControlLabel
+          key={item.label}
+          control={
+            <Checkbox
+              size="small"
+              sx={{
                 color: '#A4C7D4',
-              },
-            }}
-          />
-        }
-        label={
-          <Typography variant="body2" color={theme.palette.common.white} mt={1}>
-            All
-          </Typography>
-        }
-      />
-      <FormControlLabel
-        control={
-          <Checkbox
-            size="small"
-            sx={{
-              color: '#A4C7D4',
-              paddingBottom: 0,
-              '&.Mui-checked': {
-                color: '#A4C7D4',
-              },
-            }}
-          />
-        }
-        label={
-          <Typography variant="body2" color={theme.palette.common.white} mt={1}>
-            Bitcoin Magazine
-          </Typography>
-        }
-      />
-      <FormControlLabel
-        control={
-          <Checkbox
-            size="small"
-            sx={{
-              color: '#A4C7D4',
-              paddingBottom: 0,
-              '&.Mui-checked': {
-                color: '#A4C7D4',
-              },
-            }}
-          />
-        }
-        label={
-          <Typography variant="body2" color={theme.palette.common.white} mt={1}>
-            Bloomberg
-          </Typography>
-        }
-      />
-      <FormControlLabel
-        control={
-          <Checkbox
-            size="small"
-            sx={{
-              color: '#A4C7D4',
-              paddingBottom: 0,
-              '&.Mui-checked': {
-                color: '#A4C7D4',
-              },
-            }}
-          />
-        }
-        label={
-          <Typography variant="body2" color={theme.palette.common.white} mt={1}>
-            CNBCCoinDesk
-          </Typography>
-        }
-      />
-      <FormControlLabel
-        control={
-          <Checkbox
-            size="small"
-            sx={{
-              color: '#A4C7D4',
-              paddingBottom: 0,
-              '&.Mui-checked': {
-                color: '#A4C7D4',
-              },
-            }}
-          />
-        }
-        label={
-          <Typography variant="body2" color={theme.palette.common.white} mt={1}>
-            CryptoSlate
-          </Typography>
-        }
-      />
-      <FormControlLabel
-        control={
-          <Checkbox
-            size="small"
-            sx={{
-              color: '#A4C7D4',
-              paddingBottom: 0,
-              '&.Mui-checked': {
-                color: '#A4C7D4',
-              },
-            }}
-          />
-        }
-        label={
-          <Typography variant="body2" color={theme.palette.common.white} mt={1}>
-            NASDAQ
-          </Typography>
-        }
-      />
-      <FormControlLabel
-        control={
-          <Checkbox
-            size="small"
-            sx={{
-              color: '#A4C7D4',
-              paddingBottom: 0,
-              '&.Mui-checked': {
-                color: '#A4C7D4',
-              },
-            }}
-          />
-        }
-        label={
-          <Typography variant="body2" color={theme.palette.common.white} mt={1}>
-            The StreetReuters
-          </Typography>
-        }
-      />
-      <Button sx={{ width: '70px', paddingLeft: 0 }}>
+                paddingBottom: 0,
+                '&.Mui-checked': {
+                  color: '#A4C7D4',
+                },
+              }}
+            />
+          }
+          label={
+            <Typography variant="caption" color={theme.palette.common.white} mt={1}>
+              {item.label}
+            </Typography>
+          }
+        />
+      ))}
+
+      <Button sx={{ width: '70px', paddingLeft: 0, marginLeft: '20px' }}>
         <Typography variant="caption" color={theme.palette.common.white} sx={{ textDecoration: 'underline' }}>
           See more
         </Typography>

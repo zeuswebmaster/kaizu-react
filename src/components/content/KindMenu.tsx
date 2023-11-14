@@ -9,9 +9,10 @@ interface DashboardKindMenuProps {
   StyleMenu: StyledComponent<MenuProps>;
   menuKind: HTMLElement;
   onClose: (index: string) => void;
+  view: string;
 }
 
-export default function DashboardKindMenu({ menuKind, onClose, StyleMenu }: DashboardKindMenuProps) {
+export default function DashboardKindMenu({ menuKind, onClose, StyleMenu, view }: DashboardKindMenuProps) {
   const theme = useTheme();
   const isSmDown = useResponsive('down', 'sm');
 
@@ -70,17 +71,17 @@ export default function DashboardKindMenu({ menuKind, onClose, StyleMenu }: Dash
       ></Stack>
       <MenuItem onClick={() => onClose('kind')}>
         <Typography variant="subtitle2" color={theme.palette.common.white}>
-          Macro Dashboard
+          {view === 'macro_dashboard' ? 'Macro Dashboard' : 'My Custom Calendar'}
         </Typography>
       </MenuItem>
       <MenuItem onClick={() => onClose('kind')}>
         <Typography variant="subtitle2" color={theme.palette.common.white}>
-          Asia Tech Stocks
+          {view === 'macro_dashboard' ? 'Asia Tech Stocks' : 'Bitcoin Calendar'}
         </Typography>
       </MenuItem>
       <MenuItem onClick={() => onClose('kind')}>
         <Typography variant="subtitle2" color={theme.palette.common.white}>
-          Inflation Watch
+          {view === 'macro_dashboard' ? 'Inflation Watch' : 'U.S. Tech Stocks'}
         </Typography>
       </MenuItem>
       <MenuItem onClick={() => onClose('kind')}>

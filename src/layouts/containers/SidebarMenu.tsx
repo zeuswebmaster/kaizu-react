@@ -12,12 +12,11 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import MenuIcon from '@mui/icons-material/Menu';
 import { MenuItem as Items } from '../../types/global';
 import useWidth from '../../hooks/useWidth';
-import { MenuNormal, MenuSmall, SmallContent, Sources, Trending } from '../../components';
+import { CalendarComponent, MenuNormal, MenuSmall, SmallContent, Sources, Trending } from '../../components';
 
 export default function SidebarMenu() {
   const router = useNavigate();
   const { pathname } = useLocation();
-
   const theme = useTheme();
   const windowWidth = useWidth();
 
@@ -207,7 +206,7 @@ export default function SidebarMenu() {
               fontSize={12}
               fontWeight={500}
               color={
-                currentKey.search('/calendar/macro_calendar') !== -1
+                currentKey.search('/calendar/my_calendar') !== -1
                   ? theme.palette.warning.main
                   : theme.palette.common.white
               }
@@ -215,12 +214,12 @@ export default function SidebarMenu() {
               Macro Calendar
             </Typography>
           ),
-          key: '/calendar/macro_calendar',
+          key: '/calendar/my_calendar',
           icon: (
             <MenuIcon
               sx={{
                 color: `${
-                  currentKey.search('/calendar/macro_calendar') !== -1
+                  currentKey.search('/calendar/my_calendar') !== -1
                     ? theme.palette.warning.main
                     : theme.palette.info.main
                 }`,
@@ -377,7 +376,15 @@ export default function SidebarMenu() {
         )}
 
         {windowWidth < 1200 && pathname?.search('/news') !== -1 && (
-          <SmallContent selected={selectedNewsMenu} setSelected={setSelectedNewsMenu} />
+          <SmallContent selected={selectedNewsMenu} setSelected={setSelectedNewsMenu} view="news" />
+        )}
+
+        {windowWidth >= 1200 && pathname?.search('/calendar') !== -1 && pathname !== '/calendar/my_calendar' && (
+          <CalendarComponent />
+        )}
+
+        {windowWidth < 1200 && pathname?.search('/calendar') !== -1 && pathname !== '/calendar/my_calendar' && (
+          <SmallContent selected={selectedNewsMenu} setSelected={setSelectedNewsMenu} view="calendar" />
         )}
       </Stack>
     </>
