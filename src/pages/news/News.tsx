@@ -23,6 +23,7 @@ import TuneRoundedIcon from '@mui/icons-material/TuneRounded';
 import ForwardIcon from '@mui/icons-material/Forward';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { ControllerMenu, MoreSettingMenu, PartComponent } from '../../components';
+import useResponsive from '../../hooks/useResponsive';
 
 const NEWS = [
   {
@@ -91,6 +92,9 @@ const NEWS = [
 export default function News() {
   const router = useNavigate();
   const themeGlobal = useTheme();
+  const isMdDown = useResponsive('down', 'md');
+  const isSmDown = useResponsive('down', 'sm');
+  const isLgDown = useResponsive('down', 'lg');
 
   const [menuController, setMenuController] = useState<HTMLElement | null>(null);
   const [menuMoreSetting, setMenuMoreSetting] = useState<HTMLElement | null>(null);
@@ -98,11 +102,11 @@ export default function News() {
   const StyleMenu = styled(Menu)<MenuProps>(() => ({
     '& .MuiPaper-root': {
       backgroundColor: 'transparent',
-      minWidth: '200px',
+      minWidth: '288px',
       borderRadius: '8px',
       boxShadow: 'none',
       '& ul': {
-        marginTop: '10px',
+        marginTop: isLgDown ? 0 : '10px',
         position: 'relative',
         backgroundImage: 'linear-gradient(to left, rgba(29, 51, 63, 1), rgba(41, 65, 79, 1))',
         borderTopLeftRadius: '8px',
@@ -169,18 +173,23 @@ export default function News() {
 
   return (
     <>
-      <Stack px={2} pt={2}>
-        <PartComponent backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))">
+      <Stack px={{ sm: 2, xxs: 1 }} pt={{ sm: 2, xxs: 1 }}>
+        <PartComponent
+          backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))"
+          {...(isSmDown ? { padding: '8px' } : {})}
+        >
           <Stack padding={2}>
             <Stack direction="row" alignItems="center" spacing={1} mb={2}>
               <Typography variant="h5" color={themeGlobal.palette.common.white}>
                 Today is Wednesday, August 23, 2023
               </Typography>
-              <Tooltip title="Info" arrow>
-                <Stack sx={{ cursor: 'pointer' }}>
-                  <img src="/icons/info.svg" alt="" />
-                </Stack>
-              </Tooltip>
+              {!isMdDown && (
+                <Tooltip title="Info" arrow>
+                  <Stack sx={{ cursor: 'pointer' }}>
+                    <img src="/icons/info.svg" alt="" />
+                  </Stack>
+                </Tooltip>
+              )}
             </Stack>
             <Typography fontSize={15} fontWeight={400} lineHeight={1.8} color={themeGlobal.palette.common.white}>
               Welcome to Kaizu`s Financial Fables: Where bear markets become unicorns overnight! Today`s tale:{' '}
@@ -192,12 +201,20 @@ export default function News() {
           </Stack>
         </PartComponent>
       </Stack>
-      <Stack padding={2}>
+      <Stack padding={isSmDown ? 1 : 2}>
         <Grid container spacing={2}>
-          <Grid item md={6} sm={12}>
-            <PartComponent backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))">
-              <Stack direction="row" alignItems="center" justifyContent="space-between" mb={4}>
-                <Typography variant="caption" color={themeGlobal.palette.common.white}>
+          <Grid item md={6} xxs={12}>
+            <PartComponent
+              backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))"
+              {...(isSmDown ? { padding: '8px' } : {})}
+            >
+              <Stack
+                direction={{ xs: 'row', xxs: 'column' }}
+                alignItems={{ xs: 'center', xxs: 'flex-start' }}
+                justifyContent="space-between"
+                mb={4}
+              >
+                <Typography variant="caption" color={themeGlobal.palette.common.white} mb={{ xxs: 1 }}>
                   #Makro
                 </Typography>
                 <Stack direction="row" alignItems="center" spacing={1}>
@@ -269,10 +286,18 @@ export default function News() {
               </TableContainer>
             </PartComponent>
           </Grid>
-          <Grid item md={6} sm={12}>
-            <PartComponent backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))">
-              <Stack direction="row" alignItems="center" justifyContent="space-between" mb={4}>
-                <Typography variant="caption" color={themeGlobal.palette.common.white}>
+          <Grid item md={6} xxs={12}>
+            <PartComponent
+              backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))"
+              {...(isSmDown ? { padding: '8px' } : {})}
+            >
+              <Stack
+                direction={{ xs: 'row', xxs: 'column' }}
+                alignItems={{ xs: 'center', xxs: 'flex-start' }}
+                justifyContent="space-between"
+                mb={4}
+              >
+                <Typography variant="caption" color={themeGlobal.palette.common.white} mb={{ xxs: 1 }}>
                   @Bloomberg
                 </Typography>
                 <Stack direction="row" alignItems="center" spacing={1}>
@@ -344,10 +369,18 @@ export default function News() {
               </TableContainer>
             </PartComponent>
           </Grid>
-          <Grid item md={6} sm={12}>
-            <PartComponent backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))">
-              <Stack direction="row" alignItems="center" justifyContent="space-between" mb={4}>
-                <Typography variant="caption" color={themeGlobal.palette.common.white}>
+          <Grid item md={6} xxs={12}>
+            <PartComponent
+              backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))"
+              {...(isSmDown ? { padding: '8px' } : {})}
+            >
+              <Stack
+                direction={{ xs: 'row', xxs: 'column' }}
+                alignItems={{ xs: 'center', xxs: 'flex-start' }}
+                justifyContent="space-between"
+                mb={4}
+              >
+                <Typography variant="caption" color={themeGlobal.palette.common.white} mb={{ xxs: 1 }}>
                   #Crypto
                 </Typography>
                 <Stack direction="row" alignItems="center" spacing={1}>
@@ -419,10 +452,18 @@ export default function News() {
               </TableContainer>
             </PartComponent>
           </Grid>
-          <Grid item md={6} sm={12}>
-            <PartComponent backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))">
-              <Stack direction="row" alignItems="center" justifyContent="space-between" mb={4}>
-                <Typography variant="caption" color={themeGlobal.palette.common.white}>
+          <Grid item md={6} xxs={12}>
+            <PartComponent
+              backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))"
+              {...(isSmDown ? { padding: '8px' } : {})}
+            >
+              <Stack
+                direction={{ xs: 'row', xxs: 'column' }}
+                alignItems={{ xs: 'center', xxs: 'flex-start' }}
+                justifyContent="space-between"
+                mb={4}
+              >
+                <Typography variant="caption" color={themeGlobal.palette.common.white} mb={{ xxs: 1 }}>
                   @CryptoSlate
                 </Typography>
                 <Stack direction="row" alignItems="center" spacing={1}>
@@ -494,10 +535,18 @@ export default function News() {
               </TableContainer>
             </PartComponent>
           </Grid>
-          <Grid item md={6} sm={12}>
-            <PartComponent backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))">
-              <Stack direction="row" alignItems="center" justifyContent="space-between" mb={4}>
-                <Typography variant="caption" color={themeGlobal.palette.common.white}>
+          <Grid item md={6} xxs={12}>
+            <PartComponent
+              backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))"
+              {...(isSmDown ? { padding: '8px' } : {})}
+            >
+              <Stack
+                direction={{ xs: 'row', xxs: 'column' }}
+                alignItems={{ xs: 'center', xxs: 'flex-start' }}
+                justifyContent="space-between"
+                mb={4}
+              >
+                <Typography variant="caption" color={themeGlobal.palette.common.white} mb={{ xxs: 1 }}>
                   #Bitcoin
                 </Typography>
                 <Stack direction="row" alignItems="center" spacing={1}>
@@ -569,10 +618,18 @@ export default function News() {
               </TableContainer>
             </PartComponent>
           </Grid>
-          <Grid item md={6} sm={12}>
-            <PartComponent backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))">
-              <Stack direction="row" alignItems="center" justifyContent="space-between" mb={4}>
-                <Typography variant="caption" color={themeGlobal.palette.common.white}>
+          <Grid item md={6} xxs={12}>
+            <PartComponent
+              backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))"
+              {...(isSmDown ? { padding: '8px' } : {})}
+            >
+              <Stack
+                direction={{ xs: 'row', xxs: 'column' }}
+                alignItems={{ xs: 'center', xxs: 'flex-start' }}
+                justifyContent="space-between"
+                mb={4}
+              >
+                <Typography variant="caption" color={themeGlobal.palette.common.white} mb={{ xxs: 1 }}>
                   #China
                 </Typography>
                 <Stack direction="row" alignItems="center" spacing={1}>

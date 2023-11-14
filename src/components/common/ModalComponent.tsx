@@ -4,7 +4,7 @@ interface ModalComponentProps {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   children: React.ReactNode;
-  width?: number;
+  width?: string;
 }
 
 export default function ModalComponent({ open, setOpen, children, width }: ModalComponentProps) {
