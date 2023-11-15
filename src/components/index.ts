@@ -11,7 +11,8 @@ export { default as MenuNormal } from './leftmenu/MenuNormal';
 export { default as MenuSmall } from './leftmenu/MenuSmall';
 export { default as Trending } from './leftmenu/news/Trending';
 export { default as Sources } from './leftmenu/news/Sources';
-export { default as SmallContent } from './leftmenu/news/SmallContent';
+export { default as CalendarComponent } from './leftmenu/calendar';
+export { default as SmallContent } from './leftmenu/SmallContent';
 
 export { default as PartComponent } from './content/PartComponent';
 export { default as KindMenu } from './content/KindMenu';
