@@ -15,6 +15,7 @@ import {
   AssetsDetail,
   PortfolioDetail,
   NewsDetail,
+  MyCalendar,
 } from '../pages';
 
 const MainRoutes = {
@@ -32,6 +33,7 @@ const MainRoutes = {
     { path: 'portfolio/detail', element: <PortfolioDetail /> },
     { path: 'news', element: <News /> },
     { path: 'news/:id', element: <NewsDetail /> },
+    { path: 'calendar/my_calendar', element: <MyCalendar /> },
     { path: 'calendar/macro_calendar', element: <MacroCalendar /> },
     { path: 'calendar/stocks', element: <Stocks /> },
     { path: 'calendar/see_all', element: <SeeAll /> },

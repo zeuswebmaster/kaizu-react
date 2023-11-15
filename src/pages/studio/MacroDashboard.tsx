@@ -331,7 +331,12 @@ export default function MacroDashboard() {
         >
           <MoreHorizIcon sx={{ color: themeGlobal.palette.common.white }} />
         </IconButton>
-        <KindMenu StyleMenu={StyleMenu} menuKind={menuKind as HTMLElement} onClose={handleCloseMenu} />
+        <KindMenu
+          StyleMenu={StyleMenu}
+          menuKind={menuKind as HTMLElement}
+          onClose={handleCloseMenu}
+          view="macro_dashboard"
+        />
       </Stack>
       <Grid container spacing={2}>
         <Grid item md={6} xxs={12}>
