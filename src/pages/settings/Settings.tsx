@@ -69,6 +69,7 @@ export default function Settings() {
                 borderBottomLeftRadius: key === 0 && isLLGUp ? '8px' : 0,
                 borderTopRightRadius: key === MENU_TABS.length - 1 && isLLGUp ? '8px' : 0,
                 borderBottomRightRadius: key === MENU_TABS.length - 1 && isLLGUp ? '8px' : 0,
+                cursor: 'pointer',
               }}
               onClick={() => handleClickTab(item.key)}
             >
@@ -83,7 +84,7 @@ export default function Settings() {
         ))}
       </Grid>
       <PartComponent
-        backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))"
+        backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(14, 29, 36, 1))"
         {...(isSmDown ? { padding: '8px' } : {})}
       >
         <Outlet />
