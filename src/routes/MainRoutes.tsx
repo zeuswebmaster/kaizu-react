@@ -15,6 +15,12 @@ import {
   AssetsDetail,
   PortfolioDetail,
   NewsDetail,
+  Profile,
+  Notifications,
+  Subscription,
+  Invoices,
+  SavedTemplates,
+  ActivityLog,
   MyCalendar,
 } from '../pages';
 
@@ -37,7 +43,18 @@ const MainRoutes = {
     { path: 'calendar/macro_calendar', element: <MacroCalendar /> },
     { path: 'calendar/stocks', element: <Stocks /> },
     { path: 'calendar/see_all', element: <SeeAll /> },
-    { path: 'settings', element: <Settings /> },
+    {
+      path: 'settings',
+      element: <Settings />,
+      children: [
+        { path: 'profile', element: <Profile /> },
+        { path: 'notifications', element: <Notifications /> },
+        { path: 'subscription', element: <Subscription /> },
+        { path: 'invoices', element: <Invoices /> },
+        { path: 'templates', element: <SavedTemplates /> },
+        { path: 'activity_log', element: <ActivityLog /> },
+      ],
+    },
   ],
 };
 

@@ -292,7 +292,7 @@ export default function SidebarMenu() {
           Settings
         </Typography>
       ),
-      key: '/settings',
+      key: '/settings/profile',
       value: 'Settings',
       icon: (
         <SettingsIcon

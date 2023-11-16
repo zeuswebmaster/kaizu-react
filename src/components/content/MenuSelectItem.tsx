@@ -7,6 +7,7 @@ import RectangleIcon from '@mui/icons-material/Rectangle';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import { PartComponent } from '..';
 import useResponsive from '../../hooks/useResponsive';
+import useWidth from '../../hooks/useWidth';
 
 interface MenuSelectItemProps {
   icon: React.ReactNode;
@@ -48,6 +49,7 @@ export default function MenuSelectItem({
   const router = useNavigate();
   const themeGlobal = useTheme();
   const isLgDown = useResponsive('down', 'lg');
+  const windowWidth = useWidth();
 
   const StyleMenu = styled(Menu)<MenuProps>(() => ({
     '& .MuiPaper-root': {
@@ -238,6 +240,7 @@ export default function MenuSelectItem({
           alignItems="center"
           justifyContent="center"
           sx={{ cursor: 'pointer' }}
+          minWidth={{ md: 0, sm: windowWidth - 508, xxs: windowWidth - 91 }}
           onClick={() => {
             if (url) router(`${url}`);
           }}
