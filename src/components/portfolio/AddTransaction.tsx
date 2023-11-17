@@ -51,7 +51,7 @@ export default function AddTransaction({ setModalTransaction }: AddTransactionPr
   const BootstrapInput = styled(InputBase)(({ theme }) => ({
     'label + &': {
       marginTop: theme.spacing(3),
-      color: '#fff',
+      color: theme.palette.common.white,
     },
     '& .MuiInputBase-input': {
       width: '100%',
@@ -102,7 +102,7 @@ export default function AddTransaction({ setModalTransaction }: AddTransactionPr
         </IconButton>
       </Stack>
       <FormControl variant="standard">
-        <InputLabel shrink htmlFor="bootstrap-input" sx={{ color: '#fff !important' }}>
+        <InputLabel shrink htmlFor="bootstrap-input" sx={{ color: `${themeGlobal.palette.common.white} !important` }}>
           Cryptocurrency Transaction
         </InputLabel>
         <BootstrapInput
@@ -118,7 +118,11 @@ export default function AddTransaction({ setModalTransaction }: AddTransactionPr
       <Grid container>
         <Grid item md={6} sx={{ paddingRight: '16px' }}>
           <FormControl variant="standard">
-            <InputLabel shrink htmlFor="bootstrap-input" sx={{ color: '#fff !important' }}>
+            <InputLabel
+              shrink
+              htmlFor="bootstrap-input"
+              sx={{ color: `${themeGlobal.palette.common.white} !important` }}
+            >
               Quantity
             </InputLabel>
             <BootstrapInput fullWidth id="bootstrap-input" placeholder="1.00" />
@@ -126,7 +130,11 @@ export default function AddTransaction({ setModalTransaction }: AddTransactionPr
         </Grid>
         <Grid item md={6}>
           <FormControl variant="standard">
-            <InputLabel shrink htmlFor="bootstrap-input" sx={{ color: '#fff !important' }}>
+            <InputLabel
+              shrink
+              htmlFor="bootstrap-input"
+              sx={{ color: `${themeGlobal.palette.common.white} !important` }}
+            >
               Purchase Price
             </InputLabel>
             <BootstrapInput fullWidth id="bootstrap-input" placeholder="$28,888" />
@@ -136,7 +144,11 @@ export default function AddTransaction({ setModalTransaction }: AddTransactionPr
       <Grid container>
         <Grid item md={6} sx={{ paddingRight: '16px' }}>
           <FormControl variant="standard">
-            <InputLabel shrink htmlFor="bootstrap-input" sx={{ color: '#fff !important' }}>
+            <InputLabel
+              shrink
+              htmlFor="bootstrap-input"
+              sx={{ color: `${themeGlobal.palette.common.white} !important` }}
+            >
               Date
             </InputLabel>
             <BootstrapInput
@@ -151,7 +163,11 @@ export default function AddTransaction({ setModalTransaction }: AddTransactionPr
         </Grid>
         <Grid item md={6}>
           <FormControl variant="standard">
-            <InputLabel shrink htmlFor="bootstrap-input" sx={{ color: '#fff !important' }}>
+            <InputLabel
+              shrink
+              htmlFor="bootstrap-input"
+              sx={{ color: `${themeGlobal.palette.common.white} !important` }}
+            >
               Fee
             </InputLabel>
             <BootstrapInput fullWidth id="bootstrap-input" placeholder="$1.05" />
@@ -159,7 +175,7 @@ export default function AddTransaction({ setModalTransaction }: AddTransactionPr
         </Grid>
       </Grid>
       <FormControl variant="standard">
-        <InputLabel shrink htmlFor="bootstrap-input" sx={{ color: '#fff !important' }}>
+        <InputLabel shrink htmlFor="bootstrap-input" sx={{ color: `${themeGlobal.palette.common.white} !important` }}>
           Total Spent
         </InputLabel>
         <BootstrapInput fullWidth id="bootstrap-input" placeholder="$28,888" />

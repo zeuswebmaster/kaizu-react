@@ -285,7 +285,7 @@ export default function NewsDetail() {
                   startIcon={<ForwardIcon sx={{ transform: 'rotate(-90deg)', color: '#fff', opacity: '0.75' }} />}
                   sx={StyleButton}
                 />
-                <Typography variant="caption" fontSize={10} sx={{ color: '#fff', opacity: '0.75', marginTop: '2px' }}>
+                <Typography variant="caption" sx={{ color: '#fff', opacity: '0.75', marginTop: '2px' }}>
                   32
                 </Typography>
               </Stack>
@@ -295,7 +295,7 @@ export default function NewsDetail() {
                   startIcon={<ForwardIcon sx={{ transform: 'rotate(90deg)', color: '#fff', opacity: '0.75' }} />}
                   sx={StyleButton}
                 />
-                <Typography variant="caption" fontSize={10} sx={{ color: '#fff', opacity: '0.75', marginTop: '2px' }}>
+                <Typography variant="caption" sx={{ color: '#fff', opacity: '0.75', marginTop: '2px' }}>
                   9
                 </Typography>
               </Stack>
@@ -305,7 +305,7 @@ export default function NewsDetail() {
                   startIcon={<FavoriteIcon sx={{ color: '#fff', opacity: '0.75' }} />}
                   sx={StyleButton}
                 />
-                <Typography variant="caption" fontSize={10} sx={{ color: '#fff', opacity: '0.75', marginTop: '2px' }}>
+                <Typography variant="caption" sx={{ color: '#fff', opacity: '0.75', marginTop: '2px' }}>
                   17
                 </Typography>
               </Stack>
@@ -319,7 +319,7 @@ export default function NewsDetail() {
                   }
                   sx={StyleButton}
                 />
-                <Typography variant="caption" fontSize={10} sx={{ color: '#fff', opacity: '0.75', marginTop: '2px' }}>
+                <Typography variant="caption" sx={{ color: '#fff', opacity: '0.75', marginTop: '2px' }}>
                   5
                 </Typography>
               </Stack>

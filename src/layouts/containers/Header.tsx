@@ -219,7 +219,7 @@ export default function Header() {
                       >
                         {item.primaryText}
                       </Typography>
-                      <Typography fontSize={12} color={themeGlobal.palette.grey[500_80]}>
+                      <Typography variant="caption" color={themeGlobal.palette.grey[500_80]}>
                         {item.secondaryText}
                       </Typography>
                     </Stack>
@@ -238,7 +238,7 @@ export default function Header() {
                     },
                   }}
                 >
-                  <Typography fontSize={12}>View All Notifications</Typography>
+                  <Typography variant="caption">View All Notifications</Typography>
                 </Button>
               </Stack>
             </StyleMenu>
@@ -344,7 +344,7 @@ export default function Header() {
                   >
                     <Stack>{item.icon}</Stack>
                     <Stack>
-                      <Typography fontSize={14} fontWeight={500} color={themeGlobal.palette.common.white}>
+                      <Typography variant="body2" color={themeGlobal.palette.common.white}>
                         {item.title}
                       </Typography>
                     </Stack>
@@ -356,10 +356,10 @@ export default function Header() {
 
           {!isMdDown && (
             <Stack direction="row" spacing={1}>
-              <Typography fontSize={13} color={themeGlobal.palette.info.main} fontWeight={500}>
+              <Typography variant="caption" color={themeGlobal.palette.info.main}>
                 Sun Aug 13
               </Typography>
-              <Typography fontSize={13} color={themeGlobal.palette.common.white} fontWeight={500}>
+              <Typography variant="caption" color={themeGlobal.palette.common.white}>
                 04:36
               </Typography>
             </Stack>

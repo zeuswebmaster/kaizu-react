@@ -26,7 +26,7 @@ export default function CreatePortfolio({ setModalPortfolio, setModalTransaction
                   Connect your wallet
                 </Typography>
                 <Stack sx={{ padding: '1px 5px', backgroundColor: theme.palette.info.main, borderRadius: '7px' }}>
-                  <Typography variant="caption" color={theme.palette.common.black} fontSize={10}>
+                  <Typography variant="caption" color={theme.palette.common.black}>
                     Beta
                   </Typography>
                 </Stack>
@@ -65,7 +65,7 @@ export default function CreatePortfolio({ setModalPortfolio, setModalTransaction
                   Connect your exchange or brokerage
                 </Typography>
                 <Stack sx={{ padding: '1px 5px', backgroundColor: theme.palette.info.main, borderRadius: '7px' }}>
-                  <Typography variant="caption" color={theme.palette.common.black} fontSize={10}>
+                  <Typography variant="caption" color={theme.palette.common.black}>
                     Beta
                   </Typography>
                 </Stack>
@@ -140,7 +140,7 @@ export default function CreatePortfolio({ setModalPortfolio, setModalTransaction
                   Upload a CSV file
                 </Typography>
                 <Stack sx={{ padding: '1px 8px', backgroundColor: '#cfdce3', borderRadius: '7px' }}>
-                  <Typography variant="caption" color={theme.palette.common.black} fontSize={10}>
+                  <Typography variant="caption" color={theme.palette.common.black}>
                     Download Template
                   </Typography>
                 </Stack>

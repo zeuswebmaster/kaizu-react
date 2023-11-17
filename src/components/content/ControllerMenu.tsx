@@ -28,7 +28,7 @@ export default function ControllerMenu({ menuKind, onClose, StyleMenu }: Control
       padding: '2px 3px 2px 5px',
       '&.Mui-checked': {
         transform: 'translateX(12px)',
-        color: '#fff',
+        color: theme.palette.common.white,
         '& + .MuiSwitch-track': {
           opacity: 1,
           backgroundColor: theme.palette.mode === 'dark' ? '#177ddc' : '#1890ff',

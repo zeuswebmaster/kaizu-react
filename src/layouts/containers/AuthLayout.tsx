@@ -1,9 +1,10 @@
 import { Outlet, NavLink, useNavigate, useLocation } from 'react-router-dom';
-import { Stack, Typography, styled } from '@mui/material';
+import { Stack, Typography, styled, useTheme } from '@mui/material';
 
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 export default function AuthLayout() {
+  const theme = useTheme();
   const router = useNavigate();
   const { pathname } = useLocation();
 
@@ -47,7 +48,7 @@ export default function AuthLayout() {
             width: '50%',
             height: '100%',
             borderRadius: '8px',
-            backgroundColor: '#fff',
+            backgroundColor: theme.palette.common.white,
             opacity: '90%',
             padding: '80px 40px',
           }}

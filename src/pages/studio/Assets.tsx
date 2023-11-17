@@ -351,7 +351,7 @@ export default function Assets() {
                       </Stack>
                       <Stack textAlign="left">
                         <Typography variant="caption">{item.symbol}</Typography>
-                        <Typography fontSize={10}>{item.name}</Typography>
+                        <Typography variant="caption">{item.name}</Typography>
                       </Stack>
                     </Stack>
                   </StyledTableCell>

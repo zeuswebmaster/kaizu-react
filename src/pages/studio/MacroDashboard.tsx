@@ -354,7 +354,7 @@ export default function MacroDashboard() {
                 <Typography variant="caption" color={themeGlobal.palette.common.white}>
                   News
                 </Typography>
-                <Typography fontSize={10} color={themeGlobal.palette.common.white} sx={{ opacity: '0.7' }}>
+                <Typography variant="caption" color={themeGlobal.palette.common.white} sx={{ opacity: '0.7' }}>
                   #macro #bitcoin #stocks #politics #china #fed
                 </Typography>
               </Stack>
