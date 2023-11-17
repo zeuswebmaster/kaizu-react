@@ -1,4 +1,4 @@
-import { Stack, Typography, Button, Tooltip, styled } from '@mui/material';
+import { Stack, Typography, Button, Tooltip, styled, useTheme } from '@mui/material';
 
 import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
@@ -9,6 +9,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import useResponsive from '../../hooks/useResponsive';
 
 export default function DrawerItem() {
+  const theme = useTheme();
+
   const isSmDown = useResponsive('down', 'sm');
 
   const StyledButton = styled(Button)(() => ({
@@ -49,7 +51,7 @@ export default function DrawerItem() {
           >
             <img src="/icons/kaizu.svg" alt="" />
           </Stack>
-          <Typography fontSize={14} color="#fff" fontWeight={500}>
+          <Typography variant="body2" color={theme.palette.common.white} fontWeight={500}>
             Predictive Intel Report
           </Typography>
         </Stack>
@@ -93,10 +95,10 @@ export default function DrawerItem() {
         </Stack>
       </Stack>
       <Stack sx={{ padding: isSmDown ? '10px 15px' : '20px 50px' }}>
-        <Typography fontSize={14} color="#67777e" mt={1}>
+        <Typography variant="body2" color="#67777e" mt={1}>
           BITCOIN PRICE
         </Typography>
-        <Typography variant="h3" color="#fff" mt={1}>
+        <Typography variant="h3" color={theme.palette.common.white} mt={1}>
           Bullish Scenario
         </Typography>
       </Stack>

@@ -123,7 +123,7 @@ export default function LoginWithEmail() {
               },
             }}
           >
-            <Typography fontSize={14} color="#248ac0">
+            <Typography variant="body2" color="#248ac0">
               I forgot my password or can`t sign in
             </Typography>
           </Stack>

@@ -248,7 +248,7 @@ export default function Home() {
               </Tooltip>
             )}
           </Stack>
-          <Typography fontSize={15} fontWeight={400} lineHeight={1.8} color={themeGlobal.palette.common.white}>
+          <Typography variant="body2" lineHeight={1.8} color={themeGlobal.palette.common.white}>
             Welcome to Kaizu`s Financial Fables: Where bear markets become unicorns overnight! Today`s tale:{' '}
             <span style={{ color: '#3BA594', fontWeight: 'bold' }}>Stocks soar</span>&nbsp; as if sprinkled with pixie
             dust, Bitcoin glitters like never before, and your portfolio`s ready for an all-night binger. Stay tuned for
@@ -266,7 +266,7 @@ export default function Home() {
             >
               <Stack direction="row" alignItems="center" spacing={1} mb={2.5}>
                 <DashboardIcon sx={{ width: 16, height: 16, color: themeGlobal.palette.info.main }} />
-                <Typography fontSize={12} fontWeight={700} color={themeGlobal.palette.common.white}>
+                <Typography variant="caption" color={themeGlobal.palette.common.white}>
                   My Dashboards
                 </Typography>
               </Stack>
@@ -281,10 +281,10 @@ export default function Home() {
                         <Stack direction="row" alignItems="center" spacing={1}>
                           <img src={item.icon} alt="" />
                           <Stack>
-                            <StylesTypography fontSize={10} fontWeight={600} color={themeGlobal.palette.common.white}>
+                            <StylesTypography variant="caption" color={themeGlobal.palette.common.white}>
                               {item.title}
                             </StylesTypography>
-                            <Typography fontSize={10} color="#B9D0D9">
+                            <Typography variant="caption" color="#B9D0D9">
                               {item.value}
                             </Typography>
                           </Stack>
@@ -297,7 +297,7 @@ export default function Home() {
               <Button
                 variant="contained"
                 sx={{
-                  width: '107px',
+                  width: '125px',
                   padding: '3px 8px',
                   backgroundColor: themeGlobal.palette.primary.main,
                   '&:hover': {
@@ -306,7 +306,7 @@ export default function Home() {
                   },
                 }}
               >
-                <Typography fontSize={10}>See all dashboards</Typography>
+                <Typography variant="caption">See all dashboards</Typography>
               </Button>
             </PartComponent>
           </Grid>
@@ -317,7 +317,7 @@ export default function Home() {
             >
               <Stack direction="row" alignItems="center" spacing={1} mb={2.5}>
                 <SettingsIcon sx={{ width: 16, height: 16, color: themeGlobal.palette.info.main }} />
-                <Typography fontSize={12} fontWeight={700} color={themeGlobal.palette.common.white}>
+                <Typography variant="caption" color={themeGlobal.palette.common.white}>
                   Kaizu System Updates
                 </Typography>
               </Stack>
@@ -344,7 +344,7 @@ export default function Home() {
               <Button
                 variant="contained"
                 sx={{
-                  width: '107px',
+                  width: '125px',
                   padding: '3px 8px',
                   backgroundColor: themeGlobal.palette.primary.main,
                   '&:hover': {
@@ -353,7 +353,7 @@ export default function Home() {
                   },
                 }}
               >
-                <Typography fontSize={10}>See all updates</Typography>
+                <Typography variant="caption">See all updates</Typography>
               </Button>
             </PartComponent>
           </Grid>
@@ -366,7 +366,7 @@ export default function Home() {
             >
               <Stack direction="row" alignItems="center" spacing={1} mb={2.5}>
                 <BarChartIcon sx={{ width: 16, height: 16, color: themeGlobal.palette.info.main }} />
-                <Typography fontSize={12} fontWeight={700} color={themeGlobal.palette.common.white}>
+                <Typography variant="caption" color={themeGlobal.palette.common.white}>
                   My Portfolios
                 </Typography>
               </Stack>
@@ -397,7 +397,7 @@ export default function Home() {
               <Button
                 variant="contained"
                 sx={{
-                  width: '107px',
+                  width: '125px',
                   padding: '3px 8px',
                   backgroundColor: themeGlobal.palette.primary.main,
                   '&:hover': {
@@ -406,7 +406,7 @@ export default function Home() {
                   },
                 }}
               >
-                <Typography fontSize={10}>See all portfolios</Typography>
+                <Typography variant="caption">See all portfolios</Typography>
               </Button>
             </PartComponent>
           </Grid>
@@ -417,7 +417,7 @@ export default function Home() {
             >
               <Stack direction="row" alignItems="center" spacing={1} mb={2.5}>
                 <CalendarMonthIcon sx={{ width: 16, height: 16, color: themeGlobal.palette.info.main }} />
-                <Typography fontSize={12} fontWeight={700} color={themeGlobal.palette.common.white}>
+                <Typography variant="caption" color={themeGlobal.palette.common.white}>
                   My Calendars
                 </Typography>
               </Stack>
@@ -444,7 +444,7 @@ export default function Home() {
               <Button
                 variant="contained"
                 sx={{
-                  width: '107px',
+                  width: '125px',
                   padding: '3px 8px',
                   backgroundColor: themeGlobal.palette.primary.main,
                   '&:hover': {
@@ -453,7 +453,7 @@ export default function Home() {
                   },
                 }}
               >
-                <Typography fontSize={10}>See all calendars</Typography>
+                <Typography variant="caption">See all calendars</Typography>
               </Button>
             </PartComponent>
           </Grid>
@@ -464,7 +464,7 @@ export default function Home() {
             >
               <Stack direction="row" alignItems="center" spacing={1} mb={2.5}>
                 <img src="/icons/ico_watchlist.svg" alt="" />
-                <Typography fontSize={12} fontWeight={700} color={themeGlobal.palette.common.white}>
+                <Typography variant="caption" color={themeGlobal.palette.common.white}>
                   My Watchlists
                 </Typography>
               </Stack>
@@ -497,7 +497,7 @@ export default function Home() {
               <Button
                 variant="contained"
                 sx={{
-                  width: '107px',
+                  width: '125px',
                   padding: '3px 8px',
                   backgroundColor: themeGlobal.palette.primary.main,
                   '&:hover': {
@@ -506,7 +506,7 @@ export default function Home() {
                   },
                 }}
               >
-                <Typography fontSize={10}>See all watchlists</Typography>
+                <Typography variant="caption">See all watchlists</Typography>
               </Button>
             </PartComponent>
           </Grid>

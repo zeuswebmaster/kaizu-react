@@ -66,7 +66,7 @@ export default function SignIn() {
           }}
         ></StyledButton>
       </Stack>
-      <Typography fontSize={13} fontWeight={700} mb={2} sx={{ textAlign: 'center' }}>
+      <Typography variant="body1" mb={2} sx={{ textAlign: 'center' }}>
         OR USING
       </Typography>
       <StyledButton variant="outlined" startIcon={<MailOutlineIcon />} onClick={() => router('/login-email')}>

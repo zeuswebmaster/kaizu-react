@@ -29,8 +29,7 @@ export default function SidebarMenu() {
     {
       label: (
         <Typography
-          fontSize={14}
-          fontWeight={500}
+          variant="body2"
           color={currentKey === '/' ? theme.palette.warning.main : theme.palette.common.white}
           sx={{ paddingLeft: '10px' }}
         >
@@ -44,8 +43,7 @@ export default function SidebarMenu() {
     {
       label: (
         <Typography
-          fontSize={14}
-          fontWeight={500}
+          variant="body2"
           color={currentKey.search('/studio') !== -1 ? theme.palette.warning.main : theme.palette.common.white}
           sx={{ paddingLeft: '10px' }}
         >
@@ -65,8 +63,7 @@ export default function SidebarMenu() {
         {
           label: (
             <Typography
-              fontSize={12}
-              fontWeight={500}
+              variant="caption"
               color={
                 currentKey.search('/studio/dashboard') !== -1 ? theme.palette.warning.main : theme.palette.common.white
               }
@@ -90,8 +87,7 @@ export default function SidebarMenu() {
         {
           label: (
             <Typography
-              fontSize={12}
-              fontWeight={500}
+              variant="caption"
               color={
                 currentKey.search('/studio/rankings') !== -1 ? theme.palette.warning.main : theme.palette.common.white
               }
@@ -115,8 +111,7 @@ export default function SidebarMenu() {
         {
           label: (
             <Typography
-              fontSize={12}
-              fontWeight={500}
+              variant="caption"
               color={
                 currentKey.search('/studio/watchlists') !== -1 ? theme.palette.warning.main : theme.palette.common.white
               }
@@ -142,8 +137,7 @@ export default function SidebarMenu() {
     {
       label: (
         <Typography
-          fontSize={14}
-          fontWeight={500}
+          variant="body2"
           color={currentKey.search('/portfolio') !== -1 ? theme.palette.warning.main : theme.palette.common.white}
           sx={{ paddingLeft: '10px' }}
         >
@@ -163,8 +157,7 @@ export default function SidebarMenu() {
     {
       label: (
         <Typography
-          fontSize={14}
-          fontWeight={500}
+          variant="body2"
           color={currentKey.search('/news') !== -1 ? theme.palette.warning.main : theme.palette.common.white}
           sx={{ paddingLeft: '10px' }}
         >
@@ -182,8 +175,7 @@ export default function SidebarMenu() {
     {
       label: (
         <Typography
-          fontSize={14}
-          fontWeight={500}
+          variant="body2"
           color={currentKey.search('/calendar') !== -1 ? theme.palette.warning.main : theme.palette.common.white}
           sx={{ paddingLeft: '10px' }}
         >
@@ -203,8 +195,7 @@ export default function SidebarMenu() {
         {
           label: (
             <Typography
-              fontSize={12}
-              fontWeight={500}
+              variant="caption"
               color={
                 currentKey.search('/calendar/my_calendar') !== -1
                   ? theme.palette.warning.main
@@ -232,8 +223,7 @@ export default function SidebarMenu() {
         {
           label: (
             <Typography
-              fontSize={12}
-              fontWeight={500}
+              variant="caption"
               color={
                 currentKey.search('/calendar/stocks') !== -1 ? theme.palette.warning.main : theme.palette.common.white
               }
@@ -257,8 +247,7 @@ export default function SidebarMenu() {
         {
           label: (
             <Typography
-              fontSize={12}
-              fontWeight={500}
+              variant="caption"
               color={
                 currentKey.search('/calendar/see_all') !== -1 ? theme.palette.warning.main : theme.palette.common.white
               }
@@ -284,8 +273,7 @@ export default function SidebarMenu() {
     {
       label: (
         <Typography
-          fontSize={14}
-          fontWeight={500}
+          variant="body2"
           color={currentKey.search('/settings') !== -1 ? theme.palette.warning.main : theme.palette.common.white}
           sx={{ paddingLeft: '10px' }}
         >
