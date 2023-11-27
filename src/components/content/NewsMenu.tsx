@@ -1,5 +1,10 @@
-import { Stack, Typography, MenuProps, Box, useTheme, styled, Menu } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { Stack, Typography, Box, useTheme, Menu, Skeleton } from '@mui/material';
+import dayjs from 'dayjs';
+import { ParsedEvent, ReconnectInterval, createParser } from 'eventsource-parser';
+
 import useResponsive from '../../hooks/useResponsive';
+import { useAuthStore } from '../../features';
 
 interface NewsMenuProps {
   menuKind: HTMLElement;
@@ -9,25 +14,65 @@ interface NewsMenuProps {
 export default function NewsMenu({ menuKind, onClose }: NewsMenuProps) {
   const theme = useTheme();
   const isLgDown = useResponsive('down', 'lg');
+  const accessToken = useAuthStore((state) => state.accessToken);
 
-  const StyleMenu = styled(Menu)<MenuProps>(() => ({
-    '& .MuiPaper-root': {
-      backgroundColor: 'transparent',
-      minWidth: '288px',
-      borderRadius: '8px',
-      boxShadow: 'none',
-      '& ul': {
-        marginTop: isLgDown ? 0 : '10px',
-        position: 'relative',
-        backgroundImage: 'linear-gradient(to left, rgba(29, 51, 63, 1), rgba(41, 65, 79, 1))',
-        borderTopLeftRadius: '8px',
-        borderTopRightRadius: '8px',
+  const [bullishText, setBullishText] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const handleAIStream = async () => {
+    setBullishText('');
+    setLoading(true);
+
+    const response = await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/openai/btc-price`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
       },
-    },
-  }));
+      body: JSON.stringify({
+        message:
+          'Predictive Intel: {"type": "chart-data", "asset": "BTC", "price": 29208.72, "24hr-change-pct" : 0.37, "7day-change-pct" : 0.07, response-type: "hypothetical long-form bullish case at least three paragraphs"}',
+      }),
+    });
+
+    setLoading(false);
+    if (!response.body) throw new Error('ReadableStream not yet supported in this browser.');
+
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let done = false;
+
+    function onParse(event: ParsedEvent | ReconnectInterval) {
+      if (event.type === 'event') {
+        const data = JSON.parse(event.data);
+        setBullishText((prev) => `${prev}${data}`);
+      }
+    }
+
+    const parser = createParser(onParse);
+
+    while (!done) {
+      /* eslint-disable no-await-in-loop */
+      const { value, done: doneReading } = await reader.read();
+      done = doneReading;
+      const chunkValue = decoder.decode(value);
+
+      if (done || chunkValue.includes('[DONE]')) break;
+
+      parser.feed(chunkValue);
+    }
+  };
+
+  useEffect(() => {
+    (async () => {
+      if (menuKind) {
+        await handleAIStream();
+      }
+    })();
+  }, [menuKind]);
 
   return (
-    <StyleMenu
+    <Menu
       disableScrollLock
       sx={{ marginTop: '26px' }}
       anchorEl={menuKind}
@@ -59,17 +104,39 @@ export default function NewsMenu({ menuKind, onClose }: NewsMenuProps) {
           },
         }}
       />
-      <Stack sx={{ padding: isLgDown ? '25px 15px 15px 15px' : '65px 25px 25px 25px' }}>
+      <Stack
+        sx={{
+          padding: isLgDown ? '25px 15px 15px 15px' : '25px',
+          width: 327,
+          height: 400,
+          overflowY: 'auto',
+        }}
+      >
         <Typography variant="body1" color={theme.palette.grey[400]}>
-          AUG 3, 2023 - BITCOIN PRICE
+          {dayjs(new Date()).format('ll')} - BITCOIN PRICE
         </Typography>
         <Typography variant="h4" color={theme.palette.common.white}>
           Bullish Opportunity
         </Typography>
-        <Typography variant="caption" color={theme.palette.grey[500]}>
-          Time Period: Aug 3, 2017 - Aug 3, 2023, Data Type: Chart + News
+        <Typography variant="caption" color={theme.palette.grey[500]} mb={2}>
+          Time Period: {dayjs(new Date()).format('ll')}, Data Type: Chart + News
         </Typography>
+
+        {loading ? (
+          <>
+            <Skeleton variant="text" sx={{ backgroundColor: '#67777e' }} width="100%"></Skeleton>
+            <Skeleton variant="text" sx={{ backgroundColor: '#67777e' }} width="80%"></Skeleton>
+            <Skeleton variant="text" sx={{ backgroundColor: '#67777e' }} width="58%"></Skeleton>
+            <Skeleton variant="text" sx={{ backgroundColor: '#67777e' }} width="44%"></Skeleton>
+            <Skeleton variant="text" sx={{ backgroundColor: '#67777e' }} width="79%"></Skeleton>
+            <Skeleton variant="text" sx={{ backgroundColor: '#67777e' }} width="35%"></Skeleton>
+          </>
+        ) : (
+          <Typography variant="caption" color={theme.palette.grey[500]}>
+            {bullishText}
+          </Typography>
+        )}
       </Stack>
-    </StyleMenu>
+    </Menu>
   );
 }

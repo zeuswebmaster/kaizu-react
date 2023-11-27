@@ -9,16 +9,9 @@ type ThemeProps = {
   setSelectTheme: React.Dispatch<React.SetStateAction<string>>;
   selectFontSize: string;
   setSelectFontSize: React.Dispatch<React.SetStateAction<string>>;
-  setMenuTheme: React.Dispatch<React.SetStateAction<HTMLElement | null>>;
 };
 
-export default function ThemeItem({
-  selectTheme,
-  setSelectTheme,
-  selectFontSize,
-  setSelectFontSize,
-  setMenuTheme,
-}: ThemeProps) {
+export default function ThemeItem({ selectTheme, setSelectTheme, selectFontSize, setSelectFontSize }: ThemeProps) {
   const theme = useTheme();
 
   const styleThemeSelect = {
@@ -30,12 +23,10 @@ export default function ThemeItem({
 
   const handleSelectTheme = (value: string) => {
     setSelectTheme(value);
-    setMenuTheme(null);
   };
 
   const handleSelectFontSize = (value: string) => {
     setSelectFontSize(value);
-    setMenuTheme(null);
   };
 
   return (

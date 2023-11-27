@@ -3,8 +3,6 @@ import {
   Button,
   Checkbox,
   IconButton,
-  Menu,
-  MenuProps,
   Stack,
   Table,
   TableBody,
@@ -142,7 +140,6 @@ const TABLE_DATA = [
 
 export default function MacroCalendar() {
   const themeGlobal = useTheme();
-  const isLgDown = useResponsive('down', 'lg');
   const isSmDown = useResponsive('down', 'sm');
   const windowWidth = useWidth();
 
@@ -160,22 +157,6 @@ export default function MacroCalendar() {
       setWidth(400);
     }
   }, [windowWidth]);
-
-  const StyleMenu = styled(Menu)<MenuProps>(() => ({
-    '& .MuiPaper-root': {
-      backgroundColor: 'transparent',
-      minWidth: '288px',
-      borderRadius: '8px',
-      boxShadow: 'none',
-      '& ul': {
-        marginTop: isLgDown ? 0 : '10px',
-        position: 'relative',
-        backgroundImage: 'linear-gradient(to left, rgba(29, 51, 63, 1), rgba(41, 65, 79, 1))',
-        borderTopLeftRadius: '8px',
-        borderTopRightRadius: '8px',
-      },
-    },
-  }));
 
   const StyleButton = {
     width: 23,
@@ -263,12 +244,7 @@ export default function MacroCalendar() {
             >
               <MoreHorizIcon sx={{ color: themeGlobal.palette.common.white }} />
             </IconButton>
-            <KindMenu
-              StyleMenu={StyleMenu}
-              menuKind={menuKind as HTMLElement}
-              onClose={handleCloseMenu}
-              view="macro_calendar"
-            />
+            <KindMenu menuKind={menuKind as HTMLElement} onClose={handleCloseMenu} view="macro_calendar" />
           </Stack>
           <Stack direction="row" alignItems="center" spacing={2}>
             <Stack>
@@ -290,11 +266,7 @@ export default function MacroCalendar() {
                 sx={StyleButton}
                 onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'moreSetting')}
               />
-              <MoreSettingMenu
-                StyleMenu={StyleMenu}
-                menuKind={menuMoreSetting as HTMLElement}
-                onClose={handleCloseMenu}
-              />
+              <MoreSettingMenu menuKind={menuMoreSetting as HTMLElement} onClose={handleCloseMenu} />
             </Stack>
           </Stack>
         </Stack>

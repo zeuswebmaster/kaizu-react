@@ -1,5 +1,4 @@
-import { Stack, Typography, MenuProps, Box, useTheme, MenuItem } from '@mui/material';
-import { StyledComponent } from '@emotion/styled';
+import { Stack, Typography, Box, useTheme, MenuItem, Menu } from '@mui/material';
 
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
@@ -9,16 +8,15 @@ import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 
 interface MoreSettingMenuProps {
-  StyleMenu: StyledComponent<MenuProps>;
   menuKind: HTMLElement;
   onClose: (index: string) => void;
 }
 
-export default function MoreSettingMenu({ menuKind, onClose, StyleMenu }: MoreSettingMenuProps) {
+export default function MoreSettingMenu({ menuKind, onClose }: MoreSettingMenuProps) {
   const theme = useTheme();
 
   return (
-    <StyleMenu
+    <Menu
       disableScrollLock
       sx={{ marginTop: '26px' }}
       anchorEl={menuKind}
@@ -157,6 +155,6 @@ export default function MoreSettingMenu({ menuKind, onClose, StyleMenu }: MoreSe
           </Typography>
         </Stack>
       </MenuItem>
-    </StyleMenu>
+    </Menu>
   );
 }

@@ -30,6 +30,8 @@
     "@supabase/supabase-js": "^2.38.3",
     "dayjs": "^1.11.10",
     "debounce": "^1.2.1",
+    "eventsource-parser": "^1.1.1",
+    "html-react-parser": "^5.0.6",
     "husky": "^8.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import {
   Button,
-  MenuProps,
   Stack,
   Typography,
   styled,
   useTheme,
-  Menu,
   Grid,
   Tooltip,
   TableContainer,
@@ -175,22 +173,6 @@ export default function PortfolioDetail() {
   const [menuMoreSetting, setMenuMoreSetting] = useState<HTMLElement | null>(null);
   const [modalTransaction, setModalTransaction] = useState<boolean>(false);
 
-  const StyleMenu = styled(Menu)<MenuProps>(() => ({
-    '& .MuiPaper-root': {
-      backgroundColor: 'transparent',
-      minWidth: '200px',
-      borderRadius: '8px',
-      boxShadow: 'none',
-      '& ul': {
-        marginTop: '10px',
-        position: 'relative',
-        backgroundImage: 'linear-gradient(to left, rgba(29, 51, 63, 1), rgba(41, 65, 79, 1))',
-        borderTopLeftRadius: '8px',
-        borderTopRightRadius: '8px',
-      },
-    },
-  }));
-
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     borderBottom: `1px solid ${themeGlobal.palette.primary.main}`,
     padding: '6px 0',
@@ -327,11 +309,7 @@ export default function PortfolioDetail() {
                   sx={{ ...StyleButton, padding: '15px' }}
                   onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'controller')}
                 />
-                <ControllerMenu
-                  StyleMenu={StyleMenu}
-                  menuKind={menuController as HTMLElement}
-                  onClose={handleCloseMenu}
-                />
+                <ControllerMenu menuKind={menuController as HTMLElement} onClose={handleCloseMenu} />
               </Stack>
               <Stack>
                 <Button
@@ -340,11 +318,7 @@ export default function PortfolioDetail() {
                   sx={{ ...StyleButton, padding: '15px' }}
                   onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'moreSetting')}
                 />
-                <MoreSettingMenu
-                  StyleMenu={StyleMenu}
-                  menuKind={menuMoreSetting as HTMLElement}
-                  onClose={handleCloseMenu}
-                />
+                <MoreSettingMenu menuKind={menuMoreSetting as HTMLElement} onClose={handleCloseMenu} />
               </Stack>
             </Stack>
           </Stack>

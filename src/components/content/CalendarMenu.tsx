@@ -1,4 +1,4 @@
-import { MenuProps, Box, styled, Menu } from '@mui/material';
+import { Box, Menu } from '@mui/material';
 import {
   StaticDatePicker,
   pickersLayoutClasses,
@@ -11,7 +11,6 @@ import {
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { Dayjs } from 'dayjs';
-import useResponsive from '../../hooks/useResponsive';
 
 interface CalendarMenuProps {
   menuKind: HTMLElement;
@@ -43,26 +42,8 @@ const CustomLayout = (props: PickersLayoutProps<Dayjs | null, Dayjs, DateView>) 
 };
 
 export default function CalendarMenu({ menuKind, onClose }: CalendarMenuProps) {
-  const isLgDown = useResponsive('down', 'lg');
-
-  const StyleMenu = styled(Menu)<MenuProps>(() => ({
-    '& .MuiPaper-root': {
-      backgroundColor: 'transparent',
-      minWidth: '300px',
-      borderRadius: '8px',
-      boxShadow: 'none',
-      '& ul': {
-        marginTop: isLgDown ? 0 : '10px',
-        position: 'relative',
-        backgroundImage: 'linear-gradient(to left, rgba(29, 51, 63, 1), rgba(41, 65, 79, 1))',
-        borderTopLeftRadius: '8px',
-        borderTopRightRadius: '8px',
-      },
-    },
-  }));
-
   return (
-    <StyleMenu
+    <Menu
       disableScrollLock
       sx={{ marginTop: '26px' }}
       anchorEl={menuKind}
@@ -101,6 +82,6 @@ export default function CalendarMenu({ menuKind, onClose }: CalendarMenuProps) {
           }}
         />
       </LocalizationProvider>
-    </StyleMenu>
+    </Menu>
   );
 }

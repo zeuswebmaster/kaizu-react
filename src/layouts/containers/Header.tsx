@@ -13,7 +13,6 @@ import {
   Avatar,
   Menu,
   MenuItem,
-  MenuProps,
   Button,
   Drawer,
   useTheme,
@@ -109,20 +108,6 @@ export default function Header() {
     },
   }));
 
-  const StyleMenu = styled(Menu)<MenuProps>(({ theme }) => ({
-    '& .MuiPaper-root': {
-      backgroundColor: 'transparent',
-      minWidth: '288px',
-      borderRadius: '8px',
-      '& ul': {
-        backgroundColor: theme.palette.secondary.main,
-        marginTop: isMdDown ? 0 : '10px',
-        borderTopLeftRadius: '4px',
-        borderTopRightRadius: '4px',
-      },
-    },
-  }));
-
   const handleOpenNotificaitonsMenu = (event: React.MouseEvent<HTMLElement>) => {
     setMenuNotice(event.currentTarget);
   };
@@ -172,7 +157,7 @@ export default function Header() {
                 <NotificationsNoneIcon sx={{ width: 20, height: 20, color: themeGlobal.palette.info.main }} />
               </StyledBadge>
             </IconButton>
-            <StyleMenu
+            <Menu
               disableScrollLock
               sx={{
                 mt: '26px',
@@ -202,7 +187,7 @@ export default function Header() {
                     height: 8,
                     top: '-12px',
                     transform: 'rotate(45deg)',
-                    left: '3%',
+                    left: '5%',
                   },
                 }}
               />
@@ -241,13 +226,13 @@ export default function Header() {
                   <Typography variant="caption">View All Notifications</Typography>
                 </Button>
               </Stack>
-            </StyleMenu>
+            </Menu>
           </Stack>
           <Stack>
             <IconButton size="small" color="inherit" sx={{ padding: 0 }} onClick={handleOpenThemeMenu}>
               <ContrastIcon sx={{ width: 20, height: 20, color: themeGlobal.palette.info.main }} />
             </IconButton>
-            <StyleMenu
+            <Menu
               disableScrollLock
               sx={{
                 mt: '26px',
@@ -277,7 +262,7 @@ export default function Header() {
                     height: 8,
                     top: '-12px',
                     transform: 'rotate(45deg)',
-                    left: '10%',
+                    left: '14%',
                   },
                 }}
               />
@@ -286,15 +271,14 @@ export default function Header() {
                 setSelectTheme={setSelectTheme}
                 selectFontSize={selectFontSize}
                 setSelectFontSize={setSelectFontSize}
-                setMenuTheme={setMenuTheme}
               />
-            </StyleMenu>
+            </Menu>
           </Stack>
           <Stack>
             <IconButton size="small" color="inherit" sx={{ padding: 0 }} onClick={handleOpenUserMenu}>
               <AccountCircleIcon sx={{ width: 20, height: 20, color: themeGlobal.palette.info.main }} />
             </IconButton>
-            <StyleMenu
+            <Menu
               disableScrollLock
               sx={{
                 mt: '26px',
@@ -324,7 +308,7 @@ export default function Header() {
                     height: 8,
                     top: '-12px',
                     transform: 'rotate(45deg)',
-                    left: '25%',
+                    left: '29%',
                   },
                 }}
               />
@@ -351,7 +335,7 @@ export default function Header() {
                   </Stack>
                 </MenuItem>
               ))}
-            </StyleMenu>
+            </Menu>
           </Stack>
 
           {!isMdDown && (
@@ -386,17 +370,15 @@ export default function Header() {
               sx={{
                 [`& .MuiDrawer-paper`]: {
                   boxSizing: 'border-box',
-                  top: '50px',
-                  maxHeight: 'calc(100% - 110px)',
+                  top: '44px',
                   width: isMdDown ? '90%' : 450,
-                  height: 'auto',
-                  overflowY: 'auto',
+                  height: '100%',
                   boxShadow:
                     '0px 0px 17px 9px rgba(0, 0, 0, 0.2), 0px 16px 24px 10px rgba(0, 0, 0, 0.14), 0px 6px 30px 10px rgba(0, 0, 0, 0.12)',
                 },
               }}
             >
-              <DrawerItem />
+              <DrawerItem openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} />
             </Drawer>
           </Stack>
         </Stack>

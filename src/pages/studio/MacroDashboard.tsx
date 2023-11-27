@@ -4,8 +4,6 @@ import {
   Typography,
   IconButton,
   styled,
-  Menu,
-  MenuProps,
   useTheme,
   Grid,
   Button,
@@ -230,7 +228,6 @@ const series = [
 
 export default function MacroDashboard() {
   const themeGlobal = useTheme();
-  const isLgDown = useResponsive('down', 'lg');
   const isSmDown = useResponsive('down', 'sm');
 
   const [menuKind, setMenuKind] = useState<HTMLElement | null>(null);
@@ -238,22 +235,6 @@ export default function MacroDashboard() {
   const [menuMoreSetting, setMenuMoreSetting] = useState<HTMLElement | null>(null);
   const [menuNews, setMenuNews] = useState<HTMLElement | null>(null);
   const [menuCalendar, setMenuCalendar] = useState<HTMLElement | null>(null);
-
-  const StyleMenu = styled(Menu)<MenuProps>(() => ({
-    '& .MuiPaper-root': {
-      backgroundColor: 'transparent',
-      minWidth: '288px',
-      borderRadius: '8px',
-      boxShadow: 'none',
-      '& ul': {
-        marginTop: isLgDown ? 0 : '10px',
-        position: 'relative',
-        backgroundImage: 'linear-gradient(to left, rgba(29, 51, 63, 1), rgba(41, 65, 79, 1))',
-        borderTopLeftRadius: '8px',
-        borderTopRightRadius: '8px',
-      },
-    },
-  }));
 
   const StyleButton = {
     width: 23,
@@ -331,12 +312,7 @@ export default function MacroDashboard() {
         >
           <MoreHorizIcon sx={{ color: themeGlobal.palette.common.white }} />
         </IconButton>
-        <KindMenu
-          StyleMenu={StyleMenu}
-          menuKind={menuKind as HTMLElement}
-          onClose={handleCloseMenu}
-          view="macro_dashboard"
-        />
+        <KindMenu menuKind={menuKind as HTMLElement} onClose={handleCloseMenu} view="macro_dashboard" />
       </Stack>
       <Grid container spacing={2}>
         <Grid item md={6} xxs={12}>
@@ -366,11 +342,7 @@ export default function MacroDashboard() {
                     sx={StyleButton}
                     onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'controller')}
                   />
-                  <ControllerMenu
-                    StyleMenu={StyleMenu}
-                    menuKind={menuController as HTMLElement}
-                    onClose={handleCloseMenu}
-                  />
+                  <ControllerMenu menuKind={menuController as HTMLElement} onClose={handleCloseMenu} />
                 </Stack>
                 <Stack>
                   <Button
@@ -379,11 +351,7 @@ export default function MacroDashboard() {
                     sx={StyleButton}
                     onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'moreSetting')}
                   />
-                  <MoreSettingMenu
-                    StyleMenu={StyleMenu}
-                    menuKind={menuMoreSetting as HTMLElement}
-                    onClose={handleCloseMenu}
-                  />
+                  <MoreSettingMenu menuKind={menuMoreSetting as HTMLElement} onClose={handleCloseMenu} />
                 </Stack>
               </Stack>
             </Stack>
@@ -450,11 +418,7 @@ export default function MacroDashboard() {
                     sx={StyleButton}
                     onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'controller')}
                   />
-                  <ControllerMenu
-                    StyleMenu={StyleMenu}
-                    menuKind={menuController as HTMLElement}
-                    onClose={handleCloseMenu}
-                  />
+                  <ControllerMenu menuKind={menuController as HTMLElement} onClose={handleCloseMenu} />
                 </Stack>
                 <Stack>
                   <Button
@@ -463,11 +427,7 @@ export default function MacroDashboard() {
                     sx={StyleButton}
                     onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'moreSetting')}
                   />
-                  <MoreSettingMenu
-                    StyleMenu={StyleMenu}
-                    menuKind={menuMoreSetting as HTMLElement}
-                    onClose={handleCloseMenu}
-                  />
+                  <MoreSettingMenu menuKind={menuMoreSetting as HTMLElement} onClose={handleCloseMenu} />
                 </Stack>
               </Stack>
             </Stack>
@@ -580,11 +540,7 @@ export default function MacroDashboard() {
                     sx={StyleButton}
                     onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'controller')}
                   />
-                  <ControllerMenu
-                    StyleMenu={StyleMenu}
-                    menuKind={menuController as HTMLElement}
-                    onClose={handleCloseMenu}
-                  />
+                  <ControllerMenu menuKind={menuController as HTMLElement} onClose={handleCloseMenu} />
                 </Stack>
                 <Stack>
                   <Button
@@ -593,11 +549,7 @@ export default function MacroDashboard() {
                     sx={StyleButton}
                     onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'moreSetting')}
                   />
-                  <MoreSettingMenu
-                    StyleMenu={StyleMenu}
-                    menuKind={menuMoreSetting as HTMLElement}
-                    onClose={handleCloseMenu}
-                  />
+                  <MoreSettingMenu menuKind={menuMoreSetting as HTMLElement} onClose={handleCloseMenu} />
                 </Stack>
               </Stack>
             </Stack>
@@ -642,11 +594,7 @@ export default function MacroDashboard() {
                     sx={StyleButton}
                     onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'controller')}
                   />
-                  <ControllerMenu
-                    StyleMenu={StyleMenu}
-                    menuKind={menuController as HTMLElement}
-                    onClose={handleCloseMenu}
-                  />
+                  <ControllerMenu menuKind={menuController as HTMLElement} onClose={handleCloseMenu} />
                 </Stack>
                 <Stack>
                   <Button
@@ -655,11 +603,7 @@ export default function MacroDashboard() {
                     sx={StyleButton}
                     onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'moreSetting')}
                   />
-                  <MoreSettingMenu
-                    StyleMenu={StyleMenu}
-                    menuKind={menuMoreSetting as HTMLElement}
-                    onClose={handleCloseMenu}
-                  />
+                  <MoreSettingMenu menuKind={menuMoreSetting as HTMLElement} onClose={handleCloseMenu} />
                 </Stack>
               </Stack>
             </Stack>

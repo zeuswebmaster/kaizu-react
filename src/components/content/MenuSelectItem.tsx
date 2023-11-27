@@ -1,12 +1,11 @@
 import { useNavigate } from 'react-router-dom';
-import { Box, Button, Menu, MenuItem, MenuProps, Stack, Typography, styled, useTheme } from '@mui/material';
+import { Box, Button, Menu, MenuItem, Stack, Typography, useTheme } from '@mui/material';
 
 import EditSharpIcon from '@mui/icons-material/EditSharp';
 import DeleteForeverSharpIcon from '@mui/icons-material/DeleteForeverSharp';
 import RectangleIcon from '@mui/icons-material/Rectangle';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import { PartComponent } from '..';
-import useResponsive from '../../hooks/useResponsive';
 import useWidth from '../../hooks/useWidth';
 
 interface MenuSelectItemProps {
@@ -48,24 +47,7 @@ export default function MenuSelectItem({
 }: MenuSelectItemProps) {
   const router = useNavigate();
   const themeGlobal = useTheme();
-  const isLgDown = useResponsive('down', 'lg');
   const windowWidth = useWidth();
-
-  const StyleMenu = styled(Menu)<MenuProps>(() => ({
-    '& .MuiPaper-root': {
-      backgroundColor: 'transparent',
-      minWidth: '288px',
-      borderRadius: '8px',
-      boxShadow: 'none',
-      '& ul': {
-        marginTop: isLgDown ? 0 : '10px',
-        position: 'relative',
-        backgroundImage: 'linear-gradient(to left, rgba(29, 51, 63, 1), rgba(41, 65, 79, 1))',
-        borderTopLeftRadius: '8px',
-        borderTopRightRadius: '8px',
-      },
-    },
-  }));
 
   return (
     <PartComponent padding="11px" backgroundImage="linear-gradient(to top, rgba(14, 29, 36, 1), rgba(22, 44, 54, 1))">
@@ -132,7 +114,7 @@ export default function MenuSelectItem({
                   }}
                   onClick={onOpen}
                 />
-                <StyleMenu
+                <Menu
                   disableScrollLock
                   sx={{ marginTop: '26px' }}
                   anchorEl={menu as HTMLElement}
@@ -211,7 +193,7 @@ export default function MenuSelectItem({
                       </Typography>
                     </Stack>
                   </MenuItem>
-                </StyleMenu>
+                </Menu>
               </Stack>
               <Button
                 variant="contained"

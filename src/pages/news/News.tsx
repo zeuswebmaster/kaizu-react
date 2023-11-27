@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import {
   Button,
   Grid,
-  Menu,
-  MenuProps,
   Stack,
   TableBody,
   TableCell,
@@ -94,26 +92,9 @@ export default function News() {
   const themeGlobal = useTheme();
   const isMdDown = useResponsive('down', 'md');
   const isSmDown = useResponsive('down', 'sm');
-  const isLgDown = useResponsive('down', 'lg');
 
   const [menuController, setMenuController] = useState<HTMLElement | null>(null);
   const [menuMoreSetting, setMenuMoreSetting] = useState<HTMLElement | null>(null);
-
-  const StyleMenu = styled(Menu)<MenuProps>(() => ({
-    '& .MuiPaper-root': {
-      backgroundColor: 'transparent',
-      minWidth: '288px',
-      borderRadius: '8px',
-      boxShadow: 'none',
-      '& ul': {
-        marginTop: isLgDown ? 0 : '10px',
-        position: 'relative',
-        backgroundImage: 'linear-gradient(to left, rgba(29, 51, 63, 1), rgba(41, 65, 79, 1))',
-        borderTopLeftRadius: '8px',
-        borderTopRightRadius: '8px',
-      },
-    },
-  }));
 
   const StyleButton = {
     width: 23,
@@ -225,11 +206,7 @@ export default function News() {
                       sx={StyleButton}
                       onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'controller')}
                     />
-                    <ControllerMenu
-                      StyleMenu={StyleMenu}
-                      menuKind={menuController as HTMLElement}
-                      onClose={handleCloseMenu}
-                    />
+                    <ControllerMenu menuKind={menuController as HTMLElement} onClose={handleCloseMenu} />
                   </Stack>
                   <Stack>
                     <Button
@@ -238,11 +215,7 @@ export default function News() {
                       sx={StyleButton}
                       onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'moreSetting')}
                     />
-                    <MoreSettingMenu
-                      StyleMenu={StyleMenu}
-                      menuKind={menuMoreSetting as HTMLElement}
-                      onClose={handleCloseMenu}
-                    />
+                    <MoreSettingMenu menuKind={menuMoreSetting as HTMLElement} onClose={handleCloseMenu} />
                   </Stack>
                 </Stack>
               </Stack>
@@ -308,11 +281,7 @@ export default function News() {
                       sx={StyleButton}
                       onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'controller')}
                     />
-                    <ControllerMenu
-                      StyleMenu={StyleMenu}
-                      menuKind={menuController as HTMLElement}
-                      onClose={handleCloseMenu}
-                    />
+                    <ControllerMenu menuKind={menuController as HTMLElement} onClose={handleCloseMenu} />
                   </Stack>
                   <Stack>
                     <Button
@@ -321,11 +290,7 @@ export default function News() {
                       sx={StyleButton}
                       onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'moreSetting')}
                     />
-                    <MoreSettingMenu
-                      StyleMenu={StyleMenu}
-                      menuKind={menuMoreSetting as HTMLElement}
-                      onClose={handleCloseMenu}
-                    />
+                    <MoreSettingMenu menuKind={menuMoreSetting as HTMLElement} onClose={handleCloseMenu} />
                   </Stack>
                 </Stack>
               </Stack>
@@ -391,11 +356,7 @@ export default function News() {
                       sx={StyleButton}
                       onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'controller')}
                     />
-                    <ControllerMenu
-                      StyleMenu={StyleMenu}
-                      menuKind={menuController as HTMLElement}
-                      onClose={handleCloseMenu}
-                    />
+                    <ControllerMenu menuKind={menuController as HTMLElement} onClose={handleCloseMenu} />
                   </Stack>
                   <Stack>
                     <Button
@@ -404,11 +365,7 @@ export default function News() {
                       sx={StyleButton}
                       onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'moreSetting')}
                     />
-                    <MoreSettingMenu
-                      StyleMenu={StyleMenu}
-                      menuKind={menuMoreSetting as HTMLElement}
-                      onClose={handleCloseMenu}
-                    />
+                    <MoreSettingMenu menuKind={menuMoreSetting as HTMLElement} onClose={handleCloseMenu} />
                   </Stack>
                 </Stack>
               </Stack>
@@ -474,11 +431,7 @@ export default function News() {
                       sx={StyleButton}
                       onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'controller')}
                     />
-                    <ControllerMenu
-                      StyleMenu={StyleMenu}
-                      menuKind={menuController as HTMLElement}
-                      onClose={handleCloseMenu}
-                    />
+                    <ControllerMenu menuKind={menuController as HTMLElement} onClose={handleCloseMenu} />
                   </Stack>
                   <Stack>
                     <Button
@@ -487,11 +440,7 @@ export default function News() {
                       sx={StyleButton}
                       onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'moreSetting')}
                     />
-                    <MoreSettingMenu
-                      StyleMenu={StyleMenu}
-                      menuKind={menuMoreSetting as HTMLElement}
-                      onClose={handleCloseMenu}
-                    />
+                    <MoreSettingMenu menuKind={menuMoreSetting as HTMLElement} onClose={handleCloseMenu} />
                   </Stack>
                 </Stack>
               </Stack>
@@ -557,11 +506,7 @@ export default function News() {
                       sx={StyleButton}
                       onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'controller')}
                     />
-                    <ControllerMenu
-                      StyleMenu={StyleMenu}
-                      menuKind={menuController as HTMLElement}
-                      onClose={handleCloseMenu}
-                    />
+                    <ControllerMenu menuKind={menuController as HTMLElement} onClose={handleCloseMenu} />
                   </Stack>
                   <Stack>
                     <Button
@@ -570,11 +515,7 @@ export default function News() {
                       sx={StyleButton}
                       onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'moreSetting')}
                     />
-                    <MoreSettingMenu
-                      StyleMenu={StyleMenu}
-                      menuKind={menuMoreSetting as HTMLElement}
-                      onClose={handleCloseMenu}
-                    />
+                    <MoreSettingMenu menuKind={menuMoreSetting as HTMLElement} onClose={handleCloseMenu} />
                   </Stack>
                 </Stack>
               </Stack>
@@ -640,11 +581,7 @@ export default function News() {
                       sx={StyleButton}
                       onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'controller')}
                     />
-                    <ControllerMenu
-                      StyleMenu={StyleMenu}
-                      menuKind={menuController as HTMLElement}
-                      onClose={handleCloseMenu}
-                    />
+                    <ControllerMenu menuKind={menuController as HTMLElement} onClose={handleCloseMenu} />
                   </Stack>
                   <Stack>
                     <Button
@@ -653,11 +590,7 @@ export default function News() {
                       sx={StyleButton}
                       onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'moreSetting')}
                     />
-                    <MoreSettingMenu
-                      StyleMenu={StyleMenu}
-                      menuKind={menuMoreSetting as HTMLElement}
-                      onClose={handleCloseMenu}
-                    />
+                    <MoreSettingMenu menuKind={menuMoreSetting as HTMLElement} onClose={handleCloseMenu} />
                   </Stack>
                 </Stack>
               </Stack>

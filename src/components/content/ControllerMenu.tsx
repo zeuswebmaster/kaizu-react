@@ -1,13 +1,11 @@
-import { Stack, Typography, MenuProps, Box, useTheme, Button, styled, Switch } from '@mui/material';
-import { StyledComponent } from '@emotion/styled';
+import { Stack, Typography, Box, useTheme, Button, styled, Switch, Menu } from '@mui/material';
 
 interface ControllerMenuProps {
-  StyleMenu: StyledComponent<MenuProps>;
   menuKind: HTMLElement;
   onClose: (index: string) => void;
 }
 
-export default function ControllerMenu({ menuKind, onClose, StyleMenu }: ControllerMenuProps) {
+export default function ControllerMenu({ menuKind, onClose }: ControllerMenuProps) {
   const themeGlobal = useTheme();
 
   const AntSwitch = styled(Switch)(({ theme }) => ({
@@ -53,7 +51,7 @@ export default function ControllerMenu({ menuKind, onClose, StyleMenu }: Control
   }));
 
   return (
-    <StyleMenu
+    <Menu
       disableScrollLock
       sx={{ marginTop: '26px' }}
       anchorEl={menuKind}
@@ -187,6 +185,6 @@ export default function ControllerMenu({ menuKind, onClose, StyleMenu }: Control
           </Stack>
         </Stack>
       </Stack>
-    </StyleMenu>
+    </Menu>
   );
 }

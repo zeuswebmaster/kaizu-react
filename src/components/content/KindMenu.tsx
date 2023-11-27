@@ -1,23 +1,21 @@
-import { Stack, Typography, MenuProps, Box, useTheme, MenuItem } from '@mui/material';
-import { StyledComponent } from '@emotion/styled';
+import { Stack, Typography, Box, useTheme, MenuItem, Menu } from '@mui/material';
 
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import HomeIcon from '@mui/icons-material/Home';
 import useResponsive from '../../hooks/useResponsive';
 
-interface DashboardKindMenuProps {
-  StyleMenu: StyledComponent<MenuProps>;
+interface KindMenuProps {
   menuKind: HTMLElement;
   onClose: (index: string) => void;
   view: string;
 }
 
-export default function DashboardKindMenu({ menuKind, onClose, StyleMenu, view }: DashboardKindMenuProps) {
+export default function KindMenu({ menuKind, onClose, view }: KindMenuProps) {
   const theme = useTheme();
   const isSmDown = useResponsive('down', 'sm');
 
   return (
-    <StyleMenu
+    <Menu
       disableScrollLock
       sx={{ marginTop: '26px' }}
       anchorEl={menuKind}
@@ -131,6 +129,6 @@ export default function DashboardKindMenu({ menuKind, onClose, StyleMenu, view }
           </Typography>
         </Stack>
       </MenuItem>
-    </StyleMenu>
+    </Menu>
   );
 }

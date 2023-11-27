@@ -2,8 +2,6 @@ import { useState } from 'react';
 import {
   Button,
   Grid,
-  Menu,
-  MenuProps,
   Stack,
   Table,
   TableBody,
@@ -214,7 +212,6 @@ const NEWS = [
 
 export default function AssetsRightComponent() {
   const themeGlobal = useTheme();
-  const isLgDown = useResponsive('down', 'lg');
   const isSmDown = useResponsive('down', 'sm');
 
   const [selectItem, setSelectItem] = useState<string>('On-Chain Intelligence');
@@ -222,22 +219,6 @@ export default function AssetsRightComponent() {
   const [menuMoreSetting, setMenuMoreSetting] = useState<HTMLElement | null>(null);
   const [menuNews, setMenuNews] = useState<HTMLElement | null>(null);
   const [menuCalendar, setMenuCalendar] = useState<HTMLElement | null>(null);
-
-  const StyleMenu = styled(Menu)<MenuProps>(() => ({
-    '& .MuiPaper-root': {
-      backgroundColor: 'transparent',
-      minWidth: '288px',
-      borderRadius: '8px',
-      boxShadow: 'none',
-      '& ul': {
-        marginTop: isLgDown ? 0 : '10px',
-        position: 'relative',
-        backgroundImage: 'linear-gradient(to left, rgba(29, 51, 63, 1), rgba(41, 65, 79, 1))',
-        borderTopLeftRadius: '8px',
-        borderTopRightRadius: '8px',
-      },
-    },
-  }));
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     borderBottom: `1px solid ${themeGlobal.palette.primary.main}`,
@@ -397,11 +378,7 @@ export default function AssetsRightComponent() {
                   sx={StyleButton}
                   onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'controller')}
                 />
-                <ControllerMenu
-                  StyleMenu={StyleMenu}
-                  menuKind={menuController as HTMLElement}
-                  onClose={handleCloseMenu}
-                />
+                <ControllerMenu menuKind={menuController as HTMLElement} onClose={handleCloseMenu} />
               </Stack>
               <Stack>
                 <Button
@@ -410,11 +387,7 @@ export default function AssetsRightComponent() {
                   sx={StyleButton}
                   onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'moreSetting')}
                 />
-                <MoreSettingMenu
-                  StyleMenu={StyleMenu}
-                  menuKind={menuMoreSetting as HTMLElement}
-                  onClose={handleCloseMenu}
-                />
+                <MoreSettingMenu menuKind={menuMoreSetting as HTMLElement} onClose={handleCloseMenu} />
               </Stack>
             </Stack>
           </Stack>
@@ -442,11 +415,7 @@ export default function AssetsRightComponent() {
                 sx={StyleButton}
                 onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'moreSetting')}
               />
-              <MoreSettingMenu
-                StyleMenu={StyleMenu}
-                menuKind={menuMoreSetting as HTMLElement}
-                onClose={handleCloseMenu}
-              />
+              <MoreSettingMenu menuKind={menuMoreSetting as HTMLElement} onClose={handleCloseMenu} />
             </Stack>
           </Stack>
           <Typography variant="caption" color={themeGlobal.palette.common.white} lineHeight={2} mb={3}>
@@ -505,11 +474,7 @@ export default function AssetsRightComponent() {
                   sx={StyleButton}
                   onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'controller')}
                 />
-                <ControllerMenu
-                  StyleMenu={StyleMenu}
-                  menuKind={menuController as HTMLElement}
-                  onClose={handleCloseMenu}
-                />
+                <ControllerMenu menuKind={menuController as HTMLElement} onClose={handleCloseMenu} />
               </Stack>
               <Stack>
                 <Button
@@ -518,11 +483,7 @@ export default function AssetsRightComponent() {
                   sx={StyleButton}
                   onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'moreSetting')}
                 />
-                <MoreSettingMenu
-                  StyleMenu={StyleMenu}
-                  menuKind={menuMoreSetting as HTMLElement}
-                  onClose={handleCloseMenu}
-                />
+                <MoreSettingMenu menuKind={menuMoreSetting as HTMLElement} onClose={handleCloseMenu} />
               </Stack>
             </Stack>
           </Stack>
@@ -553,11 +514,7 @@ export default function AssetsRightComponent() {
                       sx={StyleButton}
                       onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'controller')}
                     />
-                    <ControllerMenu
-                      StyleMenu={StyleMenu}
-                      menuKind={menuController as HTMLElement}
-                      onClose={handleCloseMenu}
-                    />
+                    <ControllerMenu menuKind={menuController as HTMLElement} onClose={handleCloseMenu} />
                   </Stack>
                   <Stack>
                     <Button
@@ -566,11 +523,7 @@ export default function AssetsRightComponent() {
                       sx={StyleButton}
                       onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'moreSetting')}
                     />
-                    <MoreSettingMenu
-                      StyleMenu={StyleMenu}
-                      menuKind={menuMoreSetting as HTMLElement}
-                      onClose={handleCloseMenu}
-                    />
+                    <MoreSettingMenu menuKind={menuMoreSetting as HTMLElement} onClose={handleCloseMenu} />
                   </Stack>
                 </Stack>
               </Stack>
@@ -630,11 +583,7 @@ export default function AssetsRightComponent() {
                       sx={StyleButton}
                       onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'controller')}
                     />
-                    <ControllerMenu
-                      StyleMenu={StyleMenu}
-                      menuKind={menuController as HTMLElement}
-                      onClose={handleCloseMenu}
-                    />
+                    <ControllerMenu menuKind={menuController as HTMLElement} onClose={handleCloseMenu} />
                   </Stack>
                   <Stack>
                     <Button
@@ -643,11 +592,7 @@ export default function AssetsRightComponent() {
                       sx={StyleButton}
                       onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'moreSetting')}
                     />
-                    <MoreSettingMenu
-                      StyleMenu={StyleMenu}
-                      menuKind={menuMoreSetting as HTMLElement}
-                      onClose={handleCloseMenu}
-                    />
+                    <MoreSettingMenu menuKind={menuMoreSetting as HTMLElement} onClose={handleCloseMenu} />
                   </Stack>
                 </Stack>
               </Stack>
@@ -735,11 +680,7 @@ export default function AssetsRightComponent() {
                   sx={StyleButton}
                   onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'controller')}
                 />
-                <ControllerMenu
-                  StyleMenu={StyleMenu}
-                  menuKind={menuController as HTMLElement}
-                  onClose={handleCloseMenu}
-                />
+                <ControllerMenu menuKind={menuController as HTMLElement} onClose={handleCloseMenu} />
               </Stack>
               <Stack>
                 <Button
@@ -748,11 +689,7 @@ export default function AssetsRightComponent() {
                   sx={StyleButton}
                   onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenMenu(e, 'moreSetting')}
                 />
-                <MoreSettingMenu
-                  StyleMenu={StyleMenu}
-                  menuKind={menuMoreSetting as HTMLElement}
-                  onClose={handleCloseMenu}
-                />
+                <MoreSettingMenu menuKind={menuMoreSetting as HTMLElement} onClose={handleCloseMenu} />
               </Stack>
             </Stack>
           </Stack>
